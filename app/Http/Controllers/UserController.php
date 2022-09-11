@@ -29,15 +29,22 @@ class UserController extends Controller
             $users = $this->repository->getUserAll();
             return DataTables::of($users)
                 ->addColumn('action' , function($row){
-                    $html = '<button type="button" data-href="'.route('users.edit', $row->id).'" class="btn btn-outline-info btn-not-radius modal-btn edit_user"><i class="fa fa-edit"></i></button>&nbsp;
-                                            <button type="button" data-href="'.route('users.destroy', $row->id).'" data-name="'.$row->name.'" class="btn btn-outline-danger btn-not-radius delete-btn delete_user" ><i class="fa fa-trash"></i></button>';
+                    $html = '';
+                    if ($row->banned_status == 'unbanned') {
+                       $html .= '<button type="button" data-href="'.route('users.banned', $row->id).'" class="btn btn-outline-warning btn-not-radius modal-btn ban_user"><i class="fa fa-lock"></i></button>&nbsp;&nbsp;&nbsp;';
+                    }else{
+                       $html .= '<button type="button" data-href="'.route('users.unbanned', $row->id).'" class="btn btn-outline-success btn-not-radius modal-btn ban_user"><i class="fa fa-unlock"></i></button>&nbsp;&nbsp;&nbsp;';
+                    }
+
+                    $html .= '<button type="button" data-href="'.route('users.edit', $row->id).'" class="btn btn-outline-info btn-not-radius modal-btn edit_user"><i class="fa fa-edit"></i></button>&nbsp;
+                            <button type="button" data-href="'.route('users.destroy', $row->id).'" data-name="'.$row->name.'" class="btn btn-outline-danger btn-not-radius delete-btn delete_user" ><i class="fa fa-trash"></i></button>';
                     return $html;
                 })
                 ->editColumn('avatar', function($row){
                     $html = '<img src="https://ui-avatars.com/api/?name='.$row->name.'" width="38px" height="38px" class="rounded-circle avatar">';
                     return $html;
                 })
-                ->editColumn('amount', '{{@number_format($amount)}} đ')
+                ->editColumn('point', '{{@number_format($point)}} $')
                 ->rawColumns(['avatar', 'action'])
                 ->make(true);;
         }
@@ -98,48 +105,6 @@ class UserController extends Controller
         ]);
     }
 
-    public function getRechargeHistory(Request $request)
-    {
-        $date =  date('Y-m-d');
-        $first_day = date('Y-m-01', strtotime($date));
-        $last_day = date('Y-m-t', strtotime($date));
-        if (request()->ajax()) {
-            $transaction_history = $this->repository->getRechargeHistory();
-            if (!empty($request->start_date) && !empty($request->end_date)) {
-                $start = $request->start_date;
-                $end =  $request->end_date;
-                $transaction_history->whereDate('user_transactions.created_at', '>=', $start)
-                                ->whereDate('user_transactions.created_at', '<=', $end);
-            }
-            return DataTables::of($transaction_history)
-                ->editColumn('status', function($row){
-                    if ($row->status == 1) {
-                        $html = '<span class="badge badge-success">'. __("paid") .'</span>';
-                    }else{
-                        $html = '<span class="badge badge-danger">'. __("unpaid") .'</span>';
-                    }
-
-                    return $html;
-                })
-                ->editColumn('amount', '+ {{@number_format($amount)}} đ')
-                ->editColumn('created_at', '{{date("d/m/Y H:i", strtotime($created_at))}}')
-                ->rawColumns(['status'])
-                ->make(true);;
-        }
-        return view('users.partials.recharge_history', compact('first_day', 'last_day'));
-    }
-
-    public function userDashboard()
-    {
-        return view('users.index');
-    }
-
-    public function recharge()
-    {
-        $banks = $this->repository->getBanks();
-        return view('users.recharge', compact('banks'));
-    }
-
     public function getAmount()
     {
         $user = $this->repository->getAmount();
@@ -194,109 +159,28 @@ class UserController extends Controller
 
     }
 
-    public function history(Request $request)
+    public function banned($id)
     {
-        $date =  date('Y-m-d');
-        $first_day = date('Y-m-01', strtotime($date));
-        $last_day = date('Y-m-t', strtotime($date));
-        if (request()->ajax()) {
-            $service_bills = $this->repository->serviceBills();
-            if (!empty($request->start_date) && !empty($request->end_date)) {
-                $start = $request->start_date;
-                $end =  $request->end_date;
-                $service_bills->whereDate('service_bills.created_at', '>=', $start)
-                            ->whereDate('service_bills.created_at', '<=', $end);
-            }
-            return DataTables::of($service_bills)
-                ->editColumn('discount', function($row){
-                    $html = '';
-                    if ($row->country) {
-                        $html = '<span class="badge badge-warning">
+        $users =  $this->repository->getUser($id);
+        $users->banned_status = 'banned';
+        $users->save();
 
-                                </span>';
-                    }
-                    return $html;
-                })
-                ->editColumn('account', function($row){
-                    $html = '<button type="button" class="btn btn-outline-info btn-not-radius view btn-hover" data-href="'.route('order.view', $row->id).'"><i class="fa fa-eye"></i></button>';
-                    return $html;
-                })
-                ->editColumn('status', function($row){
-                    $html = '';
-                    if ($row->status == "completed") {
-                        $html = '<span class="badge badge-success">'. __("Completed") .'</span>';
-                    }
-
-                    return $html;
-                })
-                ->editColumn('amount', '<span class="btn mb-1 btn-sm btn-outline-danger">{{@number_format($amount)}} đ</span>')
-                ->editColumn('quantity', '<span class="btn mb-1 btn-sm btn-outline-secondary">{{$quantity}}</span>')
-                ->editColumn('created_at', '{{date("d/m/Y H:i", strtotime($created_at))}}')
-                ->rawColumns(['amount', 'quantity', 'status', 'account', 'created_at'])
-                ->make(true);;
-        }
-        return view('users.partials.purchase_history', compact('first_day', 'last_day'));
+        return response()->json([
+            'success' => true,
+            'msg' => __('User lock successfully')
+        ]);
     }
 
-    public function contacts()
+    public function unbanned($id)
     {
-        $contact = $this->repository->getSetting();
-        return view('users.contact', compact('contact'));
-    }
+        $users =  $this->repository->getUser($id);
+        $users->banned_status = 'unbanned';
+        $users->save();
 
-    public function getTransactionHistory(Request $request)
-    {
-        $date =  date('Y-m-d');
-        $first_day = date('Y-m-01', strtotime($date));
-        $last_day = date('Y-m-t', strtotime($date));
-        if (request()->ajax()) {
-            $transaction_history = $this->repository->getTransactionHistory();
-            if (!empty($request->start_date) && !empty($request->end_date)) {
-                $start = $request->start_date;
-                $end =  $request->end_date;
-                $transaction_history->whereDate('history_transactions.created_at', '>=', $start)
-                                ->whereDate('history_transactions.created_at', '<=', $end);
-            }
-            return DataTables::of($transaction_history)
-                ->editColumn('status', function($row){
-                    if ($row->status == 'payment') {
-                        $html = '<span class="badge badge-success">'.__('Payment').'</span>';
-                    }elseif ($row->status == 'return'){
-                        $html = '<span class="badge badge-danger">'.__('Refund').'</span>';
-                    }
-
-                    return $html;
-                })
-                ->editColumn('price', function($row){
-                    if ($row->status == 'payment') {
-                        $html = '<span class="btn mb-1 btn-sm btn-outline-danger"> - '.number_format($row->price).'đ</span>';
-                    }elseif ($row->status == 'return'){
-                        $html = '<span class="btn mb-1 btn-sm btn-outline-success"> + '.number_format($row->price).'đ</span>';
-                    }
-
-                    return $html;
-                })
-                ->editColumn('created_at', '{{date("d/m/Y H:i", strtotime($created_at))}}')
-                ->rawColumns(['status', 'created_at', 'price'])
-                ->make(true);;
-        }
-        return view('users.partials.transaction_history', compact('first_day', 'last_day'));
-    }
-
-    public function export($id)
-    {
-        return $this->repository->export($id);
-    }
-
-    public function topRecharge()
-    {
-        $top_recharge = $this->repository->topRecharge();
-        return view('users.top_recharge', compact('top_recharge'));
-    }
-
-    public function documentApi()
-    {
-        return view('document');
+        return response()->json([
+            'success' => true,
+            'msg' => __('User unlock successfully')
+        ]);
     }
 
     public static function utf8convert($str) {

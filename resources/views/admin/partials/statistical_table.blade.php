@@ -2,7 +2,7 @@
     <thead>
         <tr>
             <th style="text-align: center; ">{{ __('Date') }}</th>
-            <th style="text-align: center; ">Doanh thu</th>
+            <th style="text-align: center; ">{{ __('Turnover') }}</th>
         </tr>
     </thead>
     <tbody id="statistical_content">
@@ -12,7 +12,7 @@
                     <h6>{{ date('d/m/Y', strtotime($dates[$i])) }}</h6>
                 </td>
                 <td style="text-align: center">
-                    <h6>{{ $arrRevenueMonthDone[$i] }} Đ</h6>
+                    <h6>{{ $arrRevenueMonthDone[$i] }} $</h6>
                 </td>
             </tr>
         @endfor

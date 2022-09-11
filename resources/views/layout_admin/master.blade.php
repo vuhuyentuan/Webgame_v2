@@ -16,7 +16,7 @@
   <meta property="article:tag" content="{{ $setting->keywords }}">
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <link rel="icon" type="image/png" href="{{ asset($setting->logo) }}">
+  <link rel="icon" type="image/png" href="{{ asset($setting->favicon) }}">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -68,7 +68,7 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="{{ asset($setting->logo) }}" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__shake" src="{{ asset($setting->favicon) }}" alt="AdminLTELogo" height="60" width="60">
   </div>
 
   <!-- Navbar -->

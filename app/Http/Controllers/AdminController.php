@@ -41,18 +41,17 @@ class AdminController extends Controller
                 $dates[] = $date->format('Y-m-d');
             }
 
-            // $service_accounts = ServiceAccounts::count();
             $user = User::where('role',0)->whereDate('created_at', '>=', $first_day)->whereDate('created_at', '<=', $last_day)->count();
             $service_bill_done = Bill::where('status','completed')->whereDate('created_at', '>=', $first_day)->whereDate('created_at', '<=', $last_day)->count();
             $service_bill_pending = Bill::where('status','pending')->whereDate('created_at', '>=', $first_day)->whereDate('created_at', '<=', $last_day)->count();
             $revenueMonthDone = RechargeHistory::whereRaw('month(recharge_histories.created_at) BETWEEN "'.date('m', strtotime($first_day)).'" AND "'.date('m', strtotime($last_day)).'"')
-                ->select(DB::raw('sum(recharge_histories.amount) as totalMoney'), DB::raw('DATE(recharge_histories.created_at) day'))
+                ->select(DB::raw('sum(recharge_histories.point_purchase) as totalMoney'), DB::raw('DATE(recharge_histories.created_at) day'))
                 ->where('recharge_histories.status', 'completed')
                 ->groupBy('day')
                 ->get()
                 ->toArray();
             $revenueMonthPending = RechargeHistory::whereRaw('month(recharge_histories.created_at) BETWEEN "'.date('m', strtotime($first_day)).'" AND "'.date('m', strtotime($last_day)).'"')
-                ->select(DB::raw('sum(recharge_histories.amount) as totalMoney'), DB::raw('DATE(recharge_histories.created_at) day'))
+                ->select(DB::raw('sum(recharge_histories.point_purchase) as totalMoney'), DB::raw('DATE(recharge_histories.created_at) day'))
                 ->where('recharge_histories.status', 'completed')
                 ->groupBy('day')
                 ->get()

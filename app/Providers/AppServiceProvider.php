@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer(['layout_admin.master'], function ($view) {
+        view()->composer(['layout_admin.master', 'layout_index.master'], function ($view) {
             $setting = Setting::find(1);
             $view->with(['setting' => $setting]);
         });

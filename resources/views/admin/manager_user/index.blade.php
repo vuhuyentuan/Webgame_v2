@@ -126,7 +126,7 @@
             {"data": "username" },
             {"data": "email"},
             {"data": "phone" },
-            {"data": "amount" },
+            {"data": "point" },
             {"data": "action", orderable: false}
         ],
     });
@@ -163,6 +163,21 @@
         });
     })
 
+    $(document).on('click', '.ban_user',function(e){
+        let url = $(this).data('href');
+        $.ajax({
+            method: "POST",
+            url: url,
+            dataType: "json",
+            success: function(result) {
+                if (result.success == true) {
+                    toastr.success(result.msg);
+                    users_table.ajax.reload();
+                }
+            }
+        })
+    })
+
      // delete
      $(document).on('click', '.delete_user', function(e) {
         let name = $(this).data('name');
@@ -176,21 +191,21 @@
             cancelButtonText: "{{ __('Cancel') }}",
             confirmButtonText: "{{ __('Delete') }}",
         }).then((result) => {
-        if (result.value) {
-            $.ajax({
-                method: "GET",
-                url: url,
-                dataType: "json",
-                success: function(result) {
-                    if (result.success == true) {
-                        toastr.success(result.msg);
-                    }else{
-                        toastr.error(result.msg);
+            if (result.value) {
+                $.ajax({
+                    method: "GET",
+                    url: url,
+                    dataType: "json",
+                    success: function(result) {
+                        if (result.success == true) {
+                            toastr.success(result.msg);
+                        }else{
+                            toastr.error(result.msg);
+                        }
+                        users_table.ajax.reload();
                     }
-                    users_table.ajax.reload();
-                }
-            })
-        }
+                })
+            }
         });
     });
 </script>

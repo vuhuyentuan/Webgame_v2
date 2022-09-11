@@ -56,7 +56,7 @@
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label class="form-control-label" for="basic-url">{{ __('Amount') }}</label>
-                        <input type="text" class="form-control amount" name="amount" id="amount" value="{{ number_format($user->amount) }}">
+                        <input type="text" class="form-control amount" name="point" id="amount" value="{{ number_format($user->point) }}">
                     </div>
                   </div>
             </div>

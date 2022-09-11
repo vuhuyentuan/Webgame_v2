@@ -31,6 +31,8 @@ Route::group(['middleware' => 'locale'], function() {
 //Admin
 Route::get('/admin',[AdminController::class,'index'])->name('admin');
 //User
+Route::post('/users/banned/{id}',[UserController::class,'banned'])->name('users.banned');
+Route::post('/users/unbanned/{id}',[UserController::class,'unbanned'])->name('users.unbanned');
 Route::get('/users/create',[UserController::class,'create'])->name('users.create');
 Route::post('/users/store',[UserController::class,'store'])->name('users.store');
 Route::get('/users/{id}/edit',[UserController::class,'edit'])->name('users.edit');

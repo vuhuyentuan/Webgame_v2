@@ -9,7 +9,7 @@ class Bill extends Model
 {
     use HasFactory;
 
-    protected $table = "bill";
+    protected $table = "bills";
 
     public function product()
     {
