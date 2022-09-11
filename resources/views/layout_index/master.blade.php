@@ -58,6 +58,9 @@
 	<script src="{{ asset('endgame/js/jquery.sticky-sidebar.min.js') }}"></script>
 	<script src="{{ asset('endgame/js/jquery.magnific-popup.min.js') }}"></script>
 	<script src="{{ asset('endgame/js/main.js') }}"></script>
+    <!-- jQuery -->
+    <script src="{{ asset('AdminLTE-3.1.0/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('AdminLTE-3.1.0/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
 
 	</body>
 </html>
