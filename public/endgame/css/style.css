@@ -84,7 +84,7 @@ ol {
 	margin: 0;
 }
 
-::-webkit-input-placeholder {
+/* ::-webkit-input-placeholder {
 	color: #fff;
 	font-style: italic;
 	text-transform: uppercase;
@@ -106,7 +106,7 @@ ol {
 	color: #fff;
 	font-style: italic;
 	text-transform: uppercase;
-}
+} */
 
 /*---------------------
   Helper CSS
@@ -670,6 +670,17 @@ ol {
 
 .blog-filter li a:hover {
 	background: #b01ba5;
+}
+
+.btn-hover {
+	background: #6f2b95;
+    width: 100%;
+    color: #fff;
+}
+
+.btn-hover:hover {
+	background: #b01ba5;
+    color: #fff;
 }
 
 .blog-item {
@@ -1765,4 +1776,8 @@ ol {
 		float: none;
 		margin-bottom: 20px;
 	}
+}
+
+.error {
+    color: #ff3636;
 }

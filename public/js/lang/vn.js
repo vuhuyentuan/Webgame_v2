@@ -28,5 +28,7 @@ LANG = {
     'register_successfully':'Đăng ký thành công',
     'incorrect_account':'Tài khoản không chính xác',
     'maxlength20':'Giới hạn 20 ký tự',
-    'copy':'Đã sao chép vào bộ nhớ tạm'
+    'copy':'Đã sao chép vào bộ nhớ tạm',
+    'logout': 'Đăng xuất',
+    'login_successfully': 'Đăng nhập thành công'
 }

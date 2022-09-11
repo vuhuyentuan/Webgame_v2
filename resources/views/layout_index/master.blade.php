@@ -12,7 +12,6 @@
 	<!-- Google Font -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
 
-
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="{{ asset('endgame/css/bootstrap.min.css') }}"/>
 	<link rel="stylesheet" href="{{ asset('endgame/css/font-awesome.min.css') }}"/>
@@ -20,6 +19,9 @@
 	<link rel="stylesheet" href="{{ asset('endgame/css/owl.carousel.min.css') }}"/>
 	<link rel="stylesheet" href="{{ asset('endgame/css/magnific-popup.css') }}"/>
 	<link rel="stylesheet" href="{{ asset('endgame/css/animate.css') }}"/>
+    <!-- Toastr -->
+    <link rel="stylesheet" href="{{asset('AdminLTE-3.1.0/plugins/toastr/toastr.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('AdminLTE-3.1.0/plugins/jquery-ui/jquery-ui.min.css') }}">
 
 	<!-- Main Stylesheets -->
 	<link rel="stylesheet" href="{{ asset('endgame/css/style.css') }}"/>
@@ -45,12 +47,16 @@
 	<!-- Hero section -->
     @yield('content')
 
+    <div class="modal fade" id="login_modal"></div>
+    <div class="modal fade" id="register_modal"></div>
 	<!-- Footer section -->
     @include('layout_index.footer')
 	<!-- Footer section end -->
 
 
 	<!--====== Javascripts & Jquery ======-->
+
+    <!-- jquery-validation -->
 	<script src="{{ asset('endgame/js/jquery-3.2.1.min.js') }}"></script>
 	<script src="{{ asset('endgame/js/bootstrap.min.js') }}"></script>
 	<script src="{{ asset('endgame/js/jquery.slicknav.min.js') }}"></script>
@@ -59,8 +65,11 @@
 	<script src="{{ asset('endgame/js/jquery.magnific-popup.min.js') }}"></script>
 	<script src="{{ asset('endgame/js/main.js') }}"></script>
     <!-- jQuery -->
-    <script src="{{ asset('AdminLTE-3.1.0/plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('AdminLTE-3.1.0/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
-
+    <!-- Toastr -->
+    <script src="{{ asset('AdminLTE-3.1.0/plugins/toastr/toastr.min.js')}}"></script>
+    <script src="{{ asset('js/lang/vn.js') }}"></script>
+    <script src="{{ asset('js/login.js') }}"></script>
+    <script src="{{ asset('js/register.js') }}"></script>
 	</body>
 </html>

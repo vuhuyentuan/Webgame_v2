@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BanksController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TranslateController;
 use App\Http\Controllers\UserController;
@@ -54,3 +55,13 @@ Route::post('/settings/update-contact/{id}',[SettingController::class,'updateCon
 Route::resource('settings', SettingController::class);
 //Home
 Route::get('/',[FrontendController::class,'index'])->name('index');
+
+//Login
+Route::get('/login',[LoginController::class,'viewLogin'])->name('login');
+Route::post('/login',[LoginController::class,'postLogin'])->name('post.login');
+//Register
+Route::get('/register',[LoginController::class,'viewRegister'])->name('register');
+Route::post('/register',[LoginController::class,'postRegister'])->name('post.register');
+//Logout
+Route::get('/logout',[LoginController::class,'logout'])->name('logout');
+

@@ -14,8 +14,12 @@
                 <img src="{{ asset('endgame/img/logo.png') }}" alt="">
             </a>
             <nav class="top-nav-area w-100">
-                <div class="user-panel">
-                    <a href="">Login</a> / <a href="">Register</a>
+                <div class="user-panel" id="user-panel">
+                    @if(Auth::user())
+                        <a href=""><i class="fa fa-user-o" aria-hidden="true"></i> {{Auth::user()->name}}</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{route('logout')}}"><i class="fa fa-power-off"></i> {{__('Logout')}}</a>
+                    @else
+                        <a href="{{route('login')}}" id="login">Login</a> / <a href="{{route('register')}}" id="register">Register</a>
+                    @endif
                 </div>
                 <!-- Menu -->
                 <ul class="main-menu primary-menu">

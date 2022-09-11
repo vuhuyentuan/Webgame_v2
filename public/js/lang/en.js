@@ -28,5 +28,7 @@ LANG = {
     'register_successfully':'Register successfully',
     'incorrect_account':'Incorrect account',
     'maxlength20':'20 characters limit',
-    'copy':'Copied to clipboard'
+    'copy':'Copied to clipboard',
+    'logout': 'Logout',
+    'login_successfully': 'Login successfully'
 }

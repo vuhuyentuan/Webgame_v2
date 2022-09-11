@@ -27,7 +27,7 @@ class LoginController extends Controller
                 return redirect()->route('login');
             }
         }else{
-            return view('login');
+            return view('layout_index.login');
         }
     }
 
@@ -45,22 +45,24 @@ class LoginController extends Controller
             $remember = true;
         }
 
-        $credentaials = array('username' => $request->username, 'password' => $request->password);
-        if (Auth::attempt($credentaials, $remember)) {
-            if (Auth::user()->role == 0) {
-                return redirect()->route('user.dashboard');
-            } else {
-                return redirect()->route('dashboard');
-
-            }
+        $credentaials_username = array('username' => $request->username, 'password' => $request->password);
+        $credentaials_email = array('email' => $request->username, 'password' => $request->password);
+        if (Auth::attempt($credentaials_username, $remember) || Auth::attempt($credentaials_email, $remember)) {
+            return response()->json([
+                'success' => true,
+                'data' => Auth::user()
+            ]);
         } else {
-            return redirect()->back()->with(['message'=> 1, 'data'=>$request->username]);
+            return response()->json([
+                'success' => false,
+                'msg' => __('Incorrect account or password')
+            ]);
         }
     }
 
     public function viewRegister()
     {
-        return view('register');
+        return view('layout_index.register');
     }
 
     public function postRegister(RegisterRequest $request)
@@ -69,12 +71,10 @@ class LoginController extends Controller
         if ($sign_up == true) {
             $credentaials = array('username' => $request->username, 'password' => $request->password);
             if (Auth::attempt($credentaials)) {
-                if(Auth::user()->role == 0){
-                    return response()->json([
-                        'success' => true,
-                        'data' => Auth::user()->role
-                    ]);
-                }
+                return response()->json([
+                    'success' => true,
+                    'data' => Auth::user()
+                ]);
             } else {
                 return response()->json([
                     'success' => false,
@@ -88,9 +88,7 @@ class LoginController extends Controller
     {
         Auth::logout();
         $rememberMeCookie = Auth::getRecallerName();
-
         $cookie = Cookie::forget($rememberMeCookie);
-
         return Redirect::to('/')->withCookie($cookie);
     }
 }

@@ -25,7 +25,7 @@ class RegisterRequest extends FormRequest
     {
         return [
             // 'name' => 'required',
-            // 'email' => 'required',
+            'email' => 'unique:users,email',
             'username' => 'unique:users,username'
             // 'password' => 'required',
         ];
@@ -34,7 +34,7 @@ class RegisterRequest extends FormRequest
     {
         return [
             // 'name.required' => 'Vui lòng nhập họ tên',
-            // 'email.required' => 'Vui lòng nhập email',
+            'email.unique' => 'Email already in use',
             'username.unique' => __('Username already exists')
             // 'password.required' => 'Vui lòng nhập mật khẩu'
         ];
