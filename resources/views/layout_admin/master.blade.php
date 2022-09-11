@@ -5,18 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   @yield('title')
   <!-- Open Graph data -->
-  {{-- <meta property="og:title" content="{{ $setting->seo_title }}">
+  <meta property="og:title" content="{{ $setting->seo_title }}">
   <meta property="og:type" content="Website">
-  <meta property="og:url" content="{{ route('login') }}">
+  <meta property="og:url" content="{{ route('index') }}">
   <meta property="og:image:alt" content="{{ $setting->seo_description }}">
   <meta property="og:image" content="{{ $setting->logo }}">
   <meta property="og:description" content="{{ $setting->seo_description }}">
   <meta property="og:site_name" content="{{ $setting->seo_title }}">
   <meta property="article:section" content="{{ $setting->seo_description }}">
-  <meta property="article:tag" content="{{ $setting->keywords }}"> --}}
+  <meta property="article:tag" content="{{ $setting->keywords }}">
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  {{-- <link rel="icon" type="image/png" href="{{ asset($setting->logo) }}"> --}}
+  <link rel="icon" type="image/png" href="{{ asset($setting->logo) }}">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -72,11 +72,11 @@
   </div>
 
   <!-- Navbar -->
-  @include('layouts.header')
+  @include('layout_admin.header')
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  @include('layouts.sidebar')
+  @include('layout_admin.sidebar')
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -95,7 +95,7 @@
     <!-- Control sidebar content goes here -->
   </aside>
   <!-- /.control-sidebar -->
-  {!!$setting->javascript!!}
+  {{-- {!!$setting->javascript!!} --}}
 </div>
 <!-- ./wrapper -->
 

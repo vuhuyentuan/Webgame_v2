@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-        <center> <img width="100%" height="70px" src="{{ asset('AdminLTE-3.1.0/dist/img/AdminLTELogo.png') }}"></center>
+        <center> <img width="100%" height="70px" src="{{ asset($setting->logo) }}"></center>
     </a>
 
     <!-- Sidebar -->
@@ -12,12 +12,12 @@
             <!-- Add icons to the links using the .nav-icon class
                 with font-awesome or any other icon font library -->
             <li class="nav-item">
-                <a href="{{ route('dashboard') }}" class="nav-link {{ URL::current() == route('dashboard') ? 'active' : '' }}">
+                <a href="{{ route('admin') }}" class="nav-link {{ URL::current() == route('admin') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>{{ __('Dashboard') }}</p>
                 </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a href="{{ route('recharges.history') }}" class="nav-link {{ URL::current() == route('recharges.history') ? 'active' : '' }}">
                     <i class="nav-icon fa fa-money-bill"></i>
                     <p>{{ __('Recharge history') }}</p>
@@ -57,7 +57,7 @@
                         </a>
                     </li>
                 </ul>
-            </li>
+            </li>--}}
             <li class="nav-item">
                 <a href="{{ route('settings.index') }}" class="nav-link {{ URL::current() == route('settings.index') ? 'active' : '' }}">
                     <i class="fas fa-cog nav-icon"></i>

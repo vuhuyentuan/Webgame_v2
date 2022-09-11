@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,5 +24,13 @@ Route::group(['middleware' => 'locale'], function() {
     Route::get('language/{language}',[FrontendController::class,'changeLanguage'])->name('langroute');
 });
 
+//Admin
+Route::get('/admin',[AdminController::class,'index'])->name('admin');
+//User
+Route::get('/users',[UserController::class,'index'])->name('users.index');
+// setting
+Route::post('/settings/update-general/{id}',[SettingController::class,'updateGeneral'])->name('settings.update_general');
+Route::post('/settings/update-contact/{id}',[SettingController::class,'updateContact'])->name('settings.update_contact');
+Route::resource('settings', SettingController::class);
 //Home
 Route::get('/',[FrontendController::class,'index'])->name('index');
