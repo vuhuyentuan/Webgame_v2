@@ -20,7 +20,7 @@ class CreateRechargeHistoriesTable extends Migration
             $table->integer('point_purchase')->default('0');
             $table->string('description', 255)->nullable();
             $table->string('order_id', 255)->nullable();
-            $table->string('status', 255)->default('waiting');
+            $table->string('status', 255)->default('pending');
             $table->string('method', 255)->nullable();
             $table->timestamps();
         });

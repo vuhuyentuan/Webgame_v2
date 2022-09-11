@@ -24,7 +24,7 @@ class CreateBillsTable extends Migration
             $table->integer('quantity')->default(0);
             $table->integer('point_total')->default(0);
             $table->string('account', 255)->nullable();
-            $table->string('status', 255)->default('waiting');
+            $table->string('status', 255)->default('pending');
             $table->timestamps();
         });
     }
