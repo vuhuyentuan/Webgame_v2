@@ -35,17 +35,6 @@ class SettingRepository
 
             $setting->logo = $logo_name;
         }
-        $banner = $request->banner;
-        if (isset($banner)) {
-            if (isset($setting->banner) && $setting->logo != 'AdminLTE-3.1.0/dist/img/bg7.jpg') {
-                unlink(public_path($setting->banner));
-            }
-            $banner_name = 'upload/setting/img/' . $date . '/' . Str::random(10) . rand() . '.' . $banner->getClientOriginalExtension();
-            $destinationPath = public_path('upload/setting/img/' . $date);
-            $banner->move($destinationPath, $banner_name);
-
-            $setting->banner = $banner_name;
-        }
         $setting->logo_text = $request->logo_text;
         $setting->save();
         return $setting;
@@ -60,7 +49,6 @@ class SettingRepository
         $setting->main_color = $request->main_color;
         $setting->secondary_color = $request->secondary_color;
         $setting->javascript = $request->javascript;
-        $setting->maintenance = $request->maintenance;
         $setting->save();
     }
 

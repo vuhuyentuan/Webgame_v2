@@ -1,6 +1,6 @@
 @php
     $i = 1;
-    $languages = \App\Models\Language::get();
+    $languages = \App\Models\Language::where('status', 'show')->get();
     $locale = App::getLocale();
 @endphp
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">

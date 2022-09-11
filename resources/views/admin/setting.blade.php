@@ -73,20 +73,6 @@
                                             <input type="color" class="form-control" name="secondary_color" value="{{ $setting->secondary_color }}">
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">{{ __('Maintenance') }}</label>
-                                            <select class="custom-select rounded-0" name="maintenance" id="exampleSelectRounded0">
-                                                @foreach (['on' => __('On'), 'off' => __('Off')] as $key => $value)
-                                                    @if($setting->maintenance == $key)
-                                                        <option selected value="{{ $key }}">{{ $value }}</option>
-                                                    @else
-                                                        <option value="{{ $key }}">{{ $value }}</option>
-                                                    @endif
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label>{{__("Insert JavaScripts (Live Chat, Website Effects, etc.)")}}</label>

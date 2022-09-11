@@ -1,4 +1,4 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-dark-primary elevation-4" style="background: linear-gradient({{ $setting->main_color }}, {{ $setting->main_color }}, {{ $setting->secondary_color }})">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
         <center> <img width="100%" height="70px" src="{{ asset($setting->logo) }}"></center>
@@ -22,7 +22,7 @@
                     <i class="nav-icon fa fa-money-bill"></i>
                     <p>{{ __('Recharge history') }}</p>
                 </a>
-            </li>
+            </li>--}}
             <li class="nav-item">
                 <a href="{{ route('users.index') }}" class="nav-link {{ URL::current() == route('users.index') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-user"></i>
@@ -57,7 +57,7 @@
                         </a>
                     </li>
                 </ul>
-            </li>--}}
+            </li>
             <li class="nav-item">
                 <a href="{{ route('settings.index') }}" class="nav-link {{ URL::current() == route('settings.index') ? 'active' : '' }}">
                     <i class="fas fa-cog nav-icon"></i>
