@@ -69,6 +69,7 @@
     <!-- Toastr -->
     <script src="{{ asset('AdminLTE-3.1.0/plugins/toastr/toastr.min.js')}}"></script>
     <script src="{{ asset('js/lang/vn.js') }}"></script>
+    @yield('script')
     <script src="{{ asset('js/login.js') }}"></script>
     <script src="{{ asset('js/register.js') }}"></script>
     <script>

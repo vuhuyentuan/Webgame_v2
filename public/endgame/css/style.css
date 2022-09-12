@@ -1781,3 +1781,6 @@ ol {
 .error {
     color: #ff3636;
 }
+.hide{
+    display: none;
+}

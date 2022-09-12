@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\BanksController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\LanguageController;
@@ -80,3 +81,6 @@ Route::post('/register',[LoginController::class,'postRegister'])->name('post.reg
 //Logout
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
+Route::post('/reset-password', [ForgotPasswordController::class, 'postResetPassword'])->name('reset_password');
+Route::get('/password-new', [ForgotPasswordController::class, 'getPasswordNew'])->name('link_password_new');
+Route::post('/password-new', [ForgotPasswordController::class, 'postPasswordNew'])->name('pos_password_new');
