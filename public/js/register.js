@@ -48,28 +48,28 @@ $(document).ready(function() {
             },
             messages: {
                 "name": {
-                    required: LANG.required,
-                    maxlength: LANG.maxlength
+                    required: required,
+                    maxlength:  maxlength
                 },
                 "email": {
-                    required: LANG.required,
-                    email: LANG.incorrect_email_format,
-                    maxlength: LANG.maxlength
+                    required: required,
+                    email: email,
+                    maxlength:  maxlength
                 },
                 "username": {
-                    required: LANG.required,
-                    maxlength: LANG.maxlength,
-                    minlength: LANG.minimum_6_characters,
-                    regex: LANG.please_do_not_enter_spaces
+                    required: required,
+                    maxlength:  maxlength,
+                    minlength: minlength6,
+                    regex: regex
                 },
                 "password": {
-                    required: LANG.required,
-                    maxlength: LANG.maxlength
+                    required: required,
+                    maxlength:  maxlength
                 },
                 "confirm_password": {
-                    required: LANG.required,
-                    equalTo: LANG.equalpassword,
-                    maxlength: LANG.maxlength
+                    required: required,
+                    equalTo: equalTo,
+                    maxlength:  maxlength
                 }
             }
         });
@@ -89,16 +89,15 @@ $(document).ready(function() {
                     dataType: 'json',
                     data: data,
                     success: function(result) {
-                        $('#user-panel').html(`<a href=""><i class="fa fa-user-o" aria-hidden="true"></i> ${result.data.name}</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/logout"><i class="fa fa-power-off"></i> ${LANG.logout}</a>`)
+                        $('#user-panel').html(`<a href=""><i class="fa fa-user-o" aria-hidden="true"></i> ${result.data.name}</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/logout"><i class="fa fa-power-off"></i> ${logout}</a>`)
                         $('div#register_modal').modal('hide');
-                        toastr.success(LANG.register_successfully);
+                        toastr.success(register_successfully);
                     },
                     error: function(err) {
                         $('#register_submit').attr('disabled', false)
                         var data = err.responseJSON;
                         if (err.status == 422) {
                             if ($.isEmptyObject(data.errors) == false) {
-                                console.log(data.errors);
                                 $.each(data.errors, function(key, value) {
                                     $('#'+key+'-error').text('');
                                     $(document).find('#'+key).after($('<span id="'+key+'-error" class="error">' + value + '</span>'));

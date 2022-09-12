@@ -12,9 +12,15 @@
             <!-- Add icons to the links using the .nav-icon class
                 with font-awesome or any other icon font library -->
             <li class="nav-item">
-                <a href="{{ route('admin') }}" class="nav-link {{ URL::current() == route('admin') ? 'active' : '' }}">
+                <a href="{{ route('dashboard') }}" class="nav-link {{ URL::current() == route('dashboard') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>{{ __('Dashboard') }}</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('products.index') }}" class="nav-link {{ URL::current() == route('products.index') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-gamepad"></i>
+                    <p>{{ __('Games') }}</p>
                 </a>
             </li>
             {{-- <li class="nav-item">

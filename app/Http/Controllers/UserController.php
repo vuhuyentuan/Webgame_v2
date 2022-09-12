@@ -114,11 +114,6 @@ class UserController extends Controller
         ]);
     }
 
-    public function info()
-    {
-        return view('users.information');
-    }
-
     public function updateInfo(Request $request)
     {
         try {

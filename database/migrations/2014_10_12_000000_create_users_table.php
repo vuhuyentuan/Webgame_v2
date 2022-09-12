@@ -38,6 +38,7 @@ class CreateUsersTable extends Migration
         DB::table('users')->insert([
             [
                 'name' => 'Admin',
+                'username' => 'admin',
                 'email' => 'admin@webgame.com',
                 'password' => Hash::make('admin@123456'),
                 'role' => 1

@@ -20,8 +20,8 @@ class CreateProductsTable extends Migration
             $table->string('os_supported', 255)->nullable();
             $table->string('short_des', 255)->nullable();
             $table->longText('description')->nullable();
-            $table->string('image', 255);
-            $table->string('image_detail', 255);
+            $table->string('image', 255)->nullable();
+            $table->string('image_detail', 255)->nullable();
             $table->timestamps();
         });
     }

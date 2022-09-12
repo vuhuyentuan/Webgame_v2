@@ -31,13 +31,6 @@ class LoginController extends Controller
         }
     }
 
-    public function adminLogin()
-    {
-        Auth::logout();
-
-        return view('admin_login');
-    }
-
     public function postLogin(Request $request)
     {
         $remember = false;
@@ -46,7 +39,7 @@ class LoginController extends Controller
         }
 
         $credentaials_username = array('username' => $request->username, 'password' => $request->password);
-        $credentaials_email = array('email' => $request->username, 'password' => $request->password);
+        $credentaials_email = array('email' => $request->email, 'password' => $request->password);
         if (Auth::attempt($credentaials_username, $remember) || Auth::attempt($credentaials_email, $remember)) {
             return response()->json([
                 'success' => true,

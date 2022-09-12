@@ -68,29 +68,29 @@
       @endif
       <li class="nav-item nav-icon dropdown">
         <a href="#" class="nav-item nav-icon pr-0 search-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {{-- @if(Auth::user()->avatar)
+            @if(Auth::user()->avatar)
                 <img src="{{ Auth::user()->avatar }}" class="rounded-circle user-photo" style="width:40px; height:40px">
             @else
                 <img src="https://ui-avatars.com/api/?name={{ Auth::user()->name }}" class="rounded-circle user-photo" style="width:40px; height:40px">
-            @endif --}}
+            @endif
         </a>
         <div class="dropdown-menu dropdown-menu-right" style="width:230px">
             <div class="d-flex mt-2 ml-4 mr-4 mb-2">
                 <div class="flex-shrink-0">
                     <div class="image">
-                        {{-- @if(Auth::user()->avatar)
+                        @if(Auth::user()->avatar)
                             <img src="{{ Auth::user()->avatar }}" class="rounded-circle user-photo" style="width:40px; height:40px">
                         @else
                             <img src="https://ui-avatars.com/api/?name={{ Auth::user()->name }}" class="rounded-circle user-photo" style="width:40px; height:40px">
-                        @endif --}}
+                        @endif
                     </div>
                 </div>&nbsp;&nbsp;&nbsp;
-                {{-- <div class="flex-grow-1">
+                <div class="flex-grow-1">
                     <span class="fw-semibold d-block">
                         <a href="{{ route('info') }}" class="user-name">{{ Auth::user()->name }}</a>
                     </span>
                     <small class="text-muted surplus">{{ __('Surplus') }} : <b class="text-danger">{{ number_format(Auth::user()->amount) }}</b> ₫</small>
-                </div> --}}
+                </div>
             </div>
             <div class="dropdown-divider"></div>
             <a href="#" class="dropdown-item dropdown-footer">

@@ -3,17 +3,11 @@
 namespace App\Repositories;
 
 use App\Models\Bank;
-use App\Models\Category;
-use App\Models\HistoryTransaction;
-use App\Models\ServiceBill;
 use App\Models\Setting;
 use App\Models\User;
-use App\Models\UserTransaction;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class UserRepository

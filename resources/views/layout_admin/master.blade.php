@@ -143,7 +143,6 @@
 <script src="{{ asset('AdminLTE-3.1.0/dist/js/adminlte.js') }}"></script>
 <script src="{{ asset('AdminLTE-3.1.0/dist/js/countrySelect.min.js') }}"></script>
 <script src="{{ asset('AdminLTE-3.1.0/dist/js/clipboard.min.js') }}"></script>
-{{-- <script src="{{ asset('js/lang/'.app()->getLocale().'.js') }}"></script> --}}
 @yield('script')
 <script>
 

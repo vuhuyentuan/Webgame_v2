@@ -5,6 +5,8 @@ use App\Http\Controllers\BanksController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PackageController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TranslateController;
 use App\Http\Controllers\UserController;
@@ -29,30 +31,43 @@ Route::group(['middleware' => 'locale'], function() {
     Route::get('language/{language}',[FrontendController::class,'changeLanguage'])->name('langroute');
 });
 
-//Admin
-Route::get('/admin',[AdminController::class,'index'])->name('admin');
-//User
-Route::post('/users/banned/{id}',[UserController::class,'banned'])->name('users.banned');
-Route::post('/users/unbanned/{id}',[UserController::class,'unbanned'])->name('users.unbanned');
-Route::get('/users/create',[UserController::class,'create'])->name('users.create');
-Route::post('/users/store',[UserController::class,'store'])->name('users.store');
-Route::get('/users/{id}/edit',[UserController::class,'edit'])->name('users.edit');
-Route::post('/users/update',[UserController::class,'update'])->name('users.update');
-Route::get('/users/destroy/{id}',[UserController::class,'destroy'])->name('users.destroy');
-Route::get('/users',[UserController::class,'index'])->name('users.index');
-//banks
-Route::resource('banks', BanksController::class);
-//language
-Route::resource('languages', LanguageController::class);
-//translations
-Route::get('build/{id}',[TranslateController::class,'build'])->name('translations.build');
-Route::get('loadStrings',[TranslateController::class,'loadStrings'])->name('translations.loadStrings');
-Route::get('list-trans/{id}',[TranslateController::class,'listTrans'])->name('translations.list-trans');
-Route::resource('translations', TranslateController::class);
-// setting
-Route::post('/settings/update-general/{id}',[SettingController::class,'updateGeneral'])->name('settings.update_general');
-Route::post('/settings/update-contact/{id}',[SettingController::class,'updateContact'])->name('settings.update_contact');
-Route::resource('settings', SettingController::class);
+Route::group(['middleware' => 'user'], function () {
+    //Admin
+    Route::get('/dashboard',[AdminController::class,'index'])->name('dashboard');
+    Route::get('/info',[AdminController::class,'info'])->name('info');
+    //products
+    Route::get('products/show', [ProductController::class,'showPackage'])->name('products.showPackage');
+    Route::resource('products', ProductController::class);
+    //package
+    Route::resource('packages', PackageController::class);
+    //User
+    Route::post('/users/banned/{id}',[UserController::class,'banned'])->name('users.banned');
+    Route::post('/users/unbanned/{id}',[UserController::class,'unbanned'])->name('users.unbanned');
+    Route::get('/users/create',[UserController::class,'create'])->name('users.create');
+    Route::post('/users/store',[UserController::class,'store'])->name('users.store');
+    Route::get('/users/{id}/edit',[UserController::class,'edit'])->name('users.edit');
+    Route::post('/users/update',[UserController::class,'update'])->name('users.update');
+    Route::get('/users/destroy/{id}',[UserController::class,'destroy'])->name('users.destroy');
+    Route::get('/users',[UserController::class,'index'])->name('users.index');
+    //banks
+    Route::resource('banks', BanksController::class);
+    //language
+    Route::resource('languages', LanguageController::class);
+    //translations
+    Route::get('build/{id}',[TranslateController::class,'build'])->name('translations.build');
+    Route::get('loadStrings',[TranslateController::class,'loadStrings'])->name('translations.loadStrings');
+    Route::get('list-trans/{id}',[TranslateController::class,'listTrans'])->name('translations.list-trans');
+    Route::resource('translations', TranslateController::class);
+    // setting
+    Route::post('/settings/update-general/{id}',[SettingController::class,'updateGeneral'])->name('settings.update_general');
+    Route::post('/settings/update-contact/{id}',[SettingController::class,'updateContact'])->name('settings.update_contact');
+    Route::resource('settings', SettingController::class);
+});
+Route::group(['middleware' => 'login'], function () {
+    Route::post('/info-update',[UserController::class,'updateInfo'])->name('info.update');
+    Route::post('/change-password',[UserController::class,'changePassword'])->name('info.change-password');
+});
+
 //Home
 Route::get('/',[FrontendController::class,'index'])->name('index');
 

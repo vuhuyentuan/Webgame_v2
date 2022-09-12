@@ -42,31 +42,4 @@ class AdminRepository
         $history->status = 'return';
         $history->save();
     }
-
-    public function getRechargeHistory()
-    {
-        return UserTransaction::join('users as u', 'user_transactions.user_id', '=', 'u.id')
-                        ->select([
-                            'user_transactions.*',
-                            'u.name as user_name',
-                            'u.avatar as avatar',
-                            'u.email'
-                        ])
-                        ->orderBy('id', 'desc');
-    }
-
-    public function serviceBills($type)
-    {
-        return ServiceBill::join('users', 'service_bills.user_id', '=', 'users.id')
-                            ->join('services as sv', 'service_bills.service_id', '=', 'sv.id')
-                            ->where('sv.type', $type)
-                            ->select([
-                                'service_bills.*',
-                                'sv.name as service_name',
-                                'users.email as email',
-                                'users.name as user_name',
-                                'users.avatar as avatar'
-                            ])
-                            ->orderBy('id', 'desc');
-    }
 }

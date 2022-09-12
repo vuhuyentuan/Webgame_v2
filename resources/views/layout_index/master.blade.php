@@ -71,5 +71,19 @@
     <script src="{{ asset('js/lang/vn.js') }}"></script>
     <script src="{{ asset('js/login.js') }}"></script>
     <script src="{{ asset('js/register.js') }}"></script>
+    <script>
+        var required = "{{ __('This field is required') }}";
+        var maxlength = "{{ __('190 characters limit') }}";
+        var equalTo = "{{ __('Confirmation password is not correct') }}";
+        var email = "{{ __('Incorrect email format') }}";
+        var number = "{{ __('Only numbers can be entered') }}";
+        var minlength = "{{ __('10 characters limit') }}";
+        var minlength6 = "{{ __('6 characters limit') }}";
+        var maxlength20 = "{{ __('20 characters limit') }}";
+        var regex = "{{ __('Please do not enter spaces') }}";
+        var register_successfully = "{{ __('Register successfully') }}";
+        var login_successfully = "{{ __('Login successfully') }}";
+        var logout = "{{ __('Logout') }}";
+    </script>
 	</body>
 </html>

@@ -21,6 +21,7 @@ class CreatePackagesTable extends Migration
             $table->string('name', 255)->nullable();
             $table->string('value', 255)->nullable();
             $table->integer('point')->nullable();
+            $table->timestamps();
         });
     }
 

@@ -104,6 +104,11 @@ class AdminController extends Controller
         return view('admin.index', compact('first_day', 'last_day'));
     }
 
+    public function info()
+    {
+        return view('admin.information');
+    }
+
     public function viewStatus($id)
     {
         $status = $this->repository->getServiceBill($id);
