@@ -50,7 +50,7 @@
                         <div class="col-lg-12">
                             <div class="form-group">
                             <label class="form-control-label" style="color: #fff" for="basic-url">{{__('Email')}}</label>
-                            <input type="text" class="form-control" placeholder="{{__('Email')}}" name="email">
+                            <input type="text" class="form-control" autocomplete="off" placeholder="{{__('Email')}}" name="email">
                             </div>
                         </div>
                         <!-- /.col -->

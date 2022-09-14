@@ -62,6 +62,7 @@ Route::group(['middleware' => 'user'], function () {
     // setting
     Route::post('/settings/update-general/{id}',[SettingController::class,'updateGeneral'])->name('settings.update_general');
     Route::post('/settings/update-contact/{id}',[SettingController::class,'updateContact'])->name('settings.update_contact');
+    Route::post('/settings/email-config/{id}', [SettingController::class, 'emailConfig'])->name('settings.email_config');
     Route::resource('settings', SettingController::class);
 });
 Route::group(['middleware' => 'login'], function () {

@@ -35,6 +35,7 @@
                         <li class="nav-item"><a class="nav-link active" href="#general"data-toggle="tab">{{ __('General') }}</a></li>
                         <li class="nav-item"><a class="nav-link" href="#template"data-toggle="tab">{{ __('Template') }}</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contact" data-toggle="tab"> {{ __('Contact') }}</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#email_config" data-toggle="tab"> {{ __('Email configuration') }}</a></li>
                     </ul>
                 </div><!-- /.card-header -->
                 <div class="card-body">
@@ -149,6 +150,34 @@
                                 <div class="form-group row">
                                   <div class="offset-sm-2 col-sm-10">
                                     <button type="submit" class="btn btn-danger" id="contact_submit">{{ __('Update') }}</button>
+                                  </div>
+                                </div>
+                              </form>
+                        </div>
+                        <div class="tab-pane" id="email_config">
+                            <form class="form-horizontal" action="{{ route('settings.email_config', $setting->id) }}" method="POST" enctype="multipart/form-data"  id="email_config_form">
+                                @csrf
+                                <div class="form-group row">
+                                  <label for="name" class="col-sm-2 col-form-label">{{ __('Email') }}</label>
+                                  <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="email" placeholder="{{ __('Email') }}" value="{{ $setting->email_configuration ? json_decode($setting->email_configuration)->email : ''}}">
+                                  </div>
+                                </div>
+                                <div class="form-group row">
+                                  <label for="name" class="col-sm-2 col-form-label">{{ __('Password') }}</label>
+                                  <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="password" placeholder="{{ __('Password') }}" value="{{ $setting->email_configuration ? json_decode($setting->email_configuration)->password : ''}}">
+                                  </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="name" class="col-sm-2 col-form-label">{{ __('App name') }}</label>
+                                    <div class="col-sm-10">
+                                      <input type="text" class="form-control" name="app_name" placeholder="{{__('App name')}}" value="{{ $setting->email_configuration ? json_decode($setting->email_configuration)->app_name : ''}}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                  <div class="offset-sm-2 col-sm-10">
+                                    <button type="submit" class="btn btn-danger" id="email_config_submit">{{ __('Update') }}</button>
                                   </div>
                                 </div>
                               </form>
@@ -313,6 +342,65 @@
                 error: function(err) {
                     toastr.error(err.msg);
                     $('#contact_submit').attr('disabled', false);
+                }
+            });
+        }
+    });
+    $('form#email_config_form').validate({
+        rules: {
+            "email": {
+                required: true,
+                email: true,
+                maxlength: 190
+            },
+            "password": {
+                required: true,
+                minlength: 16,
+                maxlength: 20
+            },
+            "app_name": {
+                required: true,
+                maxlength: 190
+            },
+        },
+        messages: {
+            "email": {
+                required: "{{ __('This field is required') }}",
+                email: "{{ __('Incorrect email format') }}",
+                maxlength: "{{ __('190 characters limit') }}"
+            },
+            "password": {
+                required: "{{ __('This field is required') }}",
+                minlength: "{{ __('Limit from 16 to 20 characters') }}",
+                maxlength: "{{ __('Limit from 16 to 20 characters') }}"
+            },
+            "app_name": {
+                required: "{{ __('This field is required') }}",
+                maxlength: "{{ __('190 characters limit') }}"
+            },
+        }
+    });
+    $('form#email_config_form').submit(function(e) {
+        e.preventDefault();
+        if ($('form#email_config_form').valid() == true) {
+            $('#email_config_submit').attr('disabled', true);
+            let data = new FormData($('#email_config_form')[0]);
+            $.ajax({
+                method: 'POST',
+                url: $(this).attr('action'),
+                dataType: 'json',
+                data: data,
+                contentType: false,
+                processData: false,
+                success: function(result) {
+                    if (result.success == true) {
+                        $('#email_config_submit').attr('disabled', false);
+                        toastr.success(result.msg);
+                    }
+                },
+                error: function(err) {
+                    toastr.error(err.msg);
+                    $('#email_config_submit').attr('disabled', false);
                 }
             });
         }
