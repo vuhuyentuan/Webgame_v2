@@ -105,6 +105,30 @@ class UserController extends Controller
         ]);
     }
 
+    public function banned($id)
+    {
+        $users =  $this->repository->getUser($id);
+        $users->banned_status = 'banned';
+        $users->save();
+
+        return response()->json([
+            'success' => true,
+            'msg' => __('User lock successfully')
+        ]);
+    }
+
+    public function unbanned($id)
+    {
+        $users =  $this->repository->getUser($id);
+        $users->banned_status = 'unbanned';
+        $users->save();
+
+        return response()->json([
+            'success' => true,
+            'msg' => __('User unlock successfully')
+        ]);
+    }
+
     public function getAmount()
     {
         $user = $this->repository->getAmount();
@@ -112,6 +136,16 @@ class UserController extends Controller
             'success' => true,
             'amount' => $user
         ]);
+    }
+
+    public function userInfo()
+    {
+        return view('users.info');
+    }
+
+    public function recharge()
+    {
+        return view('users.recharge');
     }
 
     public function updateInfo(Request $request)
@@ -152,30 +186,6 @@ class UserController extends Controller
             ]);
         }
 
-    }
-
-    public function banned($id)
-    {
-        $users =  $this->repository->getUser($id);
-        $users->banned_status = 'banned';
-        $users->save();
-
-        return response()->json([
-            'success' => true,
-            'msg' => __('User lock successfully')
-        ]);
-    }
-
-    public function unbanned($id)
-    {
-        $users =  $this->repository->getUser($id);
-        $users->banned_status = 'unbanned';
-        $users->save();
-
-        return response()->json([
-            'success' => true,
-            'msg' => __('User unlock successfully')
-        ]);
     }
 
     public static function utf8convert($str) {

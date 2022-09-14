@@ -332,12 +332,17 @@ ol {
 	float: left;
 }
 
+.btn-hover.active {
+    background: #5a1160;
+}
+
 .user-panel {
 	float: right;
 	font-size: 16px;
 	font-weight: 500;
 	color: #fff;
-	padding-top: 3px;
+    /* padding-top: 3px; */
+    margin-top: -10px;
 }
 
 .user-panel a {
@@ -673,9 +678,10 @@ ol {
 }
 
 .btn-hover {
-	background: #6f2b95;
+	background: linear-gradient(#6f2b95, #6f2b95, #ae4ce8) ;
     width: 100%;
     color: #fff;
+    margin-top: 5px;
 }
 
 .btn-hover:hover {

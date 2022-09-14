@@ -186,5 +186,6 @@
     "Password at least 6 characters": "",
     "Password must not exceed 20 characters": "",
     "Confirmation password is incorrect": "",
-    "Password has been changed successfully": ""
+    "Password has been changed successfully": "",
+    "Hello": ""
 }

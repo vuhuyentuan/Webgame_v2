@@ -65,8 +65,11 @@ Route::group(['middleware' => 'user'], function () {
     Route::resource('settings', SettingController::class);
 });
 Route::group(['middleware' => 'login'], function () {
+    Route::get('/user-info',[UserController::class,'userInfo'])->name('user.info');
     Route::post('/info-update',[UserController::class,'updateInfo'])->name('info.update');
     Route::post('/change-password',[UserController::class,'changePassword'])->name('info.change-password');
+    //recharge
+    Route::get('/recharge',[UserController::class,'recharge'])->name('user.recharge');
 });
 
 //Home

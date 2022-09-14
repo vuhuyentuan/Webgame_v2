@@ -6,6 +6,8 @@
 	<meta name="description" content="EndGam Gaming Magazine Template">
 	<meta name="keywords" content="endGam,gGaming, magazine, html">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 	<!-- Favicon -->
 	<link href="{{ asset($setting->favicon) }}" rel="shortcut icon"/>
 
@@ -31,7 +33,7 @@
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
-
+    @yield('style')
 </head>
 <body>
 	<!-- Page Preloder -->
@@ -68,10 +70,6 @@
     <script src="{{ asset('AdminLTE-3.1.0/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
     <!-- Toastr -->
     <script src="{{ asset('AdminLTE-3.1.0/plugins/toastr/toastr.min.js')}}"></script>
-    <script src="{{ asset('js/lang/vn.js') }}"></script>
-    @yield('script')
-    <script src="{{ asset('js/login.js') }}"></script>
-    <script src="{{ asset('js/register.js') }}"></script>
     <script>
         var required = "{{ __('This field is required') }}";
         var maxlength = "{{ __('190 characters limit') }}";
@@ -86,5 +84,8 @@
         var login_successfully = "{{ __('Login successfully') }}";
         var logout = "{{ __('Logout') }}";
     </script>
+    <script src="{{ asset('js/login.js') }}"></script>
+    <script src="{{ asset('js/register.js') }}"></script>
+    @yield('script')
 	</body>
 </html>

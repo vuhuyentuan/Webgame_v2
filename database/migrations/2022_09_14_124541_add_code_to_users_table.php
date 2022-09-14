@@ -14,7 +14,8 @@ class AddCodeToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->timestamp('time_code')->nullable()->after('remember_token');
+            $table->string('code', 255)->nullable()->after('remember_token');
         });
     }
 
@@ -25,9 +26,6 @@ class AddCodeToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('code', 255)->nullable()->after('remember_token');
-            $table->timestamp('time_code')->nullable()->after('code');
-        });
+
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
 class ForgotPasswordController extends Controller
@@ -85,7 +86,7 @@ class ForgotPasswordController extends Controller
             ]);
         }
 
-        $checkUser->password = bcrypt($request->password);
+        $checkUser->password = Hash::make($request->password);
         $checkUser->save();
         return response()->json([
             'success' => true,
