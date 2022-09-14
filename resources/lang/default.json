@@ -179,5 +179,12 @@
     "Package name": "",
     "Value": "",
     "Point": "",
-    "Edit package": ""
+    "Edit package": "",
+    "Please enter a new password": "",
+    "Error! Content changed or not found!": "",
+    "Please confirm password": "",
+    "Password at least 6 characters": "",
+    "Password must not exceed 20 characters": "",
+    "Confirmation password is incorrect": "",
+    "Password has been changed successfully": ""
 }

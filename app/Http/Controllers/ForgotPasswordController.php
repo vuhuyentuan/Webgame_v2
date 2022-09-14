@@ -50,7 +50,7 @@ class ForgotPasswordController extends Controller
             'email' => $email
         ])->first();
         if (!$checkUser) {
-            return view('layout_index.reset_password.reset_password', ['msg' => 'Lỗi! Nội dung đã thay đổi hoặc không tìm thấy!']);
+            return view('layout_index.reset_password.reset_password', ['msg' => __('Error! Content changed or not found!')]);
         }
         return view('layout_index.reset_password.reset_password');
     }
@@ -64,11 +64,11 @@ class ForgotPasswordController extends Controller
                 'repassword' => 'required|same:password',
             ],
             [
-                'password.required' => 'Vui lòng nhập mật khẩu mới',
-                'repassword.required' => 'Vui lòng xác nhận mật khẩu',
-                'password.min' => 'Mật khẩu ít nhất 6 kí tự',
-                'password.max' => 'Mật khẩu không quá 20 kí tự',
-                'repassword.same' => 'Mật khẩu xác nhận không đúng'
+                'password.required' => __('Please enter a new password'),
+                'repassword.required' => __('Please confirm password'),
+                'password.min' => __('Password at least 6 characters'),
+                'password.max' => __('Password must not exceed 20 characters'),
+                'repassword.same' => __('Confirmation password is incorrect')
             ]
         );
 
@@ -81,7 +81,7 @@ class ForgotPasswordController extends Controller
         if (!$checkUser) {
             return response()->json([
                 'success' => false,
-                'msg' => __('Đường dẫn lấy lại mật khẩu không đúng, vui lòng thử lại')
+                'msg' => __('The password reset link is incorrect, please try again')
             ]);
         }
 
@@ -89,7 +89,7 @@ class ForgotPasswordController extends Controller
         $checkUser->save();
         return response()->json([
             'success' => true,
-            'msg' => __('Mật khẩu đã được đổi thành công')
+            'msg' => __('Password has been changed successfully')
         ]);
     }
 }
