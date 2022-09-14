@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Setting;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -12,6 +13,23 @@ class ForgotPasswordController extends Controller
 {
     public function postResetPassword(Request $request)
     {
+        $setting = Setting::where('id',1)->select('email_configuration')->first();
+        if(json_decode($setting->email_configuration)->email == '' || json_decode($setting->email_configuration)->password == ''){
+            return response()->json([
+                'success' => false,
+                'msg' =>__('Error! An error occurred!')
+            ]);
+        }
+        config([
+            'mail.default' => 'smtp',
+            'mail.mailers.smtp.host' => 'smtp.googlemail.com',
+            'mail.mailers.smtp.port' => 465,
+            'mail.mailers.smtp.encryption' => 'ssl',
+            'mail.mailers.smtp.username' => json_decode($setting->email_configuration)->email,
+            'mail.mailers.smtp.password' => json_decode($setting->email_configuration)->password,
+            'mail.from.address' => json_decode($setting->email_configuration)->email,
+            'mail.from.name' => json_decode($setting->email_configuration)->app_name,
+        ]);
         $email = $request->email;
         $checkUser = User::where('email', $email)->first();
 
@@ -29,7 +47,7 @@ class ForgotPasswordController extends Controller
         $url = route('link_password_new', ['code' => $code, 'email' => $email]);
 
         $data = [
-            'route' => $url,
+            'url' => $url,
             'email' => $email
         ];
         Mail::send('layout_index.reset_password.view_password', $data, function ($message) use ($email) {

@@ -58,4 +58,10 @@ class SettingRepository
         $setting->contacts = json_encode($request->all());
         $setting->save();
     }
+    public function updateEmailConfig($request, $id)
+    {
+        $setting = Setting::find($id);
+        $setting->email_configuration = json_encode($request->all());
+        $setting->save();
+    }
 }

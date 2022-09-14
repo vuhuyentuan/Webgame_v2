@@ -5,18 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
 </head>
 
 <body>
     <div style="padding:20px">
-        <b style="font-style:italic">{{$email}} thân mến</b>
-        <div style="text-align:center;font-size:18px;font-weight:bold;margin-bottom:15px">KHÔI PHỤC MẬT KHẨU</div>
+        <b style="font-style:italic">{{__('Hi!')}} {{$email}}</b>
+        <div style="text-align:center;font-size:18px;font-weight:bold;margin-bottom:15px">{{__('PASSWORD RECOVERY')}}</div>
         <p>
-            Để tạo mật khẩu mới cho tài khoản này, bạn vui lòng nhấp <a href="{{$route}}">vào đây</a> hoặc sao chép liên kết dưới đây vào trình duyệt:
+            {{__('To create a new password for this account, please click')}} <a href="{{$url}}">{{__('come in')}}</a> {{__('or copy the link below into your browser:')}}
         </p>
         <p>
-            <a style="color:#ff8401" href="{{$route}}" target="_blank">{{$route}}</a>
+            <a style="color:#ff8401" href="{{$url}}" target="_blank">{{$url}}</a>
         </p>
     </div>
 </body>

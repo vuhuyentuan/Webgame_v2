@@ -186,5 +186,16 @@
     "Password at least 6 characters": "",
     "Password must not exceed 20 characters": "",
     "Confirmation password is incorrect": "",
-    "Password has been changed successfully": ""
+    "Password has been changed successfully": "",
+    "Limit from 16 to 20 characters": "",
+    "App name": "",
+    "Hi!": "",
+    "PASSWORD RECOVERY": "",
+    "To create a new password for this account, please click": "",
+    "come in": "",
+    "or copy the link below into your browser:": "",
+    "Create a new password": "",
+    "Home": "",
+    "Create a password": "",
+    "New password": ""
 }

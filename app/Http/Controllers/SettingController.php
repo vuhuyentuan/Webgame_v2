@@ -74,4 +74,20 @@ class SettingController extends Controller
             ]);
         }
     }
+
+    public function emailConfig(Request $request, $id)
+    {
+        try {
+            $this->repository->updateEmailConfig($request, $id);
+            return response()->json([
+                'success' => true,
+                'msg' => __('Update successfully')
+            ]);
+        } catch (\Throwable $e) {
+            return response()->json([
+                'success' => false,
+                'msg' =>__('Error! An error occurred!')
+            ]);
+        }
+    }
 }
