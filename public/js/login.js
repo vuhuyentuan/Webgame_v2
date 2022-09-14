@@ -24,12 +24,13 @@ $(document).on('click', '#login', function(e) {
                 success: function(result) {
                     $('#login_submit').attr('disabled', false)
                     if(result.success == true){
-                        $('#user-panel').html(`<a href=""><i class="fa fa-user-o" aria-hidden="true"></i> ${result.data.name}</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/logout"><i class="fa fa-power-off"></i> ${logout}</a>`)
+                        // $('#user-panel').html(`<a href=""><i class="fa fa-user-o" aria-hidden="true"></i> ${result.data.name}</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/logout"><i class="fa fa-power-off"></i> ${logout}</a>`)
                         $('div#login_modal').modal('hide');
                         toastr.success(login_successfully);
                         if (result.data.role == 1) {
                             setTimeout(window.location = window.location.origin +'/dashboard', 2000);
                         }
+                        setTimeout(window.location = window.location.origin +'/', 2000);
                     }else{
                         toastr.error(result.msg)
                     }
