@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Bank;
+use App\Models\RechargeHistory;
 use App\Models\Setting;
 use App\Models\User;
 use Carbon\Carbon;
@@ -110,5 +111,20 @@ class UserRepository
             return true;
         }
         return false;
+    }
+
+    public function getRecharge($id)
+    {
+        return RechargeHistory::where('user_id', $id)->where('status', 'pending')->distinct()->count();
+    }
+
+    public function rechargePoint($request, $id)
+    {
+        $point_purchase = new RechargeHistory();
+        $point_purchase->user_id = $id;
+        $point_purchase->point_purchase = $request->point_purchase;
+        $point_purchase->description = 'Purchase ' . $request->point_purchase . ' points';
+        $point_purchase->order_id = $request->point_purchase . '' . Str::random(6);
+        $point_purchase->save();
     }
 }

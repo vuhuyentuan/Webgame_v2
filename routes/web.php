@@ -71,6 +71,7 @@ Route::group(['middleware' => 'login'], function () {
     Route::post('/change-password',[UserController::class,'changePassword'])->name('info.change-password');
     //recharge
     Route::get('/recharge',[UserController::class,'recharge'])->name('user.recharge');
+    Route::post('/recharge-points/{id}',[UserController::class,'rechargePoint'])->name('recharge.point');
 });
 
 //Home

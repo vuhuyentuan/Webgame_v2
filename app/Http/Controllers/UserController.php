@@ -148,6 +148,31 @@ class UserController extends Controller
         return view('users.recharge');
     }
 
+    public function rechargePoint(Request $request, $id)
+    {
+        try {
+            $recharge_history = $this->repository->getRecharge($id);
+            if($recharge_history > 2){
+                return response()->json([
+                    'success' => false,
+                    'msg' => __('Please pay the bill first')
+                ]);
+            }
+            else{
+                $this->repository->rechargePoint($request, $id);
+                return response()->json([
+                    'success' => true,
+                    'msg' => __('Recharge successfully')
+                ]);
+            }
+        } catch (Exception $e) {
+            return response()->json([
+                'success' => false,
+                'msg' => __('Error! An error occurred!')
+            ]);
+        }
+    }
+
     public function updateInfo(Request $request)
     {
         try {
