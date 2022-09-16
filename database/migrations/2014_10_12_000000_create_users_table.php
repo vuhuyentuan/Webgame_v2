@@ -41,7 +41,7 @@ class CreateUsersTable extends Migration
                 'name' => 'Admin',
                 'username' => 'admin',
                 'email' => 'admin@webgame.com',
-                'password' => Hash::make('admin@123456'),
+                'password' => Hash::make('admin@123'),
                 'role' => 1
             ],
         ]);

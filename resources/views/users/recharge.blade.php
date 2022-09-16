@@ -1,14 +1,4 @@
 @extends('layout_index.master')
-@section('style')
-<style>
-    .eye-password{
-        position: absolute;
-        top: 29%;
-        right: 22px;
-        font-size: 18px;
-    }
-</style>
-@endsection
 @section('content')
 
 <!-- Page top section -->

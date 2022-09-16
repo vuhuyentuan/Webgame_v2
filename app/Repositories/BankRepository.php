@@ -2,12 +2,8 @@
 
 namespace App\Repositories;
 
-use App\Models\Category;
 use App\Models\Bank;
-use App\Models\User;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 class BankRepository

@@ -4,11 +4,11 @@ namespace App\Jobs;
 
 use App\Mail\ResetPassword;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class SendMailJob implements ShouldQueue
@@ -47,7 +47,7 @@ class SendMailJob implements ShouldQueue
             ]);
             Mail::to($data['email'])->send(new ResetPassword($data['email'], $data['url']));
         } catch (\Throwable $e) {;
-            \Log::emergency("File:" . $e->getFile() . "Line:" . $e->getLine() . "Message:" . $e->getMessage());
+            Log::emergency("File:" . $e->getFile() . "Line:" . $e->getLine() . "Message:" . $e->getMessage());
         }
     }
 }

@@ -15,7 +15,7 @@
         <a href="{{ route('user.recharge') }}" class="btn btn-hover {{ URL::current() == route('user.recharge') ? 'active' : '' }}">
             <span class="aiz-side-nav-text">{{ __('Recharge') }}</span>
         </a>
-        <a href="#" class="btn btn-hover">
+        <a href="{{ route('user.recharge_history') }}" class="btn btn-hover">
             <span class="aiz-side-nav-text">{{ __('Recharge history') }}</span>
         </a>
     </ul>

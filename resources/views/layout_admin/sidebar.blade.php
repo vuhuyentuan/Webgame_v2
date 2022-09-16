@@ -23,12 +23,12 @@
                     <p>{{ __('Games') }}</p>
                 </a>
             </li>
-            {{-- <li class="nav-item">
-                <a href="{{ route('recharges.history') }}" class="nav-link {{ URL::current() == route('recharges.history') ? 'active' : '' }}">
+            <li class="nav-item">
+                <a href="{{ route('admin.recharge_history') }}" class="nav-link {{ URL::current() == route('admin.recharge_history') ? 'active' : '' }}">
                     <i class="nav-icon fa fa-money-bill"></i>
                     <p>{{ __('Recharge history') }}</p>
                 </a>
-            </li>--}}
+            </li>
             <li class="nav-item">
                 <a href="{{ route('users.index') }}" class="nav-link {{ URL::current() == route('users.index') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-user"></i>

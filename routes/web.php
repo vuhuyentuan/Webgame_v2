@@ -8,6 +8,7 @@ use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RechargeController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TranslateController;
 use App\Http\Controllers\UserController;
@@ -36,6 +37,9 @@ Route::group(['middleware' => 'user'], function () {
     //Admin
     Route::get('/dashboard',[AdminController::class,'index'])->name('dashboard');
     Route::get('/info',[AdminController::class,'info'])->name('info');
+     //recharge
+     Route::get('/recharge-histories',[RechargeController::class,'adminRechargeHistory'])->name('admin.recharge_history');
+     Route::post('/check-recharge/{id}',[RechargeController::class,'checkRechaege'])->name('admin.check_recharge');
     //products
     Route::get('products/show', [ProductController::class,'showPackage'])->name('products.showPackage');
     Route::resource('products', ProductController::class);
@@ -70,8 +74,9 @@ Route::group(['middleware' => 'login'], function () {
     Route::post('/info-update',[UserController::class,'updateInfo'])->name('info.update');
     Route::post('/change-password',[UserController::class,'changePassword'])->name('info.change-password');
     //recharge
-    Route::get('/recharge',[UserController::class,'recharge'])->name('user.recharge');
-    Route::post('/recharge-points/{id}',[UserController::class,'rechargePoint'])->name('recharge.point');
+    Route::get('/recharge',[RechargeController::class,'recharge'])->name('user.recharge');
+    Route::post('/recharge-points/{id}',[RechargeController::class,'rechargePoint'])->name('recharge.point');
+    Route::get('/recharge-history',[RechargeController::class,'rechargeHistory'])->name('user.recharge_history');
 });
 
 //Home
