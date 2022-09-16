@@ -39,7 +39,7 @@ class LoginController extends Controller
         }
 
         $credentaials_username = array('username' => $request->username, 'password' => $request->password);
-        $credentaials_email = array('email' => $request->username, 'password' => $request->password);
+        $credentaials_email = array('username' => $request->username, 'password' => $request->password);
         if (Auth::attempt($credentaials_username, $remember) || Auth::attempt($credentaials_email, $remember)) {
             return response()->json([
                 'success' => true,

@@ -69,7 +69,7 @@ $(document).on('click', '#login', function(e) {
                             toastr.success(result.msg);
                         }else{
                             $('#email-error').remove();
-                            $(document).find('#email').after($('<span id="email-error" class="error">' + value + '</span>'));
+                            $(document).find('#email').after($('<span id="email-error" class="error">' + result.msg + '</span>'));
                         }
                     }
                 })

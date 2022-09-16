@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendMailJob;
 use App\Models\Setting;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
 
 class ForgotPasswordController extends Controller
 {
@@ -21,16 +21,6 @@ class ForgotPasswordController extends Controller
                 'msg' =>__('Error! An error occurred!')
             ]);
         }
-        config([
-            'mail.default' => 'smtp',
-            'mail.mailers.smtp.host' => 'smtp.googlemail.com',
-            'mail.mailers.smtp.port' => 465,
-            'mail.mailers.smtp.encryption' => 'ssl',
-            'mail.mailers.smtp.username' => json_decode($setting->email_configuration)->email,
-            'mail.mailers.smtp.password' => json_decode($setting->email_configuration)->password,
-            'mail.from.address' => json_decode($setting->email_configuration)->email,
-            'mail.from.name' => json_decode($setting->email_configuration)->app_name,
-        ]);
         $email = $request->email;
         $checkUser = User::where('email', $email)->first();
 
@@ -49,11 +39,10 @@ class ForgotPasswordController extends Controller
 
         $data = [
             'url' => $url,
-            'email' => $email
+            'email' => $email,
+            'setting' => $setting
         ];
-        Mail::send('layout_index.reset_password.view_password', $data, function ($message) use ($email) {
-            $message->to($email)->subject(__('Recover password'));
-        });
+        SendMailJob::dispatch($data);
         return response()->json([
             'success' => true,
             'msg' => __('Password reset link sent to your email, please check your email!')
