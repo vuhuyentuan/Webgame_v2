@@ -36,7 +36,7 @@
                                 @foreach ($recharge_history as $history)
                                     <tr>
                                         <td>
-                                            <a href="#" target="_blank">
+                                            <a href="{{ route('recharge.show', $history->id) }}" target="_blank">
                                                 <button class="btn btn-hover">{{ __('Bill') }}</button>
                                             </a>
                                         </td>
@@ -45,11 +45,9 @@
                                         <td>{{ $history->point_purchase }}</td>
                                         @if ($history->status == 'unpaid')
                                             <td><span class="badge badge-secondary">{{ __('Unpaid') }}</span></td>
-                                        @endif
-                                        @if ($history->status == 'paid')
+                                        @elseif ($history->status == 'paid')
                                             <td><span class="badge badge-success">{{ __('Paid') }}</span></td>
-                                        @endif
-                                        @if ($history->status == 'canceled')
+                                        @elseif ($history->status == 'canceled')
                                             <td><span class="badge badge-danger">{{ __('Canceled') }}</span></td>
                                         @endif
                                         <td>{{ date('d-m-Y', strtotime(str_replace('/', '-', $history->created_at))) }}</td>

@@ -4,4 +4,4 @@ window.setInterval(function() {
     }else{
         $(document).find('button.owl-dot.active').nextAll('button.owl-dot:first').click()
     }
-}, 5000)
+}, 8000)

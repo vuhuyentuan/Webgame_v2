@@ -46,7 +46,7 @@ class RechargeController extends Controller
                     return $html;
                 })
                 ->addColumn('bills', function($row){
-                    return '<button type="button" data-href="#" class="btn btn-primary btn-not-radius modal-btn bill">'.__('Bill').'</button>';
+                    return '<a href="'.route('recharge.show', $row->id).'" class="btn btn-primary btn-not-radius modal-btn bill" target="_blank">'.__('Bill').'</a>';
                 })
                 ->editColumn('avatar', function($row){
                     $html = '<div class="d-flex px-2 py-1">
@@ -139,5 +139,13 @@ class RechargeController extends Controller
     {
         $recharge_history = $this->repository->rechargeHistory();
         return view('users.recharge_history', compact('recharge_history'));
+    }
+
+    public function rechargeShow($id)
+    {
+        $admin = $this->repository->getAdminInfo();
+        $recharge_show = $this->repository->rechargeShow($id);
+        $banks = $this->repository->getBank();
+        return view('users.recharge_show', compact('id', 'recharge_show', 'admin', 'banks'));
     }
 }

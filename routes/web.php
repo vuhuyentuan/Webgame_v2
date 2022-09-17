@@ -81,6 +81,7 @@ Route::group(['middleware' => 'login'], function () {
     Route::get('/recharge',[RechargeController::class,'recharge'])->name('user.recharge');
     Route::post('/recharge-points/{id}',[RechargeController::class,'rechargePoint'])->name('recharge.point');
     Route::get('/recharge-history',[RechargeController::class,'rechargeHistory'])->name('user.recharge_history');
+    Route::get('/recharge-show/{id}',[RechargeController::class,'rechargeShow'])->name('recharge.show');
 });
 
 //Home
