@@ -8,7 +8,7 @@
         </div>
         <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data" id="product_add_form">
             @csrf
-            <div class="modal-body">
+            <div class="modal-body modal-overflow">
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">

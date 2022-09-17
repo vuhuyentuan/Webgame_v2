@@ -7,6 +7,10 @@
 .select2-container .select2-selection--single{
     height: 38px;
 }
+.modal-overflow {
+   overflow-y: scroll;
+   height: 70vh;
+}
 </style>
 @endsection
 @section('content')
