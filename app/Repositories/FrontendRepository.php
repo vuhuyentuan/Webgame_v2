@@ -17,7 +17,10 @@ class FrontendRepository
     public function getSlides(){
         return Slide::orderBy('id', 'desc')->limit(5)->get();
     }
+    public function getProductFeatured(){
+        return Product::orderBy('id', 'desc')->where('featured', 1)->limit(3)->get();
+    }
     public function getProductNews(){
-        return Product::orderBy('id', 'desc')->limit(3)->get();
+        return Product::orderBy('id', 'desc')->where('featured', 1)->limit(3)->get();
     }
 }

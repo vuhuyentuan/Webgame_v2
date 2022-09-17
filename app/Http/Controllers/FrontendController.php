@@ -31,7 +31,7 @@ class FrontendController extends Controller
     public function index()
     {
         $slides = $this->repository->getSlides();
-        $product_news = $this->repository->getProductNews();
-        return view('layout_index.index', compact('slides', 'product_news'));
+        $product_featured = $this->repository->getProductFeatured();
+        return view('layout_index.index', compact('slides', 'product_featured'));
     }
 }
