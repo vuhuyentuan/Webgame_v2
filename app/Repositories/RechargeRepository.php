@@ -37,7 +37,7 @@ class RechargeRepository
 
     public function rechargeHistory()
     {
-        return RechargeHistory::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(1);
+        return RechargeHistory::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(8);
     }
 
     public function checkRechaege($request, $id)

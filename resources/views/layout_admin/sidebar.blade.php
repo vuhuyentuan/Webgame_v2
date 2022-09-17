@@ -24,6 +24,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="{{ route('admin.order_history') }}" class="nav-link {{ URL::current() == route('admin.order_history') ? 'active' : '' }}">
+                    <i class="nav-icon fa fa-money-bill"></i>
+                    <p>{{ __('Order history') }}</p>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="{{ route('admin.recharge_history') }}" class="nav-link {{ URL::current() == route('admin.recharge_history') ? 'active' : '' }}">
                     <i class="nav-icon fa fa-money-bill"></i>
                     <p>{{ __('Recharge history') }}</p>

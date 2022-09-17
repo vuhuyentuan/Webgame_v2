@@ -52,7 +52,7 @@
                   <div class="col-12">
                     <h4>
                       <i class="fa fa-globe"></i> {{ $setting->logo_text }}
-                      <small class="float-right">{{ __('Date') }}: {{ date('d/m/Y ', strtotime($recharge_show->created_at)) }}</small>
+                      <small class="float-right">{{ __('Date') }}: {{ date('d/m/Y ', strtotime($order_show->created_at)) }}</small>
                     </h4>
                   </div>
                   <!-- /.col -->
@@ -72,17 +72,17 @@
                   <div class="col-sm-4 invoice-col">
                     {{ __('To') }}
                     <address>
-                        <strong>{{ $recharge_show->user->name }}</strong><br>
-                        {{ __('Phone') }}: {{ $recharge_show->user->phone }}<br>
-                        {{ __('Email') }}: {{ isset($recharge_show->user->email) ? $recharge_show->user->email : '' }}
+                        <strong>{{ $order_show->user->name }}</strong><br>
+                        {{ __('Phone') }}: {{ $order_show->user->phone }}<br>
+                        {{ __('Email') }}: {{ isset($order_show->user->email) ? $order_show->user->email : '' }}
                     </address>
                   </div>
                   <!-- /.col -->
                   <div class="col-sm-4 invoice-col">
                     <b>{{ __('Invoice') }} #{{ $id }}</b><br>
                     <br>
-                    <b>{{ __('Order code') }}:</b> {{ $recharge_show->order_id }}<br>
-                    <b>{{ __('Payment Due') }}:</b> {{ date('d/m/Y ', strtotime($recharge_show->created_at)) }}<br>
+                    <b>{{ __('Order code') }}:</b> {{ $order_show->order_id }}<br>
+                    <b>{{ __('Payment Due') }}:</b> {{ date('d/m/Y ', strtotime($order_show->created_at)) }}<br>
                   </div>
                   <!-- /.col -->
                 </div>
@@ -94,27 +94,30 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
+                                <th>{{ __('Quantity') }}</th>
+                                <th>{{ __('Name game') }}</th>
+                                <th>{{ __('Support system') }}</th>
                                 <th>{{ __('Order code') }} #</th>
-                                <th style="width: 25%">Description</th>
-                                <th>{{ __('Status') }}</th>
-                                <th>{{ __('Point') }}</th>
+                                <th>{{ __('Description') }}</th>
                                 <th>{{ __('Subtotal') }}</th>
+                                <th>{{ __('status') }}</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>{{ $recharge_show->order_id }}</td>
-                                <td>{{ $recharge_show->description }}</td>
-                                @if ($recharge_show->status == 'unpaid')
-                                    <td><span class="badge badge-secondary">{{ __('Unpaid') }}</span></td>
-                                @elseif ($recharge_show->status == 'paid')
-                                    <td><span class="badge badge-success">{{ __('Paid') }}</span></td>
-                                @elseif ($recharge_show->status == 'canceled')
+                                <td class="text-center">{{ $order_show->quantity }}</td>
+                                <td>{{ $order_show->product->name }}</td>
+                                <td>{{ $order_show->os_supported }}</td>
+                                <td>{{ $order_show->order_id }}</td>
+                                <td>{{ $order_show->description }}</td>
+                                <td>{{ number_format($order_show->point_total) }} {{ __('Point') }}</td>
+                                @if ($order_show->status == 'pending')
+                                    <td><span class="badge badge-secondary">{{ __('Pending') }}</span></td>
+                                @elseif ($order_show->status == 'completed')
+                                    <td><span class="badge badge-success">{{ __('Completed') }}</span></td>
+                                @elseif ($order_show->status == 'canceled')
                                     <td><span class="badge badge-danger">{{ __('Canceled') }}</span></td>
                                 @endif
-                                <td>{{ number_format($recharge_show->point_purchase) }} {{ __('Point') }}</td>
-                                <td>{{ number_format($recharge_show->point_purchase) }} $</td>
-                            </tr>
                         </tbody>
                     </table>
                   </div>
@@ -124,21 +127,52 @@
 
                 <div class="row">
                   <!-- accepted payments column -->
-                  <div class="col-6">
+                  <div class="col-4">
                     <p class="lead">{{ __('Payment Methods') }}</p>
                     @foreach ($banks as $bank)
                         <img src="{{ asset($bank->image) }}">
                     @endforeach
                   </div>
+                  <div class="col-4">
+                    <p class="lead">{{ __('Account') }}</p>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tr>
+                                <th style="width:50%">{{ __('Username') }}</th>
+                                <td>{{ explode('/',$order_show->account)[0] }}</td>
+                            </tr>
+                            <tr>
+                                <th>{{ __('Password') }}</th>
+                                <td>{{ explode('/',$order_show->account)[1] }}</td>
+                            </tr>
+                            <tr>
+                                <th>{{ __('Sever') }}</th>
+                                <td>{{ explode('/',$order_show->account)[2] }}</td>
+                            </tr>
+                            <tr>
+                                <th>{{ __('Code') }}</th>
+                                <td>{{ explode('/',$order_show->account)[3] }}</td>
+                            </tr>
+                            <tr>
+                                <th>{{ __('Character') }}</th>
+                                <td>{{ explode('/',$order_show->account)[4] }}</td>
+                            </tr>
+                            <tr>
+                                <th>{{ __('Login with') }}</th>
+                                <td>{{ explode('/',$order_show->account)[5] }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
                   <!-- /.col -->
-                  <div class="col-6">
+                  <div class="col-4">
                     <p class="lead">{{ __('Amount Due') }}</p>
 
                     <div class="table-responsive">
                         <table class="table">
                             <tr>
                                 <th style="width:50%">{{ __('Subtotal') }}</th>
-                                <td>{{ number_format($recharge_show->point_purchase) }} $</td>
+                                <td>{{ number_format($order_show->point_purchase) }} $</td>
                             </tr>
                             <tr>
                                 <th>{{ __('Tax') }}</th>
@@ -150,7 +184,7 @@
                             </tr>
                             <tr>
                                 <th>{{ __('Total') }}</th>
-                                <td>{{ number_format($recharge_show->point_purchase) }} $</td>
+                                <td>{{ number_format($order_show->point_purchase) }} {{ __('point') }}</td>
                             </tr>
                         </table>
                     </div>

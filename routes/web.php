@@ -6,6 +6,7 @@ use App\Http\Controllers\BanksController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductController;
@@ -39,9 +40,11 @@ Route::group(['middleware' => 'user'], function () {
     //Admin
     Route::get('/dashboard',[AdminController::class,'index'])->name('dashboard');
     Route::get('/info',[AdminController::class,'info'])->name('info');
-     //recharge
+     //history
      Route::get('/recharge-histories',[RechargeController::class,'adminRechargeHistory'])->name('admin.recharge_history');
      Route::post('/check-recharge/{id}',[RechargeController::class,'checkRechaege'])->name('admin.check_recharge');
+     Route::get('/order-histories',[OrderController::class,'adminOrderHistory'])->name('admin.order_history');
+     Route::post('/check-order/{id}',[OrderController::class,'checkOrder'])->name('admin.check_order');
     //products
     Route::get('products/featured/{id}', [ProductController::class,'featured'])->name('products.featured');
     Route::get('products/show', [ProductController::class,'showPackage'])->name('products.showPackage');
@@ -83,6 +86,9 @@ Route::group(['middleware' => 'login'], function () {
     Route::post('/recharge-points/{id}',[RechargeController::class,'rechargePoint'])->name('recharge.point');
     Route::get('/recharge-history',[RechargeController::class,'rechargeHistory'])->name('user.recharge_history');
     Route::get('/recharge-show/{id}',[RechargeController::class,'rechargeShow'])->name('recharge.show');
+    //order history
+    Route::get('/order-history',[OrderController::class,'orderHistory'])->name('user.order_history');
+    Route::get('/order-show/{id}',[OrderController::class,'orderShow'])->name('order.show');
 });
 
 //Home

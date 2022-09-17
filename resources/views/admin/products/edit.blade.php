@@ -9,7 +9,7 @@
         <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data" id="product_edit_form">
             @csrf
             @method('put')
-            <div class="modal-body">
+            <div class="modal-body modal-overflow">
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">

@@ -12,11 +12,17 @@
     </div>
     <hr>
     <ul class="list-group list-group-flush">
+        <a href="{{ route('user.info') }}" class="btn btn-hover {{ URL::current() == route('user.info') ? 'active' : '' }}">
+            <span class="aiz-side-nav-text">{{ __('Manager profile') }}</span>
+        </a>
         <a href="{{ route('user.recharge') }}" class="btn btn-hover {{ URL::current() == route('user.recharge') ? 'active' : '' }}">
             <span class="aiz-side-nav-text">{{ __('Recharge') }}</span>
         </a>
-        <a href="{{ route('user.recharge_history') }}" class="btn btn-hover">
+        <a href="{{ route('user.recharge_history') }}" class="btn btn-hover {{ URL::current() == route('user.recharge_history') ? 'active' : '' }}">
             <span class="aiz-side-nav-text">{{ __('Recharge history') }}</span>
+        </a>
+        <a href="{{ route('user.order_history') }}" class="btn btn-hover {{ URL::current() == route('user.order_history') ? 'active' : '' }}">
+            <span class="aiz-side-nav-text">{{ __('Order history') }}</span>
         </a>
     </ul>
 </div>
