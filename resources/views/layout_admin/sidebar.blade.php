@@ -42,6 +42,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="{{ route('slides.index') }}" class="nav-link {{ URL::current() == route('slides.index') ? 'active' : '' }}">
+                    <i class="fas fa-credit-card nav-icon"></i>
+                    <p>{{ __('Slides') }}</p>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-hammer"></i>
                     <p>
