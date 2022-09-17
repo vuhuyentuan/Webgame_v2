@@ -2,20 +2,15 @@
 @section('content')
 <section class="hero-section overflow-hidden">
     <div class="hero-slider owl-carousel">
-        <div class="hero-item set-bg d-flex align-items-center justify-content-center text-center" data-setbg="{{ asset('endgame/img/slider-bg-1.jpg') }}">
+        @foreach ($slides as $slide)
+        <div class="hero-item set-bg d-flex align-items-center justify-content-center text-center" data-setbg="{{ asset($slide->images) }}">
             <div class="container">
-                <h2>Game on!</h2>
-                <p>Fusce erat dui, venenatis et erat in, vulputate dignissim lacus. Donec vitae tempus dolor,<br>sit amet elementum lorem. Ut cursus tempor turpis.</p>
-                <a href="#" class="site-btn">Read More  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
+                <h2>{{$slide->name}}</h2>
+                <p class="text-white">{!! $slide->description !!}</p>
+                <a href="#" class="site-btn">{{__('Read More')}}  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
             </div>
         </div>
-        <div class="hero-item set-bg d-flex align-items-center justify-content-center text-center" data-setbg="{{ asset('endgame/img/slider-bg-2.jpg') }}">
-            <div class="container">
-                <h2>Game on!</h2>
-                <p>Fusce erat dui, venenatis et erat in, vulputate dignissim lacus. Donec vitae tempus dolor,<br>sit amet elementum lorem. Ut cursus tempor turpis.</p>
-                <a href="#" class="site-btn">Read More  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
-            </div>
-        </div>
+        @endforeach
     </div>
 </section>
 <!-- Hero section end-->
@@ -25,30 +20,16 @@
 <section class="intro-section">
     <div class="container">
         <div class="row">
+            @foreach ($product_news as $product_new)
             <div class="col-md-4">
                 <div class="intro-text-box text-box text-white">
-                    <div class="top-meta">11.11.18  /  in <a href="">Games</a></div>
-                    <h3>The best online game is out now!</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida....</p>
-                    <a href="#" class="read-more">Read More  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
+                    <h3>{{$product_new->name}}</h3>
+                    <div class="top-meta row"><div class="col-lg-7"><a href="">{{$product_new->type}}</a></div> <div class="col-lg-5"><i class="fa fa-calendar" aria-hidden="true"></i> {{$product_new->created_at->format('d/m/Y')}}</div></div>
+                    <p>{{$product_new->short_des}}</p>
+                    <a href="#" class="read-more">{{__('Read More')}}  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="intro-text-box text-box text-white">
-                    <div class="top-meta">11.11.18  /  in <a href="">Playstation</a></div>
-                    <h3>Top 5 best games in november</h3>
-                    <p>Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum  labore suspendisse ultrices gravida....</p>
-                    <a href="#" class="read-more">Read More  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="intro-text-box text-box text-white">
-                    <div class="top-meta">11.11.18  /  in <a href="">Reviews</a></div>
-                    <h3>Get this game at a promo price</h3>
-                    <p>Sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida ncididunt ut labore ....</p>
-                    <a href="#" class="read-more">Read More  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -186,24 +167,6 @@
     </div>
 </section>
 <!-- Intro section end -->
-
-
-<!-- Featured section -->
-<section class="featured-section">
-    <div class="featured-bg set-bg" data-setbg="{{ asset('endgame/img/featured-bg.jpg') }}"></div>
-    <div class="featured-box">
-        <div class="text-box">
-            <div class="top-meta">11.11.18  /  in <a href="">Games</a></div>
-            <h3>The game you’ve been waiting  for is out now</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquamet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vestibulum posuere porttitor justo id pellentesque. Proin id lacus feugiat, posuere erat sit amet, commodo ipsum. Donec pellentesque vestibulum metus...</p>
-            <a href="#" class="read-more">Read More  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
-        </div>
-    </div>
-</section>
-<!-- Featured section end-->
-
-
-
 <!-- Newsletter section -->
 <section class="newsletter-section">
     <div class="container">
@@ -215,4 +178,7 @@
     </div>
 </section>
 <!-- Newsletter section end -->
+@endsection
+@section('script')
+<script src="{{asset('js/index.js')}}"></script>
 @endsection

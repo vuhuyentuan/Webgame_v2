@@ -7,9 +7,11 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PackageController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RechargeController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\SlideController;
 use App\Http\Controllers\TranslateController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -25,9 +27,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::group(['middleware' => 'locale'], function() {
     Route::get('language/{language}',[FrontendController::class,'changeLanguage'])->name('langroute');
@@ -68,6 +70,8 @@ Route::group(['middleware' => 'user'], function () {
     Route::post('/settings/update-contact/{id}',[SettingController::class,'updateContact'])->name('settings.update_contact');
     Route::post('/settings/email-config/{id}', [SettingController::class, 'emailConfig'])->name('settings.email_config');
     Route::resource('settings', SettingController::class);
+    //slides
+    Route::resource('slides', SlideController::class);
 });
 Route::group(['middleware' => 'login'], function () {
     Route::get('/user-info',[UserController::class,'userInfo'])->name('user.info');
