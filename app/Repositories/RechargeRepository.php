@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\Bank;
 use App\Models\RechargeHistory;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -36,7 +37,7 @@ class RechargeRepository
 
     public function rechargeHistory()
     {
-        return RechargeHistory::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(8);
+        return RechargeHistory::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(1);
     }
 
     public function checkRechaege($request, $id)
@@ -51,5 +52,20 @@ class RechargeRepository
         }
         $recharge_history->save();
         $user->save();
+    }
+
+    public function getBank()
+    {
+        return Bank::select('image')->get();
+    }
+
+    public function getAdminInfo()
+    {
+        return User::where('role', '1')->first();
+    }
+
+    public function rechargeShow($id)
+    {
+        return RechargeHistory::with('user')->find($id);
     }
 }

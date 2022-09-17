@@ -5,7 +5,7 @@
         @foreach ($slides as $slide)
         <div class="hero-item set-bg d-flex align-items-center justify-content-center text-center" data-setbg="{{ asset($slide->images) }}">
             <div class="container">
-                <h2>{{$slide->name}}</h2>
+                <h2 style="font-size: 80px">{{$slide->name}}</h2>
                 <p class="text-white">{!! $slide->description !!}</p>
                 <a href="#" class="site-btn">{{__('Read More')}}  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
             </div>

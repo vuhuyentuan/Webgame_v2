@@ -7,7 +7,7 @@
         @endif
     </span>
     <div style="margin-top: 10px">
-        <h6 class="text-muted">{{ __('Hello') }}, <b style="color: #fff">{{ Auth::user()->name }}</b></h6>
+        <h6 class="text-muted">{{ __('Hello') }}, <b class="user-name" style="color: #fff">{{ Auth::user()->name }}</b></h6>
         <h6 class="text-muted surplus">{{ __('Surplus') }} : <b class="text-danger">{{ number_format(Auth::user()->point) }}</b> points</h6>
     </div>
     <hr>

@@ -215,5 +215,16 @@
     "Do you want to browse :this order?": "",
     "Do you want to cancel :this order?": "",
     "Yes": "",
-    "No": ""
+    "No": "",
+    "Invoice": "",
+    "Payment Due": "",
+    "To": "",
+    "From": "",
+    "Subtotal": "",
+    "Payment Methods": "",
+    "Amount Due": "",
+    "Total": "",
+    "Tax": "",
+    "Shipping": "",
+    "Print": ""
 }
