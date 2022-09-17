@@ -14,7 +14,7 @@ class AddFeaturedToProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->string('featured')->default('no')->after('image_detail');
+            $table->string('featured')->default(0)->after('image_detail');
             $table->bigInteger('views')->default(0)->after('featured');
         });
     }

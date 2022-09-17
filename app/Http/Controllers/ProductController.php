@@ -32,10 +32,11 @@ class ProductController extends Controller
                     return $html;
                 })
                 ->editColumn('featured' , function($row){
-                    if($row->featured == 'no'){
-                        $html = '<a style="font-size: 25px;" data-id="'+ $row->id +'" class="btn outstanding"><i class="fa fa-square-o" aria-hidden="true"></i></a>';
+                    $html = '';
+                    if($row->featured == 0){
+                        $html = '<input type="checkbox" name="my-checkbox" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">';
                     }else{
-                        $html = '<a style="font-size: 25px;" data-id="'+ $row->id +'" class="btn outstanding"><i class="fa fa-check-square-o" aria-hidden="true"></i></a>';
+                        $html = '<input type="checkbox" name="my-checkbox" data-bootstrap-switch data-off-color="danger" data-on-color="success">';
                     }
                     return $html;
                 })
@@ -47,7 +48,7 @@ class ProductController extends Controller
                     }
                     return $html;
                 })
-                ->rawColumns(['action', 'featured', 'image'])
+                ->rawColumns(['action', 'image', 'featured'])
                 ->make(true);
         }
 
