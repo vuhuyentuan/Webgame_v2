@@ -31,7 +31,7 @@
                             <label class="form-control-label" for="basic-url">{{ __('Logo') }}</label> <br>
                             <div class="input-group">
                                 <input id="fImages" type="file" name="image" class="form-control" style="display: none" accept="image/gif, image/jpeg, image/png" onchange="changeImg(this)">
-                                <img id="img" class="img" style="width: 100px; height: 100px;" src="{{ asset($slide->image ? $slide->image : 'AdminLTE-3.1.0/dist/img/no_img.jpg') }}">
+                                <img id="img" class="img" style="width: 100px; height: 100px;" src="{{ asset($slide->images ? $slide->images : 'AdminLTE-3.1.0/dist/img/no_img.jpg') }}">
                             </div>
                         </div>
                     </div>
