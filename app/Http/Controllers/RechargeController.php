@@ -138,7 +138,7 @@ class RechargeController extends Controller
     public function rechargeHistory()
     {
         $recharge_history = $this->repository->rechargeHistory();
-        return view('users.recharge_history', compact('recharge_history'));
+        return view('users.histories.recharge_history', compact('recharge_history'));
     }
 
     public function rechargeShow($id)
@@ -146,6 +146,6 @@ class RechargeController extends Controller
         $admin = $this->repository->getAdminInfo();
         $recharge_show = $this->repository->rechargeShow($id);
         $banks = $this->repository->getBank();
-        return view('users.recharge_show', compact('id', 'recharge_show', 'admin', 'banks'));
+        return view('users.histories.recharge_show', compact('id', 'recharge_show', 'admin', 'banks'));
     }
 }

@@ -149,13 +149,6 @@
         });
     });
 
-    $('.product_modal').on('shown.bs.modal', function (e) {
-        $(function () {
-            $('#description').summernote();
-        })
-
-    })
-
     $('.package_modal').on('shown.bs.modal', function (e) {
         function formatNumber(num) {
             var n = Number(num.replace(/,/g, ''));

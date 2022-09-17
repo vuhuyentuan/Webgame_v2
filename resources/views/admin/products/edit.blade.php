@@ -91,6 +91,12 @@
     </div>
 </div>
 <script>
+    $(function () {
+        $('#description').summernote();
+    })
+    jQuery.validator.setDefaults({
+        ignore: ":hidden, [contenteditable='true']:not([name])"
+    });
     function changeImg(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
