@@ -43,6 +43,7 @@ Route::group(['middleware' => 'user'], function () {
      Route::get('/recharge-histories',[RechargeController::class,'adminRechargeHistory'])->name('admin.recharge_history');
      Route::post('/check-recharge/{id}',[RechargeController::class,'checkRechaege'])->name('admin.check_recharge');
     //products
+    Route::get('products/featured/{id}', [ProductController::class,'featured'])->name('products.featured');
     Route::get('products/show', [ProductController::class,'showPackage'])->name('products.showPackage');
     Route::resource('products', ProductController::class);
     //package

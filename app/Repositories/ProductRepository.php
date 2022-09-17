@@ -110,4 +110,15 @@ class ProductRepository
             'msg' =>__('Delete successfully')
         ]);
     }
+
+    public function featured($id){
+        $product = Product::find($id);
+        if($product->featured == 0){
+            $product->featured = 1;
+        }elseif($product->featured == 1){
+            $product->featured = 0;
+        }
+        $product->save();
+        return $product;
+    }
 }

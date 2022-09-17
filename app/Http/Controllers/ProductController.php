@@ -34,9 +34,9 @@ class ProductController extends Controller
                 ->editColumn('featured' , function($row){
                     $html = '';
                     if($row->featured == 0){
-                        $html = '<input type="checkbox" name="my-checkbox" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">';
+                        $html = '<div class="icheck-primary d-inline"><input type="checkbox" class="check_featured" data-href="'.route('products.featured', $row->id).'" id="featured'.$row->id.'"><label for="featured'.$row->id.'"></label></div>';
                     }else{
-                        $html = '<input type="checkbox" name="my-checkbox" data-bootstrap-switch data-off-color="danger" data-on-color="success">';
+                        $html = '<div class="icheck-primary d-inline"><input type="checkbox" class="check_featured" data-href="'.route('products.featured', $row->id).'" id="featured'.$row->id.'" checked><label for="featured'.$row->id.'"></label></div>';
                     }
                     return $html;
                 })
@@ -147,5 +147,20 @@ class ProductController extends Controller
     public function showPackage(Request $request)
     {
         return view('admin.products.show');
+    }
+
+    public function featured($id){
+        try {
+            $this->repository->featured($id);
+            return response()->json([
+                'success' => true,
+                'msg' => __('Update successfully')
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'success' => false,
+                'msg' => __('Error! An error occurred!')
+            ]);
+        }
     }
 }

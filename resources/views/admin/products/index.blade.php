@@ -136,7 +136,7 @@
             {"data": "name" },
             {"data": "type" },
             {"data": "os_supported"},
-            {"data": "featured"},
+            {"data": "featured", class: 'bg-row-child'},
             {"data": "action", orderable: false}
         ]
     });
@@ -248,5 +248,22 @@
 
         return div;
     }
+
+    $(document).on('click','.check_featured', function() {
+        let url = $(this).data('href');
+        $.ajax({
+            method: "GET",
+            url: url,
+            dataType: "json",
+            success: function(result) {
+                if (result.success == true) {
+                    toastr.success(result.msg);
+                }else{
+                    toastr.error(result.msg);
+                }
+                product_table.ajax.reload(null, false);
+            }
+        })
+    })
 </script>
 @endsection
