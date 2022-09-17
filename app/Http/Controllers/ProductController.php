@@ -31,6 +31,14 @@ class ProductController extends Controller
                             <button type="button" data-href="'.route('products.destroy', $row->id).'" data-name="'.$row->name.'" class="btn btn-outline-danger btn-not-radius delete-btn delete_game" ><i class="fa fa-trash"></i></button>';
                     return $html;
                 })
+                ->editColumn('featured' , function($row){
+                    if($row->featured == 'no'){
+                        $html = '<a style="font-size: 25px;" data-id="'+ $row->id +'" class="btn outstanding"><i class="fa fa-square-o" aria-hidden="true"></i></a>';
+                    }else{
+                        $html = '<a style="font-size: 25px;" data-id="'+ $row->id +'" class="btn outstanding"><i class="fa fa-check-square-o" aria-hidden="true"></i></a>';
+                    }
+                    return $html;
+                })
                 ->editColumn('image', function($row){
                     if ($row->image) {
                         $html = '<img src="'.asset($row->image).'" width="100px" height="70px" class="avatar">';
@@ -39,8 +47,8 @@ class ProductController extends Controller
                     }
                     return $html;
                 })
-                ->rawColumns(['action', 'image'])
-                ->make(true);;
+                ->rawColumns(['action', 'featured', 'image'])
+                ->make(true);
         }
 
         return view('admin.products.index');

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddOutstandingToProductsTable extends Migration
+class AddFeaturedToProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,8 @@ class AddOutstandingToProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->integer('outstanding')->default(0)->after('image_detail');
-            $table->bigInteger('views')->default(0)->after('outstanding');
+            $table->string('featured')->default('no')->after('image_detail');
+            $table->bigInteger('views')->default(0)->after('featured');
         });
     }
 

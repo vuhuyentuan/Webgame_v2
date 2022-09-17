@@ -62,6 +62,7 @@
                             <th>{{ __('Name game') }}</th>
                             <th>{{ __('Type game') }}</th>
                             <th>{{ __('Support system') }}</th>
+                            <th>{{ __('Featured') }}</th>
                             <th>{{ __('Action') }}</th>
                         </tr>
                     </thead>
@@ -135,6 +136,7 @@
             {"data": "name" },
             {"data": "type" },
             {"data": "os_supported"},
+            {"data": "featured"},
             {"data": "action", orderable: false}
         ]
     });
