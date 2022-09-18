@@ -20,7 +20,7 @@ class FrontendRepository
     public function getProductFeatured(){
         return Product::orderBy('id', 'desc')->where('featured', 1)->limit(3)->get();
     }
-    public function getProductNews(){
-        return Product::orderBy('id', 'desc')->where('featured', 1)->limit(3)->get();
+    public function getProductNews($type){
+        return Product::orderBy('id', 'desc')->where('os_supported', $type)->limit(3)->get();
     }
 }

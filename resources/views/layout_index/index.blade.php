@@ -67,7 +67,7 @@
         <div class="row">
             <div class="col-xl-9 col-lg-8 col-md-7">
                 <div class="section-title text-white">
-                    <h2>Latest News</h2>
+                    <h2>{{__('LATEST GAMES')}}</h2>
                 </div>
                 <ul class="blog-filter">
                     <li><a class="support_system" data-system="Android" href="javascript:(0)">{{__('Android')}}</a></li>
@@ -75,41 +75,56 @@
                     <li><a class="support_system" data-system="Wallet" href="javascript:(0)">{{__('Wallet')}}</a></li>
                     <li><a class="support_system" data-system="Card" href="javascript:(0)">{{__('Card')}}</a></li>
                 </ul>
-                <!-- Blog item -->
-                <div class="blog-item">
-                    <div class="blog-thumb">
-                        <img src="{{ asset('endgame/img/blog/1.jpg') }}" alt="">
+                <div id="product_new_content">
+                    @forelse ($product_news as $product_new)
+                    <div class="blog-item">
+                        <div class="blog-thumb">
+                            <img src="{{ asset($product_new->image) }}" alt="">
+                        </div>
+                        <div class="blog-text text-box text-white">
+                            <h3>{{$product_new->name}}</h3>
+                            <p>{{$product_new->short_des}}</p>
+                            <a href="#" class="read-more">{{__('Read More')}}  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
+                        </div>
                     </div>
-                    <div class="blog-text text-box text-white">
-                        <div class="top-meta">11.11.18  /  in <a href="">Games</a></div>
-                        <h3>The best online game is out now!</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius-mod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Lorem ipsum dolor sit amet, consecte-tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.....</p>
-                        <a href="#" class="read-more">Read More  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
+                    @empty
+                    <!-- Blog item -->
+                    <div class="blog-item">
+                        <div class="blog-thumb">
+                            <img src="{{ asset('endgame/img/blog/1.jpg') }}" alt="">
+                        </div>
+                        <div class="blog-text text-box text-white">
+                            <div class="top-meta">11.11.18  /  in <a href="">Games</a></div>
+                            <h3>The best online game is out now!</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius-mod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Lorem ipsum dolor sit amet, consecte-tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.....</p>
+                            <a href="#" class="read-more">Read More  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
+                        </div>
                     </div>
-                </div>
-                <!-- Blog item -->
-                <div class="blog-item">
-                    <div class="blog-thumb">
-                        <img src="{{ asset('endgame/img/blog/2.jpg') }}" alt="">
+                    <!-- Blog item -->
+                    <div class="blog-item">
+                        <div class="blog-thumb">
+                            <img src="{{ asset('endgame/img/blog/2.jpg') }}" alt="">
+                        </div>
+                        <div class="blog-text text-box text-white">
+                            <div class="top-meta">11.11.18  /  in <a href="">Games</a></div>
+                            <h3>The best online game is out now!</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius-mod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Lorem ipsum dolor sit amet, consecte-tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.....</p>
+                            <a href="#" class="read-more">Read More  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
+                        </div>
                     </div>
-                    <div class="blog-text text-box text-white">
-                        <div class="top-meta">11.11.18  /  in <a href="">Games</a></div>
-                        <h3>The best online game is out now!</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius-mod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Lorem ipsum dolor sit amet, consecte-tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.....</p>
-                        <a href="#" class="read-more">Read More  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
+                    <!-- Blog item -->
+                    <div class="blog-item">
+                        <div class="blog-thumb">
+                            <img src="{{ asset('endgame/img/blog/3.jpg') }}" alt="">
+                        </div>
+                        <div class="blog-text text-box text-white">
+                            <div class="top-meta">11.11.18  /  in <a href="">Games</a></div>
+                            <h3>The best online game is out now!</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius-mod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Lorem ipsum dolor sit amet, consecte-tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.....</p>
+                            <a href="#" class="read-more">Read More  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
+                        </div>
                     </div>
-                </div>
-                <!-- Blog item -->
-                <div class="blog-item">
-                    <div class="blog-thumb">
-                        <img src="{{ asset('endgame/img/blog/3.jpg') }}" alt="">
-                    </div>
-                    <div class="blog-text text-box text-white">
-                        <div class="top-meta">11.11.18  /  in <a href="">Games</a></div>
-                        <h3>The best online game is out now!</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius-mod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Lorem ipsum dolor sit amet, consecte-tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.....</p>
-                        <a href="#" class="read-more">Read More  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
-                    </div>
+                    @endforelse
                 </div>
             </div>
             <div class="col-xl-3 col-lg-4 col-md-5 sidebar">

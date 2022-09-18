@@ -83,6 +83,7 @@
         var register_successfully = "{{ __('Register successfully') }}";
         var login_successfully = "{{ __('Login successfully') }}";
         var logout = "{{ __('Logout') }}";
+        var no_results_found = "{{ __('No results found') }}";
     </script>
     <script src="{{ asset('js/login.js') }}"></script>
     <script src="{{ asset('js/register.js') }}"></script>

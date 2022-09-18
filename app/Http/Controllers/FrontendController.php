@@ -28,10 +28,17 @@ class FrontendController extends Controller
         return redirect()->back();
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        $system = $request->input('system', 'Android');
+        if($request->ajax()){
+            $product_news = $this->repository->getProductNews($system);
+            $html =  view('layout_index.partials.product_news_item', compact('product_news'))->render();
+            return response()->json($html);
+        }
         $slides = $this->repository->getSlides();
         $product_featured = $this->repository->getProductFeatured();
-        return view('layout_index.index', compact('slides', 'product_featured'));
+        $product_news = $this->repository->getProductNews($system);
+        return view('layout_index.index', compact('slides', 'product_featured', 'product_news'));
     }
 }
