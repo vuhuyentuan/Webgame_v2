@@ -144,7 +144,7 @@
                         @forelse ($more_views as $view)
                         <div class="tw-item" style="margin-bottom: 20px;">
                             <div class="tw-thumb" style="margin-right: 0px;">
-                                <img src="{{ asset($view->image) }}" alt="#">
+                                <img src="{{ asset($view->image) }}" style="width:300px; height:150px" alt="#">
                             </div>
                             <div class="tw-text">
                                 <h5>{{$view->name}}</h5>
