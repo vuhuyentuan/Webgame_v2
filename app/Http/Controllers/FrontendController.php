@@ -52,6 +52,13 @@ class FrontendController extends Controller
     public function gameDetail($id)
     {
         $game_detail = $this->repository->gameDetail($id);
-        return view('layout_index.pages.game_detail', compact('game_detail'));
+        $more_views = $this->repository->getProductMoreViews();
+        return view('layout_index.pages.game_detail', compact('game_detail', 'more_views'));
+    }
+
+    public function checkout($id)
+    {
+        $package = $this->repository->getPackage($id);
+        return view('layout_index.pages.checkout', compact('package'));
     }
 }

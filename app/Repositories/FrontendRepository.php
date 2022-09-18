@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\Package;
 use App\Models\Product;
 use App\Models\Slide;
 use App\Models\User;
@@ -50,6 +51,11 @@ class FrontendRepository
     public function gameDetail($id)
     {
         return Product::with('package')->find($id);
+    }
+
+    public function getPackage($id)
+    {
+        return Package::with('product')->find($id);
     }
 
     public function getSlides(){

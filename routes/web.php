@@ -97,6 +97,7 @@ Route::get('/',[FrontendController::class,'index'])->name('index');
 Route::get('/games/{type}',[FrontendController::class,'allGames'])->name('games');
 Route::get('/search/{type}',[FrontendController::class,'allGames'])->name('search');
 Route::get('/game-detail/{id}',[FrontendController::class,'gameDetail'])->name('game.detail');
+Route::get('/checkout/{id}',[FrontendController::class,'checkout'])->name('checkout');
 //Login
 Route::get('/login',[LoginController::class,'viewLogin'])->name('login');
 Route::post('/login',[LoginController::class,'postLogin'])->name('post.login');
