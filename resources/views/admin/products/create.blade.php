@@ -82,7 +82,30 @@
 </div>
 <script>
     $(function () {
-        $('#description').summernote();
+        $('#description').summernote({
+            height: 200,
+            callbacks: {
+                onImageUpload: function(files) {
+                    _this = $(this);
+                    sendFile(files[0], _this);
+                }
+            }
+        });
+        function sendFile(file, _this) {
+            data = new FormData();
+            data.append("file", file);
+            $.ajax({
+                data: data,
+                type: "POST",
+                url: "{{route('upload_image')}}",
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(url) {
+                    $(_this).summernote('insertImage', url)
+                }
+            });
+        }
     })
     jQuery.validator.setDefaults({
         ignore: ":hidden, [contenteditable='true']:not([name])"

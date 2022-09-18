@@ -124,4 +124,15 @@ class ProductRepository
         $product->save();
         return $product;
     }
+
+    public function uploadImage($request){
+        $date = Carbon::now()->format('d-m-Y');
+        $img = $request->file;
+        if (isset($img)) {
+             $img_name = 'upload/images/' . $date . '/' . Str::random(8) . rand() . '.' . $img->getClientOriginalExtension();
+             $destinationPath = public_path('upload/images/' . $date);
+             $img->move($destinationPath, $img_name);
+        }
+        return asset($img_name);
+    }
 }

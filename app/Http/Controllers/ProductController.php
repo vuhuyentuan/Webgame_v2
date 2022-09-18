@@ -163,4 +163,16 @@ class ProductController extends Controller
             ]);
         }
     }
+
+    public function uploadImage(Request $request){
+        try {
+            $url = $this->repository->uploadImage($request);
+            return response()->json($url);
+        } catch (Exception $e) {
+            return response()->json([
+                'success' => false,
+                'msg' => __('Error! An error occurred!')
+            ]);
+        }
+    }
 }
