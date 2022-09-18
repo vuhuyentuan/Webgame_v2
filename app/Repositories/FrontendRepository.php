@@ -60,9 +60,9 @@ class FrontendRepository
         return Product::orderBy('id', 'desc')->where('featured', 1)->limit(3)->get();
     }
     public function getProductNews($type){
-        return Product::orderBy('id', 'desc')->where('os_supported', $type)->limit(5)->get();
+        return Product::orderBy('id', 'desc')->where('os_supported', $type)->limit(3)->get();
     }
     public function getProductMoreViews(){
-        return Product::orderBy('views', 'desc')->limit(6)->get();
+        return Product::orderBy('views', 'desc')->limit(4)->get();
     }
 }

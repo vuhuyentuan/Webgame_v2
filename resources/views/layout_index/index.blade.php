@@ -129,15 +129,6 @@
             </div>
             <div class="col-xl-3 col-lg-4 col-md-5 sidebar">
                 <div id="stickySidebar">
-                    <div class="widget-item" style="margin-bottom: 35px;">
-                        <div class="categories-widget" style="padding: 25px 0 25px;">
-                            <h4 class="widget-title">categories</h4>
-                            <ul>
-                                <li><a href="">Games</a></li>
-                                <li><a href="">Card</a></li>
-                            </ul>
-                        </div>
-                    </div>
                     <div class="widget-item">
                         <h4 class="widget-title" style="margin-bottom: 30px;">{{__('More views')}}</h4>
                         <div class="trending-widget">
@@ -191,12 +182,6 @@
                         @endforelse
                         </div>
                     </div>
-
-                    {{-- <div class="widget-item">
-                        <a href="#" class="add">
-                            <img src="{{ asset('endgame/img/add.jpg') }}" alt="">
-                        </a>
-                    </div> --}}
                 </div>
             </div>
         </div>
