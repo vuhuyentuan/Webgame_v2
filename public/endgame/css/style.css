@@ -703,6 +703,10 @@ svg:not(:root) {
 	background: #b01ba5;
 }
 
+.support_system.active {
+	background: #b01ba5;
+}
+
 .btn-hover {
 	background: linear-gradient(#6f2b95, #6f2b95, #ae4ce8) ;
     width: 100%;

@@ -129,60 +129,69 @@
             </div>
             <div class="col-xl-3 col-lg-4 col-md-5 sidebar">
                 <div id="stickySidebar">
-                    <div class="widget-item">
-                        <h4 class="widget-title">Trending</h4>
-                        <div class="trending-widget">
-                            <div class="tw-item">
-                                <div class="tw-thumb">
-                                    <img src="{{ asset('endgame/img/blog-widget/1.jpg') }}" alt="#">
-                                </div>
-                                <div class="tw-text">
-                                    <div class="tw-meta">11.11.18  /  in <a href="">Games</a></div>
-                                    <h5>The best online game is out now!</h5>
-                                </div>
-                            </div>
-                            <div class="tw-item">
-                                <div class="tw-thumb">
-                                    <img src="{{ asset('endgame/img/blog-widget/2.jpg') }}" alt="#">
-                                </div>
-                                <div class="tw-text">
-                                    <div class="tw-meta">11.11.18  /  in <a href="">Games</a></div>
-                                    <h5>The best online game is out now!</h5>
-                                </div>
-                            </div>
-                            <div class="tw-item">
-                                <div class="tw-thumb">
-                                    <img src="{{ asset('endgame/img/blog-widget/3.jpg') }}" alt="#">
-                                </div>
-                                <div class="tw-text">
-                                    <div class="tw-meta">11.11.18  /  in <a href="">Games</a></div>
-                                    <h5>The best online game is out now!</h5>
-                                </div>
-                            </div>
-                            <div class="tw-item">
-                                <div class="tw-thumb">
-                                    <img src="{{ asset('endgame/img/blog-widget/4.jpg') }}" alt="#">
-                                </div>
-                                <div class="tw-text">
-                                    <div class="tw-meta">11.11.18  /  in <a href="">Games</a></div>
-                                    <h5>The best online game is out now!</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="widget-item">
-                        <div class="categories-widget">
+                    <div class="widget-item" style="margin-bottom: 35px;">
+                        <div class="categories-widget" style="padding: 25px 0 25px;">
                             <h4 class="widget-title">categories</h4>
                             <ul>
                                 <li><a href="">Games</a></li>
-                                <li><a href="">Gaming Tips & Tricks</a></li>
-                                <li><a href="">Online Games</a></li>
-                                <li><a href="">Team Games</a></li>
-                                <li><a href="">Community</a></li>
-                                <li><a href="">Uncategorized</a></li>
+                                <li><a href="">Card</a></li>
                             </ul>
                         </div>
                     </div>
+                    <div class="widget-item">
+                        <h4 class="widget-title" style="margin-bottom: 30px;">{{__('More views')}}</h4>
+                        <div class="trending-widget">
+                        @forelse ($more_views as $view)
+                        <div class="tw-item" style="margin-bottom: 20px;">
+                            <div class="tw-thumb" style="margin-right: 0px;">
+                                <img src="{{ asset($view->image) }}" alt="#">
+                            </div>
+                            <div class="tw-text">
+                                <h5>{{$view->name}}</h5>
+                                <div class="tw-meta"><i class="fa fa-eye" aria-hidden="true"></i> <a href="">{{$view->views}}</a></div>
+                            </div>
+                        </div>
+                        @empty
+                        <div class="tw-item">
+                            <div class="tw-thumb">
+                                <img src="{{ asset('endgame/img/blog-widget/1.jpg') }}" alt="#">
+                            </div>
+                            <div class="tw-text">
+                                <div class="tw-meta">11.11.18  /  in <a href="">Games</a></div>
+                                <h5>The best online game is out now!</h5>
+                            </div>
+                        </div>
+                        <div class="tw-item">
+                            <div class="tw-thumb">
+                                <img src="{{ asset('endgame/img/blog-widget/2.jpg') }}" alt="#">
+                            </div>
+                            <div class="tw-text">
+                                <div class="tw-meta">11.11.18  /  in <a href="">Games</a></div>
+                                <h5>The best online game is out now!</h5>
+                            </div>
+                        </div>
+                        <div class="tw-item">
+                            <div class="tw-thumb">
+                                <img src="{{ asset('endgame/img/blog-widget/3.jpg') }}" alt="#">
+                            </div>
+                            <div class="tw-text">
+                                <div class="tw-meta">11.11.18  /  in <a href="">Games</a></div>
+                                <h5>The best online game is out now!</h5>
+                            </div>
+                        </div>
+                        <div class="tw-item">
+                            <div class="tw-thumb">
+                                <img src="{{ asset('endgame/img/blog-widget/4.jpg') }}" alt="#">
+                            </div>
+                            <div class="tw-text">
+                                <div class="tw-meta">11.11.18  /  in <a href="">Games</a></div>
+                                <h5>The best online game is out now!</h5>
+                            </div>
+                        </div>
+                        @endforelse
+                        </div>
+                    </div>
+
                     {{-- <div class="widget-item">
                         <a href="#" class="add">
                             <img src="{{ asset('endgame/img/add.jpg') }}" alt="">

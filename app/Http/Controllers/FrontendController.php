@@ -39,7 +39,8 @@ class FrontendController extends Controller
         $slides = $this->repository->getSlides();
         $product_featured = $this->repository->getProductFeatured();
         $product_news = $this->repository->getProductNews($system);
-        return view('layout_index.index', compact('slides', 'product_featured', 'product_news'));
+        $more_views = $this->repository->getProductMoreViews();
+        return view('layout_index.index', compact('slides', 'product_featured', 'product_news', 'more_views'));
     }
 
     public function allGames(Request $request, $type)
