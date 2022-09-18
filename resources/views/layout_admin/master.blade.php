@@ -95,7 +95,6 @@
     <!-- Control sidebar content goes here -->
   </aside>
   <!-- /.control-sidebar -->
-  {{-- {!!$setting->javascript!!} --}}
 </div>
 <!-- ./wrapper -->
 

@@ -59,6 +59,7 @@ p {
 	color: #585858;
 	line-height: 1.6;
 	font-weight: 500;
+    word-break: break-word;
 }
 
 img {
@@ -326,6 +327,33 @@ ol {
 	padding: 39px 40px 0;
 	-webkit-box-shadow: 0 0 9px 3px rgba(226, 30, 228, 0.24);
 	box-shadow: 0 0 9px 3px rgba(226, 30, 228, 0.24);
+}
+
+.nk-post-date {
+    margin-top: 5px;
+    font-size: .9em;
+    color: #cf49c5;
+    margin-top: 1px;
+}
+svg:not(:root).svg-inline--fa {
+overflow: visible;
+}
+.svg-inline--fa.fa-w-14 {
+    width: 0.875em;
+}
+.nk-post-date svg, .nk-post-date span {
+    margin-right: 6px;
+    font-size: 1rem;
+}
+svg:not(:root) {
+    overflow: hidden;
+}
+.svg-inline--fa {
+    display: inline-block;
+    font-size: inherit;
+    height: 1em;
+    overflow: visible;
+    vertical-align: -0.125em;
 }
 
 .site-logo {
@@ -1114,7 +1142,7 @@ ol {
 -----------------*/
 
 .games-section {
-	padding: 108px 0;
+	padding: 60px 0;
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#501755+0,2d1854+100 */
 	background: #501755;
 	/* Old browsers */
@@ -1235,7 +1263,7 @@ ol {
 .review-section,
 .blog-page,
 .contact-page {
-	padding: 104px 0;
+	padding: 20px 0;
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#501755+0,2d1854+100 */
 	background: #501755;
 	/* Old browsers */

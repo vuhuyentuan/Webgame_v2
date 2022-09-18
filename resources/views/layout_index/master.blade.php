@@ -55,6 +55,7 @@
     @include('layout_index.footer')
 	<!-- Footer section end -->
 
+    {!!$setting->javascript!!}
 
 	<!--====== Javascripts & Jquery ======-->
 

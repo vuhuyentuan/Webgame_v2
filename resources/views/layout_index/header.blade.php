@@ -38,7 +38,11 @@
                                         </div>&nbsp;&nbsp;&nbsp;
                                         <div class="flex-grow-1">
                                             <span class="fw-semibold d-block" style="height: 25px;">
-                                                <a href="{{ route('user.info') }}" class="user-name">{{ Auth::user()->name }}</a>
+                                                @if (Auth::user()->role == 1)
+                                                    <a href="{{ route('dashboard') }}" class="user-name">{{ Auth::user()->name }}</a>
+                                                @else
+                                                    <a href="{{ route('user.info') }}" class="user-name">{{ Auth::user()->name }}</a>
+                                                @endif
                                             </span>
                                             <h6 class="text-muted surplus">{{ __('Surplus') }} : <b class="text-danger">{{ number_format(Auth::user()->point) }}</b></h6>
                                         </div>
@@ -64,12 +68,8 @@
 
                 <!-- Menu -->
                 <ul class="main-menu primary-menu">
-                    <li><a href="{{ route('index') }}">Home</a></li>
-                    <li><a href="#">Games</a>
-                        <ul class="sub-menu">
-                            <li><a href="game-single.html">Game Singel</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="{{ route('index') }}">{{ __('Home') }}</a></li>
+                    <li><a href="{{ route('games', 'all') }}">{{ __('Games') }}</a></li>
                     <li><a href="#">Reviews</a></li>
                     <li><a href="#">News</a></li>
                     <li><a href="#">Contact</a></li>

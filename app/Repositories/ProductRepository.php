@@ -104,6 +104,9 @@ class ProductRepository
         if($product->image){
             unlink(public_path($product->image));
         }
+        if($product->image_detail){
+            unlink(public_path($product->image_detail));
+        }
         $product->delete();
         return response()->json([
             'success' => true,
