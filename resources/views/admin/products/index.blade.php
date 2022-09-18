@@ -190,6 +190,9 @@
             $.ajax({
                 method: "DELETE",
                 url: url,
+                data: {
+                    url: window.location.href
+                },
                 dataType: "json",
                 success: function(result) {
                     if (result.success == true) {
