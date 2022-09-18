@@ -44,7 +44,7 @@
                             <label for="exampleSelectRounded1">{{ __('Support system') }}</label>
                             <select class="custom-select rounded-1" name="os_supported" id="exampleSelectRounded1">
                                 @foreach (['Android' => __('Android'), 'IOS' => __('IOS'), 'Wallet' => __('Wallet')] as $key => $value)
-                                    @if($product->type == $key)
+                                    @if($product->os_supported == $key)
                                         <option selected value="{{ $key }}">{{ $value }}</option>
                                     @else
                                         <option value="{{ $key }}">{{ $value }}</option>
