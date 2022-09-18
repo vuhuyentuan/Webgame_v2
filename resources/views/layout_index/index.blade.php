@@ -79,14 +79,14 @@
                     @forelse ($product_news as $product_new)
                     <div class="blog-item">
                         <div class="blog-thumb">
-                            <img src="{{ asset($product_new->image) }}" alt="">
+                            <img src="{{ asset($product_new->image) }}" width="350px" height="250px" alt="">
                         </div>
                         <div class="blog-text text-box text-white">
                             <h3>{{$product_new->name}}</h3>
                             <p>{{$product_new->short_des}}</p>
                             <a href="#" class="read-more">{{__('Read More')}}  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
                         </div>
-                    </div>
+                    </div><br>
                     @empty
                     <!-- Blog item -->
                     <div class="blog-item">
@@ -144,7 +144,7 @@
                         @forelse ($more_views as $view)
                         <div class="tw-item" style="margin-bottom: 20px;">
                             <div class="tw-thumb" style="margin-right: 0px;">
-                                <img src="{{ asset($view->image) }}" style="width:300px; height:150px" alt="#">
+                                <img src="{{ asset($view->image) }}" style="width:250px; height:150px" alt="#">
                             </div>
                             <div class="tw-text">
                                 <h5>{{$view->name}}</h5>
