@@ -38,9 +38,9 @@ class LoginController extends Controller
             $remember = true;
         }
 
-        $credentaials_username = array('username' => $request->username, 'password' => $request->password);
-        $credentaials_email = array('username' => $request->username, 'password' => $request->password);
-        if (Auth::attempt($credentaials_username, $remember) || Auth::attempt($credentaials_email, $remember)) {
+        $credentaials_username = array('username' => $request->username, 'password' => $request->password, 'banned_status' => 'unbanned');
+        $credentaials_email = array('username' => $request->username, 'password' => $request->password, 'banned_status' => 'unbanned');
+        if ((Auth::attempt($credentaials_username, $remember) || Auth::attempt($credentaials_email, $remember)) ) {
             return response()->json([
                 'success' => true,
                 'data' => Auth::user()
