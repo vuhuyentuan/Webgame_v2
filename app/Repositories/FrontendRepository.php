@@ -63,7 +63,11 @@ class FrontendRepository
     }
 
     public function getProductFeatured(){
-        return Product::orderBy('id', 'desc')->where('featured', 1)->get()->random(3);
+        $query = Product::orderBy('id', 'desc')->where('featured', 1)->get();
+        if(count($query) > 0){
+            $query->random(3);
+        }
+        return $query;
     }
     public function getProductNews($type){
         return Product::orderBy('id', 'desc')->where('os_supported', $type)->limit(3)->get();

@@ -2,7 +2,7 @@
 @section('content')
 <section class="hero-section overflow-hidden">
     <div class="hero-slider owl-carousel">
-        @foreach ($slides as $slide)
+        @forelse ($slides as $slide)
         <div class="hero-item set-bg d-flex align-items-center justify-content-center text-center" data-setbg="{{ asset($slide->images) }}">
             <div class="container">
                 <h2 style="font-size: 80px">{{$slide->name}}</h2>
@@ -10,7 +10,22 @@
                 <a href="#" class="site-btn">{{__('Read More')}}  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
             </div>
         </div>
-        @endforeach
+        @empty
+        <div class="hero-item set-bg d-flex align-items-center justify-content-center text-center" data-setbg="{{ asset('endgame/img/slider-bg-1.jpg') }}">
+            <div class="container">
+                <h2>Game on!</h2>
+                <p>Fusce erat dui, venenatis et erat in, vulputate dignissim lacus. Donec vitae tempus dolor,<br>sit amet elementum lorem. Ut cursus tempor turpis.</p>
+                <a href="#" class="site-btn">Read More  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
+            </div>
+        </div>
+        <div class="hero-item set-bg d-flex align-items-center justify-content-center text-center" data-setbg="{{ asset('endgame/img/slider-bg-2.jpg') }}">
+            <div class="container">
+                <h2>Game on!</h2>
+                <p>Fusce erat dui, venenatis et erat in, vulputate dignissim lacus. Donec vitae tempus dolor,<br>sit amet elementum lorem. Ut cursus tempor turpis.</p>
+                <a href="#" class="site-btn">Read More  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
+            </div>
+        </div>
+        @endforelse
     </div>
 </section>
 <!-- Hero section end-->
