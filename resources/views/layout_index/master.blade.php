@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="{{ asset('AdminLTE-3.1.0/plugins/jquery-ui/jquery-ui.min.css') }}">
 
 	<!-- Main Stylesheets -->
-	<link rel="stylesheet" href="{{ asset('endgame/css/style.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('endgame/css/style.css') }}"/>
 
 
 	<!--[if lt IE 9]>

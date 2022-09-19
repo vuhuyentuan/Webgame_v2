@@ -649,8 +649,15 @@ svg:not(:root) {
 	color: #fff;
 }
 
-.text-box .read-more img {
+/* .text-box .read-more img {
 	margin-left: 13px;
+} */
+
+.read-more img {
+    position: relative;
+    left: 13px;
+    width: auto !important;
+    display: inline-block !important;
 }
 
 /* ----------------
