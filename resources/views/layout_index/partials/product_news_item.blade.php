@@ -6,7 +6,7 @@
     <div class="blog-text text-box text-white">
         <h3>{{$product_new->name}}</h3>
         <p>{{$product_new->short_des}}</p>
-        <a href="#" class="read-more">{{__('Read More')}}  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
+        <a href="{{ route('games', 'all') }}" class="read-more">{{__('Read More')}}  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
     </div>
 </div>
 @endforeach

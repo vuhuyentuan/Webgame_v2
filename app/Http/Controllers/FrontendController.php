@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AutoBank;
 use App\Repositories\FrontendRepository;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -46,7 +47,8 @@ class FrontendController extends Controller
     public function allGames(Request $request, $type)
     {
         $products = $this->repository->allProduct($request, $type);
-        return view('layout_index.pages.games', compact('products', 'type'));
+        $more_views = $this->repository->getProductMoreViews();
+        return view('layout_index.pages.games', compact('products', 'type', 'more_views'));
     }
 
     public function gameDetail($id)
@@ -60,5 +62,15 @@ class FrontendController extends Controller
     {
         $package = $this->repository->getPackage($id);
         return view('layout_index.pages.checkout', compact('package'));
+    }
+
+    public function createBill(Request $request, $id)
+    {
+        return $this->repository->createBill($request, $id);
+    }
+
+    public function deleteBills()
+    {
+        return $this->repository->deleteBills();
     }
 }

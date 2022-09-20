@@ -2,6 +2,18 @@
     $i = 1;
     $languages = \App\Models\Language::where('status', 'show')->get();
     $locale = App::getLocale();
+    $orders = DB::table('bills')
+                    ->orderBy('created_at', 'desc')
+                    ->where('status', 'pending')
+                    ->distinct()
+                    ->count();
+
+    $rechages = DB::table('recharge_histories')
+                    ->orderBy('created_at', 'desc')
+                    ->where('status', 'unpaid')
+                    ->distinct()
+                    ->count();
+    $sum = $orders + $rechages;
 @endphp
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -13,25 +25,21 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-      <!-- Navbar Search -->
-      <li class="nav-item">
-        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-          <i class="fas fa-search"></i>
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-bell"></i>
+          <span class="badge badge-warning navbar-badge">{{ $sum }}</span>
         </a>
-        <div class="navbar-search-block">
-          <form class="form-inline">
-            <div class="input-group input-group-sm">
-              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-              <div class="input-group-append">
-                <button class="btn btn-navbar" type="submit">
-                  <i class="fas fa-search"></i>
-                </button>
-                <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            </div>
-          </form>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-item dropdown-header"> {{ __('You have :total unpaid orders', ['total' => $sum]) }}</span>
+          <div class="dropdown-divider"></div>
+          <a href="{{ route('admin.order_history') }}" class="dropdown-item">
+            <i class="fa fa-gamepad mr-2"></i> {{ __('There are :total game orders', ['total' => $orders]) }}
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="{{ route('admin.recharge_history') }}" class="dropdown-item">
+            <i class="fa fa-inbox mr-2"></i> {{ __('There are :total recharge point', ['total' => $rechages]) }}
+          </a>
         </div>
       </li>
       <li class="nav-item">

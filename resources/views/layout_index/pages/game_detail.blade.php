@@ -77,13 +77,19 @@
                             <h4 class="widget-title" style="margin-bottom: 30px;">{{__('More views')}}</h4>
                             <div class="trending-widget">
                             @forelse ($more_views as $view)
-                            <div class="tw-item" style="margin-bottom: 20px;">
-                                <div class="tw-thumb" style="margin-right: 0px;">
-                                    <img src="{{ asset($view->image) }}" style="width:250px; height:150px" alt="#">
-                                </div>
+                            <div class="d-flex mt-4 ml-4 mr-4 mb-2">
+                                <a href="{{ route('game.detail', $view->id) }}">
+                                    <div class="flex-shrink-0">
+                                        <div class="image">
+                                            <img src="{{ asset($view->image) }}" style="width:80px; height:80px" alt="#">
+                                        </div>
+                                    </div>
+                                </a>&nbsp;&nbsp;&nbsp;
                                 <div class="tw-text">
-                                    <h5>{{$view->name}}</h5>
-                                    <div class="tw-meta"><i class="fa fa-eye" aria-hidden="true"></i> <a href="">{{$view->views}}</a></div>
+                                    <a href="{{ route('game.detail', $view->id) }}">
+                                        <h5>{{$view->name}}</h5>
+                                    </a>
+                                    <div class="tw-meta"><i class="fa fa-eye" aria-hidden="true"></i> <a href="#">{{$view->views}}</a></div>
                                 </div>
                             </div>
                             @empty

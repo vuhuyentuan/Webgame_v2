@@ -107,7 +107,7 @@
                             <tr>
                                 <td class="text-center">{{ $order_show->quantity }}</td>
                                 <td>{{ $order_show->product->name }}</td>
-                                <td>{{ $order_show->os_supported }}</td>
+                                <td>{{ $order_show->product->os_supported }}</td>
                                 <td>{{ $order_show->order_id }}</td>
                                 <td>{{ $order_show->description }}</td>
                                 <td>{{ number_format($order_show->point_total) }} {{ __('Point') }}</td>

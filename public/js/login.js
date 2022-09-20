@@ -30,7 +30,7 @@ $(document).on('click', '#login', function(e) {
                         if (result.data.role == 1) {
                             setTimeout(window.location = window.location.origin +'/dashboard', 2000);
                         }else{
-                            setTimeout(window.location = window.location.origin +'/', 2000);
+                            setTimeout(window.location = window.location.href , 2000);
                         }
                     }else{
                         toastr.error(result.msg)

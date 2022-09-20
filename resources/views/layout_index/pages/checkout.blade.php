@@ -16,10 +16,14 @@
 		<div class="container">
             <div class="order-1 order-lg-2 contact-text text-white">
                 <div class="table-responsive">
-                    <form action="#" method="post" id="order_form">
-                        <input type="text" name="">
-                        <input type="text">
-                        <input type="text">
+                    <form action="{{ route('checkout.payment', $package->id) }}" method="post" id="order_form">
+                    @csrf
+                        <input type="text" value="" id="uid" name="username" style="display: none">
+                        <input type="text" value="" id="pass" name="password_game" style="display: none">
+                        <input type="text" value="" id="sv" name="sever" style="display: none">
+                        <input type="text" value="" id="cd" name="code" style="display: none">
+                        <input type="text" value="" id="ch" name="character" style="display: none">
+                        <input type="text" value="" id="lg" name="login_with" style="display: none">
                         <table class="table table-striped custom-table">
                             <tbody>
                                 <tr class="text-center">
@@ -54,8 +58,8 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <button type="submit" class="btn btn-hover float-right" style="width: 10%">{{ __('Order') }}</button>
                     </form>
+                    <button type="button" class="btn btn-hover float-right" id="order" style="width: 10%">{{ __('Order') }}</button>
                 </div>
             </div>
 		</div>
@@ -110,7 +114,6 @@
                         <input type="text" value="" id="note" name="note" class="required form-control" maxlength="100" placeholder="{{ __('Login with Facebook or Gmail') }}">
                     </div>
                 </div>
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Close') }}</button>
@@ -132,9 +135,54 @@
         $("#total").html(Number($("#quantity").val()*point).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + ' $');
     }
 
-    $('#order_form').submit(function(e){
-        e.preventDefault();
-        $('#termsmodal').modal('show');
+    $(document).ready(function(){
+        $('#order').click(function(e){
+            e.preventDefault();
+            $('#termsmodal').modal('show');
+        })
+
+        $('#confirm_terms').click(function(){
+            let user = "{{ Auth::check() }}";
+            if (!user) {
+                $('#termsmodal').modal('hide');
+                $('#login').click();
+            }else{
+                var username = $('#username').val();
+                var password_game = $('#password_game').val();
+                if(username == '' || password_game == '' ){
+                    toastr.error("{{ __('Please enter game account information!') }}");
+                }else{
+                    $('#confirm_terms').attr('disabled', true);
+                    $('#uid').val($('#username').val());
+                    $('#pass').val($('#password_game').val());
+                    $('#sv').val($('#sever').val());
+                    $('#cd').val($('#code').val());
+                    $('#ch').val($('#character').val());
+                    $('#lg').val($('#note').val());
+                    let data = new FormData($('#order_form')[0]);
+                    $.ajax({
+                        method: 'POST',
+                        url: $('#order_form').attr('action'),
+                        dataType: 'json',
+                        data: data,
+                        contentType: false,
+                        processData: false,
+                        success: function(result) {
+                            if (result.success == true) {
+                                $('#confirm_terms').removeAttr('disabled');
+                                $('#termsmodal').modal('hide');
+                                toastr.success(result.msg);
+                                setTimeout(window.location = window.location.origin +'/order-history', 2000);
+                            } else {
+                                toastr.error(result.msg);
+                                $('#termsmodal').modal('hide');
+                                $('.submit_add').attr('disabled', false);
+                            }
+                        }
+                    });
+                }
+            }
+        })
     })
 </script>
 @endsection

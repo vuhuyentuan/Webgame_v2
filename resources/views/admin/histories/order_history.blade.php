@@ -33,7 +33,7 @@
                             <div class="col-lg-2">
                                 <div class="form-inline">
                                     <div class="input-group" data-widget="sidebar-search">
-                                    <input class="form-control form-control-sidebar" type="text" placeholder="{{ __('Search') }}" id="search-btn" class=" aria-label="Search">
+                                    <input class="form-control" type="text" placeholder="{{ __('Search') }}" id="search-btn" class=" aria-label="Search">
                                     </div>
                                 </div>
                             </div>

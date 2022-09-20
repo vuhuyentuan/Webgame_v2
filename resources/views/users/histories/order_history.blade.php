@@ -44,7 +44,7 @@
                                         </td>
                                         <td>{{ $history->order_id }}</a></td>
                                         <td>{{ $history->product->name }}</td>
-                                        <td class="text-center">{{ $history->os_supported }}</td>
+                                        <td class="text-center">{{ $history->product->os_supported }}</td>
                                         <td class="text-center">{{ $history->quantity }}</td>
                                         <td>{{ $history->point_total }} {{ __('Point') }}</td>
                                         @if ($history->status == 'pending')

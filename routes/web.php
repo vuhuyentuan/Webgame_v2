@@ -98,6 +98,7 @@ Route::get('/games/{type}',[FrontendController::class,'allGames'])->name('games'
 Route::get('/search/{type}',[FrontendController::class,'allGames'])->name('search');
 Route::get('/game-detail/{id}',[FrontendController::class,'gameDetail'])->name('game.detail');
 Route::get('/checkout/{id}',[FrontendController::class,'checkout'])->name('checkout');
+Route::post('/checkout/{id}',[FrontendController::class,'createBill'])->name('checkout.payment');
 //Login
 Route::get('/login',[LoginController::class,'viewLogin'])->name('login');
 Route::post('/login',[LoginController::class,'postLogin'])->name('post.login');
@@ -110,3 +111,5 @@ Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 Route::post('/reset-password', [ForgotPasswordController::class, 'postResetPassword'])->name('reset_password');
 Route::get('/password-new', [ForgotPasswordController::class, 'getPasswordNew'])->name('link_password_new');
 Route::post('/password-new', [ForgotPasswordController::class, 'postPasswordNew'])->name('pos_password_new');
+
+Route::get('/delete-bills', [FrontendController::class, 'deleteBills']);

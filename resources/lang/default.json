@@ -252,5 +252,12 @@
     "Sever (if there is server)": "",
     "Code (if there is code)": "",
     "Your name game character": "",
-    "Login with Facebook or Gmail": ""
+    "Login with Facebook or Gmail": "",
+    "Please login": "",
+    "Please enter game account information!": "",
+    "You have :total unpaid orders": "",
+    "There are :total game orders": "",
+    "There are :total recharge point": "",
+    "You have not enough points to buy it!": "",
+    "video of the game": ""
 }
