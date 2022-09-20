@@ -76,7 +76,7 @@
     <div class="page-info">
         <h2>{{ __('Games') }}</h2>
         <div class="site-breadcrumb">
-            <a href="">{{ __('Home') }}</a>  /
+            <a href="#">{{ __('Home') }}</a>  /
             <span>{{ __('Games') }}</span>
         </div>
     </div>
@@ -176,60 +176,23 @@
                     <div class="widget-item">
                         <h4 class="widget-title" style="margin-bottom: 30px;">{{__('More views')}}</h4>
                         <div class="trending-widget">
-                        @forelse ($more_views as $view)
-                        <div class="d-flex mt-4 ml-4 mr-4 mb-2">
-                            <a href="{{ route('game.detail', $view->id) }}">
-                                <div class="flex-shrink-0">
-                                    <div class="image">
-                                        <img src="{{ asset($view->image) }}" style="width:80px; height:80px" alt="#">
-                                    </div>
-                                </div>
-                            </a>&nbsp;&nbsp;&nbsp;
-                            <div class="tw-text">
+                            @foreach ($more_views as $view)
+                            <div class="d-flex mt-4 ml-4 mr-4 mb-2">
                                 <a href="{{ route('game.detail', $view->id) }}">
-                                    <h5>{{$view->name}}</h5>
-                                </a>
-                                <div class="tw-meta"><i class="fa fa-eye" aria-hidden="true"></i> <a href="#">{{$view->views}}</a></div>
+                                    <div class="flex-shrink-0">
+                                        <div class="image">
+                                            <img src="{{ asset($view->image) }}" style="width:80px; height:80px" alt="#">
+                                        </div>
+                                    </div>
+                                </a>&nbsp;&nbsp;&nbsp;
+                                <div class="tw-text">
+                                    <a href="{{ route('game.detail', $view->id) }}">
+                                        <h5>{{$view->name}}</h5>
+                                    </a>
+                                    <div class="tw-meta"><i class="fa fa-eye" aria-hidden="true"></i> <a href="#">{{$view->views}}</a></div>
+                                </div>
                             </div>
-                        </div>
-                        @empty
-                        <div class="tw-item">
-                            <div class="tw-thumb">
-                                <img src="{{ asset('endgame/img/blog-widget/1.jpg') }}" alt="#">
-                            </div>
-                            <div class="tw-text">
-                                <div class="tw-meta">11.11.18  /  in <a href="">Games</a></div>
-                                <h5>The best online game is out now!</h5>
-                            </div>
-                        </div>
-                        <div class="tw-item">
-                            <div class="tw-thumb">
-                                <img src="{{ asset('endgame/img/blog-widget/2.jpg') }}" alt="#">
-                            </div>
-                            <div class="tw-text">
-                                <div class="tw-meta">11.11.18  /  in <a href="">Games</a></div>
-                                <h5>The best online game is out now!</h5>
-                            </div>
-                        </div>
-                        <div class="tw-item">
-                            <div class="tw-thumb">
-                                <img src="{{ asset('endgame/img/blog-widget/3.jpg') }}" alt="#">
-                            </div>
-                            <div class="tw-text">
-                                <div class="tw-meta">11.11.18  /  in <a href="">Games</a></div>
-                                <h5>The best online game is out now!</h5>
-                            </div>
-                        </div>
-                        <div class="tw-item">
-                            <div class="tw-thumb">
-                                <img src="{{ asset('endgame/img/blog-widget/4.jpg') }}" alt="#">
-                            </div>
-                            <div class="tw-text">
-                                <div class="tw-meta">11.11.18  /  in <a href="">Games</a></div>
-                                <h5>The best online game is out now!</h5>
-                            </div>
-                        </div>
-                        @endforelse
+                            @endforeach
                         </div>
                     </div>
                 </div>

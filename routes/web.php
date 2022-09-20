@@ -99,6 +99,7 @@ Route::get('/search/{type}',[FrontendController::class,'allGames'])->name('searc
 Route::get('/game-detail/{id}',[FrontendController::class,'gameDetail'])->name('game.detail');
 Route::get('/checkout/{id}',[FrontendController::class,'checkout'])->name('checkout');
 Route::post('/checkout/{id}',[FrontendController::class,'createBill'])->name('checkout.payment');
+Route::get('/about',[FrontendController::class,'about'])->name('about');
 //Login
 Route::get('/login',[LoginController::class,'viewLogin'])->name('login');
 Route::post('/login',[LoginController::class,'postLogin'])->name('post.login');

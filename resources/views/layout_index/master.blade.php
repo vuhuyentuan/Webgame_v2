@@ -28,8 +28,6 @@
 
 	<!-- Main Stylesheets -->
     <link rel="stylesheet" href="{{ asset('endgame/css/style.css') }}"/>
-
-
 	<!--[if lt IE 9]>
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -87,6 +85,7 @@
         var login_successfully = "{{ __('Login successfully') }}";
         var logout = "{{ __('Logout') }}";
         var no_results_found = "{{ __('No results found') }}";
+        var thanks = "{{ __('Thanks for subscribe') }}";
     </script>
     <script src="{{ asset('js/login.js') }}"></script>
     <script src="{{ asset('js/register.js') }}"></script>

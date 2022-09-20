@@ -5,7 +5,7 @@
 <section class="page-top-section set-bg" data-setbg="{{asset('endgame/img/page-top-bg/4.jpg')}}" style="height: 280px;">
     <div class="page-info">
         <div class="site-breadcrumb">
-            <a href="">{{__('Home')}}</a> / <span>{{__('Create a new password')}}</span>
+            <a href="#">{{__('Home')}}</a> / <span>{{__('Create a new password')}}</span>
         </div>
     </div>
 </section>

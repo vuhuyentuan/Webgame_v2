@@ -69,6 +69,11 @@ class FrontendController extends Controller
         return $this->repository->createBill($request, $id);
     }
 
+    public function about()
+    {
+        return view('layout_index.pages.about');
+    }
+
     public function deleteBills()
     {
         return $this->repository->deleteBills();

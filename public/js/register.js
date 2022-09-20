@@ -89,7 +89,7 @@ $(document).ready(function() {
                     dataType: 'json',
                     data: data,
                     success: function(result) {
-                        // $('#user-panel').html(`<a href=""><i class="fa fa-user-o" aria-hidden="true"></i> ${result.data.name}</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/logout"><i class="fa fa-power-off"></i> ${logout}</a>`)
+                        // $('#user-panel').html(`<a href="#"><i class="fa fa-user-o" aria-hidden="true"></i> ${result.data.name}</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/logout"><i class="fa fa-power-off"></i> ${logout}</a>`)
                         $('div#register_modal').modal('hide');
                         toastr.success(register_successfully);
                     },

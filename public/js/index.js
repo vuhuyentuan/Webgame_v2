@@ -19,3 +19,9 @@ $(document).on('click', '.support_system', function () {
         }
     });
 })
+
+$('#subscribe').submit(function(e){
+    e.preventDefault();
+    $('#subscribe')[0].reset();
+    toastr.success(thanks)
+})

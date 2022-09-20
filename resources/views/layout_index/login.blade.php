@@ -32,7 +32,7 @@
                             </div>
                         </div>
                         <div class="col-6" style="text-align: right">
-                            <a href="" id="forgot_password">{{__('Forgot your password?')}}</a>
+                            <a href="#" id="forgot_password">{{__('Forgot your password?')}}</a>
                         </div>
                         <!-- /.col -->
                         <div class="col-12">

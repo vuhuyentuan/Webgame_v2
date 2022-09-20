@@ -52,7 +52,10 @@ class FrontendRepository
 
     public function gameDetail($id)
     {
-        return Product::with('package')->find($id);
+        $product = Product::with('package')->find($id);
+        $product->views += 1;
+        $product->save();
+        return $product;
     }
 
     public function getPackage($id)

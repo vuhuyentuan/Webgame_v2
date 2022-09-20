@@ -70,8 +70,7 @@
                 <ul class="main-menu primary-menu">
                     <li><a href="{{ route('index') }}">{{ __('Home') }}</a></li>
                     <li><a href="{{ route('games', 'all') }}">{{ __('Games') }}</a></li>
-                    <li><a href="#">Reviews</a></li>
-                    <li><a href="#">News</a></li>
+                    <li><a href="{{ route('about') }}">{{ __('About us') }}</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
             </nav>

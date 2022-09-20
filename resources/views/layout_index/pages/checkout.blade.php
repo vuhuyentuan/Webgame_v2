@@ -5,7 +5,7 @@
     <div class="page-info">
         <h2>{{ __('Check out') }}</h2>
         <div class="site-breadcrumb">
-            <a href="">{{ __('Home') }}</a>  /
+            <a href="#">{{ __('Home') }}</a>  /
             <span>{{ __('Check out') }}</span>
         </div>
     </div>

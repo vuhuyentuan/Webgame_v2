@@ -39,7 +39,7 @@
                 @forelse ($product_featured as $product)
                 <div class="col-md-12">
                     <div class="intro-text-box text-box text-white">
-                        <div class="top-meta"><a href="">{{$product->type}}</a></div>
+                        <div class="top-meta"><a href="#">{{$product->type}}</a></div>
                         <h3>{{$product->name}}</h3>
                         <p>{{$product->short_des}}</p>
                         <a href="{{ route('games', 'all') }}" class="read-more">{{__('Read More')}}  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
@@ -49,7 +49,7 @@
                 <div class="item">
                     <div class="col-md-12">
                         <div class="intro-text-box text-box text-white">
-                            <div class="top-meta">11.11.18  /  in <a href="">Games</a></div>
+                            <div class="top-meta">11.11.18  /  in <a href="#">Games</a></div>
                             <h3>The best online game is out now!</h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida....</p>
                             <a href="{{ route('games', 'all') }}" class="read-more">Read More  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
@@ -59,7 +59,7 @@
                 <div class="item">
                     <div class="col-md-12">
                         <div class="intro-text-box text-box text-white">
-                            <div class="top-meta">11.11.18  /  in <a href="">Playstation</a></div>
+                            <div class="top-meta">11.11.18  /  in <a href="#">Playstation</a></div>
                             <h3>Top 5 best games in november</h3>
                             <p>Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum  labore suspendisse ultrices gravida....</p>
                             <a href="{{ route('games', 'all') }}" class="read-more">Read More  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
@@ -69,7 +69,7 @@
                 <div class="item">
                     <div class="col-md-12">
                         <div class="intro-text-box text-box text-white">
-                            <div class="top-meta">11.11.18  /  in <a href="">Reviews</a></div>
+                            <div class="top-meta">11.11.18  /  in <a href="#">Reviews</a></div>
                             <h3>Get this game at a promo price</h3>
                             <p>Sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida ncididunt ut labore ....</p>
                             <a href="{{ route('games', 'all') }}" class="read-more">Read More  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
@@ -117,7 +117,7 @@
                             <img src="{{ asset('endgame/img/blog/1.jpg') }}" alt="">
                         </div>
                         <div class="blog-text text-box text-white">
-                            <div class="top-meta">11.11.18  /  in <a href="">Games</a></div>
+                            <div class="top-meta">11.11.18  /  in <a href="#">Games</a></div>
                             <h3>The best online game is out now!</h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius-mod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Lorem ipsum dolor sit amet, consecte-tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.....</p>
                             <a href="{{ route('games', 'all') }}" class="read-more">Read More  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
@@ -129,7 +129,7 @@
                             <img src="{{ asset('endgame/img/blog/2.jpg') }}" alt="">
                         </div>
                         <div class="blog-text text-box text-white">
-                            <div class="top-meta">11.11.18  /  in <a href="">Games</a></div>
+                            <div class="top-meta">11.11.18  /  in <a href="#">Games</a></div>
                             <h3>The best online game is out now!</h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius-mod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Lorem ipsum dolor sit amet, consecte-tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.....</p>
                             <a href="{{ route('games', 'all') }}" class="read-more">Read More  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
@@ -141,7 +141,7 @@
                             <img src="{{ asset('endgame/img/blog/3.jpg') }}" alt="">
                         </div>
                         <div class="blog-text text-box text-white">
-                            <div class="top-meta">11.11.18  /  in <a href="">Games</a></div>
+                            <div class="top-meta">11.11.18  /  in <a href="#">Games</a></div>
                             <h3>The best online game is out now!</h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius-mod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Lorem ipsum dolor sit amet, consecte-tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.....</p>
                             <a href="{{ route('games', 'all') }}" class="read-more">Read More  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
@@ -155,7 +155,7 @@
                     <div class="widget-item">
                         <h4 class="widget-title" style="margin-bottom: 30px;">{{__('More views')}}</h4>
                         <div class="trending-widget">
-                        @forelse ($more_views as $view)
+                        @foreach ($more_views as $view)
                         <div class="d-flex mt-4 ml-4 mr-4 mb-2">
                             <a href="{{ route('game.detail', $view->id) }}">
                                 <div class="flex-shrink-0">
@@ -171,44 +171,7 @@
                                 <div class="tw-meta"><i class="fa fa-eye" aria-hidden="true"></i> <a href="#">{{$view->views}}</a></div>
                             </div>
                         </div>
-                        @empty
-                        <div class="tw-item">
-                            <div class="tw-thumb">
-                                <img src="{{ asset('endgame/img/blog-widget/1.jpg') }}" alt="#">
-                            </div>
-                            <div class="tw-text">
-                                <div class="tw-meta">11.11.18  /  in <a href="">Games</a></div>
-                                <h5>The best online game is out now!</h5>
-                            </div>
-                        </div>
-                        <div class="tw-item">
-                            <div class="tw-thumb">
-                                <img src="{{ asset('endgame/img/blog-widget/2.jpg') }}" alt="#">
-                            </div>
-                            <div class="tw-text">
-                                <div class="tw-meta">11.11.18  /  in <a href="">Games</a></div>
-                                <h5>The best online game is out now!</h5>
-                            </div>
-                        </div>
-                        <div class="tw-item">
-                            <div class="tw-thumb">
-                                <img src="{{ asset('endgame/img/blog-widget/3.jpg') }}" alt="#">
-                            </div>
-                            <div class="tw-text">
-                                <div class="tw-meta">11.11.18  /  in <a href="">Games</a></div>
-                                <h5>The best online game is out now!</h5>
-                            </div>
-                        </div>
-                        <div class="tw-item">
-                            <div class="tw-thumb">
-                                <img src="{{ asset('endgame/img/blog-widget/4.jpg') }}" alt="#">
-                            </div>
-                            <div class="tw-text">
-                                <div class="tw-meta">11.11.18  /  in <a href="">Games</a></div>
-                                <h5>The best online game is out now!</h5>
-                            </div>
-                        </div>
-                        @endforelse
+                        @endforeach
                         </div>
                     </div>
                 </div>
