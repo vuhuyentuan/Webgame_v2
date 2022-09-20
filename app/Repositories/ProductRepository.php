@@ -59,21 +59,20 @@ class ProductRepository
     public function update($request, $id)
     {
         $product = Product::find($id);
-        // preg_match_all('#\bhttps?://[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))#', $product->description, $old_urls);
-        // preg_match_all('#\bhttps?://[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))#', $request->description, $new_urls);
-        // $old_files = [];
-        // $new_files = [];
-        // if(!empty($old_urls[0])){
-        //     foreach ($old_urls[0] as $url) {
-        //         $old_files[] = substr($url, strrpos($url, 'upload'));
-        //     }
-        // }
-        // if(!empty($new_urls[0])){
-        //     foreach ($new_urls[0] as $url) {
-        //         $new_files[] = substr($url, strrpos($url, 'upload'));
-        //     }
-        // }
-
+        preg_match_all('#\bhttps?://[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))#', $product->description, $old_urls);
+        preg_match_all('#\bhttps?://[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))#', $request->description, $new_urls);
+        $old_files = [];
+        $new_files = [];
+        if(!empty($old_urls[0])){
+            foreach ($old_urls[0] as $url) {
+                $old_files[] = substr($url, strrpos($url, 'upload'));
+            }
+        }
+        if(!empty($new_urls[0])){
+            foreach ($new_urls[0] as $url) {
+                $new_files[] = substr($url, strrpos($url, 'upload'));
+            }
+        }
         $date = Carbon::now()->format('d-m-Y');
         $img = $request->image;
         if (isset($img)) {
@@ -105,19 +104,19 @@ class ProductRepository
         $product->os_supported = $request->os_supported;
         $product->description = $request->description;
         $product->save();
-        // if(empty($new_files)){
-        //     foreach ($old_urls[0] as $url) {
-        //         if(File::exists(substr($url, strrpos($url, 'upload')))){
-        //             unlink(public_path(substr($url, strrpos($url, 'upload'))));
-        //         }
-        //     }
-        // }else{
-        //     foreach ($old_urls[0] as $url) {
-        //         if(!in_array($url, $new_files) && File::exists(substr($url, strrpos($url, 'upload')))){
-        //             unlink(public_path(substr($url, strrpos($url, 'upload'))));
-        //         }
-        //     }
-        // }
+        if(empty($new_files)){
+            foreach ($old_files as $old_file) {
+                if(File::exists($old_file)){
+                    unlink(public_path($old_file));
+                }
+            }
+        }else{
+            foreach ($old_files as $old_file) {
+                if(!in_array($old_file, $new_files) && File::exists($old_file)){
+                    unlink(public_path($old_file));
+                }
+            }
+        }
     }
 
     public function delete($request, $id)
