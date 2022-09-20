@@ -35,19 +35,19 @@
 <section class="intro-section">
     <div class="container">
         <div class="row">
-            @forelse ($product_featured as $product)
-            <div class="col-md-4">
-                <div class="intro-text-box text-box text-white">
-                    <div class="top-meta"><a href="">{{$product->type}}</a></div>
-                    <h3>{{$product->name}}</h3>
-                    <p>{{$product->short_des}}</p>
-                    <a href="#" class="read-more">{{__('Read More')}}  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
-                </div>
-            </div>
-            @empty
             <div class="featured_slider owl-carousel owl-theme">
+                @forelse ($product_featured as $product)
+                <div class="col-md-12">
+                    <div class="intro-text-box text-box text-white">
+                        <div class="top-meta"><a href="">{{$product->type}}</a></div>
+                        <h3>{{$product->name}}</h3>
+                        <p>{{$product->short_des}}</p>
+                        <a href="#" class="read-more">{{__('Read More')}}  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
+                    </div>
+                </div>
+                @empty
                 <div class="item">
-                    <div class="col-md-4">
+                    <div class="col-md-12">
                         <div class="intro-text-box text-box text-white">
                             <div class="top-meta">11.11.18  /  in <a href="">Games</a></div>
                             <h3>The best online game is out now!</h3>
@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <div class="col-md-4">
+                    <div class="col-md-12">
                         <div class="intro-text-box text-box text-white">
                             <div class="top-meta">11.11.18  /  in <a href="">Playstation</a></div>
                             <h3>Top 5 best games in november</h3>
@@ -67,7 +67,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <div class="col-md-4">
+                    <div class="col-md-12">
                         <div class="intro-text-box text-box text-white">
                             <div class="top-meta">11.11.18  /  in <a href="">Reviews</a></div>
                             <h3>Get this game at a promo price</h3>
@@ -76,8 +76,8 @@
                         </div>
                     </div>
                 </div>
+                @endforelse
             </div>
-            @endforelse
         </div>
     </div>
 </section>

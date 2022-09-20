@@ -18,7 +18,8 @@
 	<link rel="stylesheet" href="{{ asset('endgame/css/bootstrap.min.css') }}"/>
 	<link rel="stylesheet" href="{{ asset('endgame/css/font-awesome.min.css') }}"/>
 	<link rel="stylesheet" href="{{ asset('endgame/css/slicknav.min.css') }}"/>
-	<link rel="stylesheet" href="{{ asset('endgame/css/owl.carousel.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/carousel/owl.carousel.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/carousel/owl.theme.default.min.css') }}"/>
 	<link rel="stylesheet" href="{{ asset('endgame/css/magnific-popup.css') }}"/>
 	<link rel="stylesheet" href="{{ asset('endgame/css/animate.css') }}"/>
     <!-- Toastr -->
@@ -71,6 +72,7 @@
     <script src="{{ asset('AdminLTE-3.1.0/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
     <!-- Toastr -->
     <script src="{{ asset('AdminLTE-3.1.0/plugins/toastr/toastr.min.js')}}"></script>
+    <script src="{{ asset('js/carousel/owl.carousel.js') }}"></script>
     <script>
         var required = "{{ __('This field is required') }}";
         var maxlength = "{{ __('190 characters limit') }}";

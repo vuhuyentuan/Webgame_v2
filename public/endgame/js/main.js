@@ -56,7 +56,6 @@ $(window).on('load', function() {
 	});
 
     $('.featured_slider').owlCarousel({
-        items:3,
         loop:true,
         margin:20,
         autoplay:true,
@@ -66,16 +65,15 @@ $(window).on('load', function() {
         responsive:{
             0:{
                 items:1,
-                nav:true
+                loop:true,
             },
             600:{
                 items:2,
-                nav:false
+                loop:true,
             },
             1000:{
                 items:3,
-                nav:true,
-                loop:false
+                loop:true,
             }
         }
     });
