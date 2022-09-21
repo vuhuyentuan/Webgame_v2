@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterRequest;
+use App\Models\User;
 use App\Repositories\LoginRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
+use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
 {
@@ -16,6 +19,46 @@ class LoginController extends Controller
     public function __construct(LoginRepository $repository)
     {
         $this->repository = $repository;
+    }
+
+    public function redirectToProvider($provider)
+    {
+        return Socialite::driver($provider)->redirect();
+    }
+
+    public function handleProviderCallback($provider)
+    {
+        $getInfo = Socialite::driver($provider)->user();
+        // $user = $this->createUser($getInfo, $provider);
+        $existingUser = User::where('provider_id', $getInfo->id)->orWhere('email', $getInfo->email)->first();
+
+        if($existingUser){
+            // log them in
+            Auth::login($existingUser, true);
+        } else {
+            // create a new user
+            $newUser                  = new User;
+            $newUser->name            = $getInfo->name;
+            $newUser->email           = $getInfo->email;
+            $newUser->avatar_orginal  = $getInfo->avatar;
+            $newUser->password        = Hash::make($getInfo->id);
+            $newUser->provider_id     = $getInfo->id;
+            $newUser->save();
+
+            Auth::login($newUser, true);
+        }
+        if(session('link') != null){
+            return redirect(session('link'));
+        }
+        else{
+            if(Auth::user()->banned_status == 'banned'){
+                return redirect()->route('index')->with('message', '0');
+            }else{
+                Auth::logout();
+                return redirect()->route('index')->with('message', '1');
+            }
+
+        }
     }
 
     public function viewLogin()

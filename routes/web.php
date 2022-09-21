@@ -104,6 +104,9 @@ Route::get('/about',[FrontendController::class,'about'])->name('about');
 //Login
 Route::get('/login',[LoginController::class,'viewLogin'])->name('login');
 Route::post('/login',[LoginController::class,'postLogin'])->name('post.login');
+
+Route::get('/social-login/redirect/{provider}', [LoginController::class,'redirectToProvider'])->name('social.login');
+Route::get('/social-login/{provider}/callback', [LoginController::class,'handleProviderCallback'])->name('social.callback');
 //Register
 Route::get('/register',[LoginController::class,'viewRegister'])->name('register');
 Route::post('/register',[LoginController::class,'postRegister'])->name('post.register');

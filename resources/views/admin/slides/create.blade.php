@@ -21,7 +21,7 @@
                     <div class="col-lg-12">
                         <div class="form-group">
                             <label class="form-control-label" for="basic-url">{{ __('Description') }}</label><b class="text-danger">*</b><br>
-                            <textarea name="description" id="description" cols="60" rows="5" style="width: 100%"></textarea>
+                            <textarea name="description" id="description" cols="60" rows="5" style="width: 100%" placeholder="{{ __('Description') }}"></textarea>
                         </div>
                     </div>
                 </div>
@@ -61,19 +61,19 @@
         rules: {
             "name": {
                 required: true,
-                maxlength: 255
+                maxlength: 190
             },
             "description": {
-                maxlength: 255
+                maxlength: 190
             },
         },
         messages: {
             "name": {
                 required: "{{ __('This field is required') }}",
-                maxlength: "{{ __('255 characters limit') }}"
+                maxlength: "{{ __('190 characters limit') }}"
             },
             "description": {
-                maxlength: "{{ __('255 characters limit') }}"
+                maxlength: "{{ __('190 characters limit') }}"
             },
         }
     });

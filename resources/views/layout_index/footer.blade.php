@@ -24,7 +24,7 @@
             <li><a href="{{ route('index') }}">{{ __('Home') }}</a></li>
             <li><a href="{{ route('games', 'all') }}">{{ __('Games') }}</a></li>
             <li><a href="{{ route('about') }}">{{ __('About us') }}</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#">{{ __('Contact') }}</a></li>
         </ul>
         <div class="footer-social d-flex justify-content-center">
             <a href="#"><i class="fa fa-pinterest"></i></a>
@@ -33,6 +33,6 @@
             <a href="#"><i class="fa fa-dribbble"></i></a>
             <a href="#"><i class="fa fa-behance"></i></a>
         </div>
-        <div class="copyright"><a href="#">Colorlib</a> 2018 @ All rights reserved</div>
+        <div class="copyright"><a href="#">Tshop</a> {{ __('2022 @ All rights reserved') }}</div>
     </div>
 </footer>

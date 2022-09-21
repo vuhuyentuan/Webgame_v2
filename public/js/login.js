@@ -12,7 +12,7 @@ $(document).on('click', '#login', function(e) {
         })
     })
     $('#login_modal').on('shown.bs.modal', function (e) {
-        $(document).on('click', '#login_submit', function(e) {
+        $('#login_submit').on('click', function(e) {
             $('#login_submit').attr('disabled', true)
             var url = $('form#login_form').attr('action');
             var data = $('form#login_form').serialize();

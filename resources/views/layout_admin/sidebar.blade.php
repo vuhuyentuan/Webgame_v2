@@ -49,7 +49,7 @@
             </li>
             <li class="nav-item">
                 <a href="{{ route('slides.index') }}" class="nav-link {{ URL::current() == route('slides.index') ? 'active' : '' }}">
-                    <i class="fas fa-credit-card nav-icon"></i>
+                    <i class="fa fa-list-alt nav-icon"></i>
                     <p>{{ __('Slides') }}</p>
                 </a>
             </li>
