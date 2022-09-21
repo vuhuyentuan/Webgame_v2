@@ -1,7 +1,15 @@
+@php
+    $i = 1;
+    $languages = \App\Models\Language::where('status', 'show')->get();
+    $locale = App::getLocale();
+@endphp
 <header class="header-section">
     <div class="header-warp">
         <div class="header-social d-flex justify-content-end">
             <p>Follow us:</p>
+            <ul class="main-menu primary-menu">
+                <li><a href="{{ route('index') }}">{{ __('Home') }}</a></li>
+            </ul>
             <a href="#"><i class="fa fa-pinterest"></i></a>
             <a href="#"><i class="fa fa-facebook"></i></a>
             <a href="#"><i class="fa fa-twitter"></i></a>
