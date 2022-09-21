@@ -17,14 +17,18 @@
         <div class="footer-right-pic">
             <img src="{{ asset('endgame/img/footer-right-pic.png') }}" alt="">
         </div>
-        <a href="#" class="footer-logo">
-            <img src="{{ asset('endgame/img/logo.png') }}" alt="">
+        <a href="{{ route('index') }}" class="footer-logo">
+            @if ($setting->logo)
+                <img src="{{ asset($setting->logo) }}" alt="" width="200px" height="40px">
+            @else
+                <img src="{{ asset('endgame/img/logo.png') }}" alt="">
+            @endif
         </a>
         <ul class="main-menu footer-menu">
             <li><a href="{{ route('index') }}">{{ __('Home') }}</a></li>
             <li><a href="{{ route('games', 'all') }}">{{ __('Games') }}</a></li>
             <li><a href="{{ route('about') }}">{{ __('About us') }}</a></li>
-            <li><a href="#">{{ __('Contact') }}</a></li>
+            <li><a href="{{ route('contact') }}">{{ __('Contact') }}</a></li>
         </ul>
         <div class="footer-social d-flex justify-content-center">
             <a href="#"><i class="fa fa-pinterest"></i></a>

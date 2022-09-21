@@ -25,7 +25,7 @@ class SlideRepository
 
     public function create($request)
     {
-        $bank = new Slide();
+        $slide = new Slide();
         $date = Carbon::now()->format('d-m-Y');
         $img = $request->image;
         if (isset($img)) {
@@ -33,32 +33,32 @@ class SlideRepository
             $destinationPath = public_path('upload/slides/img/' . $date);
             $img->move($destinationPath, $img_name);
 
-            $bank->images = $img_name;
+            $slide->images = $img_name;
         }
-        $bank->name = $request->name;
-        $bank->description = $request->description;
-        $bank->save();
+        $slide->name = $request->name;
+        $slide->description = $request->description;
+        $slide->save();
     }
 
     public function update($request, $id)
     {
-        $bank = Slide::find($id);
+        $slide = Slide::find($id);
         $date = Carbon::now()->format('d-m-Y');
         $img = $request->image;
         if (isset($img)) {
-            if (isset($bank->image)) {
-                unlink(public_path($bank->image));
+            if (isset($slide->image)) {
+                unlink(public_path($slide->image));
             }
             $img_name = 'upload/slides/img/' . $date . '/' . Str::random(10) . rand() . '.' . $img->getClientOriginalExtension();
             $destinationPath = public_path('upload/slides/img/' . $date);
             $img->move($destinationPath, $img_name);
 
-            $bank->images = $img_name;
+            $slide->images = $img_name;
         }
 
-        $bank->name = $request->name;
-        $bank->description = $request->description;
-        $bank->save();
+        $slide->name = $request->name;
+        $slide->description = $request->description;
+        $slide->save();
     }
 
     public function destroy($id)

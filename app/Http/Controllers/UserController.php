@@ -41,7 +41,11 @@ class UserController extends Controller
                     return $html;
                 })
                 ->editColumn('avatar', function($row){
-                    $html = '<img src="https://ui-avatars.com/api/?name='.$row->name.'" width="38px" height="38px" class="rounded-circle avatar">';
+                    if ($row->avatar) {
+                        $html = '<img src="'.asset($row->avatar).'" width="50px" height="50px" class="rounded-circle avatar">';
+                    }else{
+                        $html = '<img src="https://ui-avatars.com/api/?name='.$row->name.'" width="50px" height="50px" class="rounded-circle avatar">';
+                    }
                     return $html;
                 })
                 ->editColumn('point', '{{@number_format($point)}} $')

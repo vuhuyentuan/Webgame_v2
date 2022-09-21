@@ -74,6 +74,12 @@ class FrontendController extends Controller
         return view('layout_index.pages.about');
     }
 
+    public function contact()
+    {
+        $contacts = $this->repository->getContact();
+        return view('layout_index.pages.contact', compact('contacts'));
+    }
+
     public function deleteBills()
     {
         return $this->repository->deleteBills();

@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\SlideRequest;
-use App\Repositories\SlideRepository;
+use App\Repositories\ContactRepository;
 use Exception;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
-class SlideController extends Controller
+class ContactController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -18,7 +17,7 @@ class SlideController extends Controller
 
     protected $repository;
 
-    public function __construct(SlideRepository $repository)
+    public function __construct(ContactRepository $repository)
     {
         $this->repository = $repository;
     }
@@ -28,22 +27,23 @@ class SlideController extends Controller
             $query = $this->repository->getAll();
            return DataTables::of($query)
                 ->addColumn('action' , function($row){
-                    $html = '<button type="button" data-href="'.route('slides.edit',$row->id).'" class="btn btn-outline-info btn-not-radius modal-btn edit_slide btn-hover"><i class="fa fa-edit"></i></button>&nbsp;
-                            <button type="button" data-href="'.route('slides.destroy',$row->id).'" data-account="'.$row->account_name.'" class="btn btn-outline-danger btn-not-radius delete-btn delete_slide btn-hover" ><i class="fa fa-trash"></i></button>';
+                    $html = '<button type="button" data-href="'.route('contacts.edit',$row->id).'" class="btn btn-outline-info btn-not-radius modal-btn edit_contact btn-hover"><i class="fa fa-edit"></i></button>&nbsp;
+                            <button type="button" data-href="'.route('contacts.destroy',$row->id).'" data-name="'.$row->name.'" class="btn btn-outline-danger btn-not-radius delete-btn delete_contact btn-hover" ><i class="fa fa-trash"></i></button>';
                     return $html;
                 })
                 ->editColumn('images', function($row){
-                    if ($row->images) {
-                        $html = '<img src="'.asset($row->images).'" width="100px" height="70px" class="img-thumbnail">';
+                    if ($row->image) {
+                        $html = '<img src="'.asset($row->image).'" width="50px" height="50px" class="rounded-circle avatar">';
                     }else{
-                        $html = '<img src="'.asset('AdminLTE-3.1.0/dist/img/no_img.jpg').'" width="100px" height="100px" class="rounded-circle avatar">';
+                        $html = '<img src="'.asset('AdminLTE-3.1.0/dist/img/no_img.jpg').'" width="38px" height="38px" class="rounded-circle avatar">';
                     }
                     return $html;
                 })
-                ->rawColumns(['images', 'action'])
+                ->editColumn('link', '<a href="{{$link}}" target="_blank">{{$link}}</a>')
+                ->rawColumns(['images', 'action', 'link'])
                 ->make(true);
         }
-        return view('admin.slides.index');
+        return view('admin.contacts.index');
     }
 
     /**
@@ -53,7 +53,7 @@ class SlideController extends Controller
      */
     public function create()
     {
-        return view('admin.slides.create');
+        return view('admin.contacts.create');
     }
 
     /**
@@ -62,7 +62,7 @@ class SlideController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SlideRequest $request)
+    public function store(Request $request)
     {
         try {
             $this->repository->create($request);
@@ -97,8 +97,8 @@ class SlideController extends Controller
      */
     public function edit($id)
     {
-        $slide = $this->repository->getSlide($id);
-        return view('admin.slides.edit', compact('slide'));
+        $contact = $this->repository->getContact($id);
+        return view('admin.contacts.edit', compact('contact'));
     }
 
     /**

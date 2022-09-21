@@ -10,8 +10,12 @@
         </div>
         <div class="header-bar-warp d-flex">
             <!-- site logo -->
-            <a href="{{ route('index') }}" class="site-logo">
-                <img src="{{ asset('endgame/img/logo.png') }}" alt="">
+            <a href="{{ route('index') }}" class="site-logo" width="200px" height="40px">
+                @if ($setting->logo)
+                    <img src="{{ asset($setting->logo) }}" alt="" >
+                @else
+                    <img src="{{ asset('endgame/img/logo.png') }}" alt="">
+                @endif
             </a>
             <nav class="top-nav-area w-100">
                 @if (Auth::check())
@@ -71,7 +75,7 @@
                     <li><a href="{{ route('index') }}">{{ __('Home') }}</a></li>
                     <li><a href="{{ route('games', 'all') }}">{{ __('Games') }}</a></li>
                     <li><a href="{{ route('about') }}">{{ __('About us') }}</a></li>
-                    <li><a href="#">{{ __('Contact') }}</a></li>
+                    <li><a href="{{ route('contact') }}">{{ __('Contact') }}</a></li>
                 </ul>
             </nav>
         </div>

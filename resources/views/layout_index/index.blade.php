@@ -1,36 +1,4 @@
 @extends('layout_index.master')
-@section('style')
-<style>
-    .nk-social-links-2 {
-    margin-right: -4px;
-    margin-left: -4px;
-}
-.nk-social-links, .nk-social-links-2, .nk-social-links-3 {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    padding: 0;
-    margin: 0;
-    margin-right: -2px;
-    margin-left: -2px;
-    list-style-type: none;
-}
-.nk-social-links-2>li>* {
-    width: 26px;
-    height: 26px;
-    margin: 3px 5px;
-    font-size: 1.1em;
-    line-height: 26px;
-    background-color: #fff;
-    border-radius: 13px;
-    color: black;
-    display: block;
-    text-align: center;
-}
-</style>
-@endsection
 @section('content')
 <section class="hero-section overflow-hidden">
     <div class="hero-slider owl-carousel">

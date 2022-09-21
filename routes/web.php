@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\BanksController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LoginController;
@@ -76,6 +77,8 @@ Route::group(['middleware' => 'user'], function () {
     Route::post('/settings/update-contact/{id}',[SettingController::class,'updateContact'])->name('settings.update_contact');
     Route::post('/settings/email-config/{id}', [SettingController::class, 'emailConfig'])->name('settings.email_config');
     Route::resource('settings', SettingController::class);
+    //contacts
+    Route::resource('contacts', ContactController::class);
     //slides
     Route::resource('slides', SlideController::class);
 });
@@ -101,6 +104,7 @@ Route::get('/game-detail/{id}',[FrontendController::class,'gameDetail'])->name('
 Route::get('/checkout/{id}',[FrontendController::class,'checkout'])->name('checkout');
 Route::post('/checkout/{id}',[FrontendController::class,'createBill'])->name('checkout.payment');
 Route::get('/about',[FrontendController::class,'about'])->name('about');
+Route::get('/contact', [FrontendController::class,'contact'])->name('contact');
 //Login
 Route::get('/login',[LoginController::class,'viewLogin'])->name('login');
 Route::post('/login',[LoginController::class,'postLogin'])->name('post.login');

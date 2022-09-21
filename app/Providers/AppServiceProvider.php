@@ -25,7 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer(['layout_admin.master', 'layout_index.master', 'users.histories.recharge_show', 'users.histories.order_show'], function ($view) {
+        view()->composer(['layout_admin.master', 'layout_index.master', 'users.histories.recharge_show',
+            'users.histories.order_show', 'layout_index.pages.contact'], function ($view) {
             $setting = Setting::find(1);
             $view->with(['setting' => $setting]);
         });

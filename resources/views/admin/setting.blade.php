@@ -124,15 +124,9 @@
                             <form class="form-horizontal" action="{{ route('settings.update_contact', $setting->id) }}" method="POST" enctype="multipart/form-data"  id="contact_form">
                                 @csrf
                                 <div class="form-group row">
-                                  <label for="name" class="col-sm-2 col-form-label">{{ __('Facebook') }}</label>
+                                  <label for="name" class="col-sm-2 col-form-label">{{ __('Address') }}</label>
                                   <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="facebook" placeholder="https://www.facebook.com/admin" value="{{ $setting->contacts ? json_decode($setting->contacts)->facebook : ''}}">
-                                  </div>
-                                </div>
-                                <div class="form-group row">
-                                  <label for="name" class="col-sm-2 col-form-label">{{ __('Zalo') }}</label>
-                                  <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="zalo" placeholder="https://zalo.me/011564897" value="{{ $setting->contacts ? json_decode($setting->contacts)->zalo : '' }}">
+                                    <input type="text" class="form-control" name="address" placeholder="{{ __('Address') }}" value="{{ $setting->contacts ? json_decode($setting->contacts)->address : '' }}">
                                   </div>
                                 </div>
                                 <div class="form-group row">
@@ -147,6 +141,12 @@
                                     <input type="email" class="form-control" name="email" placeholder="{{ __('Email') }}" value="{{ $setting->contacts ? json_decode($setting->contacts)->email : '' }}">
                                   </div>
                                 </div>
+                                <div class="form-group row">
+                                    <label for="name" class="col-sm-2 col-form-label">{{ __('Map') }}</label>
+                                    <div class="col-sm-10">
+                                      <input type="text" class="form-control" name="map" placeholder="{{ __('Map') }}" value="{{ $setting->contacts ? json_decode($setting->contacts)->map : ''}}">
+                                    </div>
+                                  </div>
                                 <div class="form-group row">
                                   <div class="offset-sm-2 col-sm-10">
                                     <button type="submit" class="btn btn-danger" id="contact_submit">{{ __('Update') }}</button>

@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Bill;
+use App\Models\Contact;
 use App\Models\Package;
 use App\Models\Product;
 use App\Models\Slide;
@@ -81,6 +82,11 @@ class FrontendRepository
 
     public function getProductMoreViews(){
         return Product::orderBy('views', 'desc')->limit(4)->get();
+    }
+
+    public function getContact()
+    {
+       return Contact::all();
     }
 
     function createBill($request, $id)

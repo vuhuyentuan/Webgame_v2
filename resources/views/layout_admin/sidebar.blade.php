@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background: linear-gradient({{ $setting->main_color }}, {{ $setting->main_color }}, {{ $setting->secondary_color }})">
     <!-- Brand Logo -->
-    <a href="#" class="brand-link">
-        <center> <img width="100%" height="70px" src="{{ asset($setting->logo) }}"></center>
+    <a href="{{ route('index') }}" class="brand-link">
+        <center> <img width="100%" height="50px" src="{{ asset($setting->logo) }}"></center>
     </a>
 
     <!-- Sidebar -->
@@ -25,7 +25,7 @@
             </li>
             <li class="nav-item">
                 <a href="{{ route('admin.order_history') }}" class="nav-link {{ URL::current() == route('admin.order_history') ? 'active' : '' }}">
-                    <i class="nav-icon fa fa-money-bill"></i>
+                    <i class="nav-icon fas fa-shopping-cart"></i>
                     <p>{{ __('Order history') }}</p>
                 </a>
             </li>
@@ -64,17 +64,23 @@
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
                         <a href="{{ route('languages.index') }}" class="nav-link {{ URL::current() == route('languages.index') ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-language"></i>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="nav-icon fas fa-language"></i>
                             <p>{{ __('Language') }}</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('translations.index') }}" class="nav-link {{ URL::current() == route('translations.index') ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-globe"></i>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="nav-icon fas fa-globe"></i>
                             <p>{{ __('Translation') }}</p>
                         </a>
                     </li>
                 </ul>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('contacts.index') }}" class="nav-link {{ URL::current() == route('contacts.index') ? 'active' : '' }}">
+                    <i class="fas fa-phone nav-icon"></i>
+                    <p>{{ __('Contact') }}</p>
+                </a>
             </li>
             <li class="nav-item">
                 <a href="{{ route('settings.index') }}" class="nav-link {{ URL::current() == route('settings.index') ? 'active' : '' }}">
