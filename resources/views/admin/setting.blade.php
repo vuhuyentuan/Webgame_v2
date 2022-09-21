@@ -167,6 +167,7 @@
                                   <label for="name" class="col-sm-2 col-form-label">{{ __('Password') }}</label>
                                   <div class="col-sm-10">
                                     <input type="text" class="form-control" name="password" placeholder="{{ __('Password') }}" value="{{ $setting->email_configuration ? json_decode($setting->email_configuration)->password : ''}}">
+                                    <a href="https://123host.vn/tailieu/kb/hosting/huong-dan-tao-mat-khau-ung-dung-cho-gmail.html" target="_blank">{{ __('How to get password email') }}</a>
                                   </div>
                                 </div>
                                 <div class="form-group row">

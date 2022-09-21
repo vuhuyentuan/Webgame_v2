@@ -46,13 +46,13 @@ class AdminController extends Controller
             $service_bill_pending = Bill::where('status','pending')->whereDate('created_at', '>=', $first_day)->whereDate('created_at', '<=', $last_day)->count();
             $revenueMonthDone = RechargeHistory::whereRaw('month(recharge_histories.created_at) BETWEEN "'.date('m', strtotime($first_day)).'" AND "'.date('m', strtotime($last_day)).'"')
                 ->select(DB::raw('sum(recharge_histories.point_purchase) as totalMoney'), DB::raw('DATE(recharge_histories.created_at) day'))
-                ->where('recharge_histories.status', 'completed')
+                ->where('recharge_histories.status', 'paid')
                 ->groupBy('day')
                 ->get()
                 ->toArray();
             $revenueMonthPending = RechargeHistory::whereRaw('month(recharge_histories.created_at) BETWEEN "'.date('m', strtotime($first_day)).'" AND "'.date('m', strtotime($last_day)).'"')
                 ->select(DB::raw('sum(recharge_histories.point_purchase) as totalMoney'), DB::raw('DATE(recharge_histories.created_at) day'))
-                ->where('recharge_histories.status', 'completed')
+                ->where('recharge_histories.status', 'paid')
                 ->groupBy('day')
                 ->get()
                 ->toArray();

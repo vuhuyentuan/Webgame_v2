@@ -6,10 +6,33 @@
 <header class="header-section">
     <div class="header-warp">
         <div class="header-social d-flex justify-content-end">
+            <div class="user-panel float-left">
+                <ul class="main-menu">
+                    <li>
+                        @foreach($languages as $language)
+                            @if($locale == $language->locale)
+                                <div class="user-info flex-grow-1 d-flex">
+                                    @if($language->flag)
+                                        <span class="flag-icon mr-2 flag-icon-{{$language->flag}}" style="width:24px; height:22px"></span>
+                                    @endif
+                                </div>
+                            @endif
+                        @endforeach
+                        <ul class="sub-menu" style="background: #081624; margin-left: -100px;">
+                            @foreach($languages as $language)
+                            @php if($language->locale == $locale) continue; @endphp
+                            <a class="dropdown-item" href="{{ route('langroute', $language->locale) }}" style="border-radius:0%; width:90%">
+                                @if($language->flag)
+                                    <span class="flag-icon flag-icon-{{$language->flag}}"></span>
+                                @endif
+                                {{$language->name}}
+                            </a>
+                          @endforeach
+                        </ul>
+                    </li>
+                </ul>
+            </div>&nbsp;&nbsp;
             <p>Follow us:</p>
-            <ul class="main-menu primary-menu">
-                <li><a href="{{ route('index') }}">{{ __('Home') }}</a></li>
-            </ul>
             <a href="#"><i class="fa fa-pinterest"></i></a>
             <a href="#"><i class="fa fa-facebook"></i></a>
             <a href="#"><i class="fa fa-twitter"></i></a>
@@ -18,9 +41,9 @@
         </div>
         <div class="header-bar-warp d-flex">
             <!-- site logo -->
-            <a href="{{ route('index') }}" class="site-logo" width="200px" height="40px">
+            <a href="{{ route('index') }}" class="site-logo">
                 @if ($setting->logo)
-                    <img src="{{ asset($setting->logo) }}" alt="" >
+                    <img src="{{ asset($setting->logo) }}" alt="" width="200px" height="40px">
                 @else
                     <img src="{{ asset('endgame/img/logo.png') }}" alt="">
                 @endif

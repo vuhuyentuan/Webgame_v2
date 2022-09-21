@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-	<title>EndGame - Gaming Magazine Template</title>
+	<title>{{ $setting->seo_title }}</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="EndGam Gaming Magazine Template">
 	<meta name="keywords" content="endGam,gGaming, magazine, html">
@@ -10,6 +10,16 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 	<!-- Favicon -->
 	<link href="{{ asset($setting->favicon) }}" rel="shortcut icon"/>
+
+    <meta property="og:title" content="{{ $setting->seo_title }}">
+    <meta property="og:type" content="Website">
+    <meta property="og:url" content="{{ route('index') }}">
+    <meta property="og:image:alt" content="{{ $setting->seo_description }}">
+    <meta property="og:image" content="{{ $setting->logo }}">
+    <meta property="og:description" content="{{ $setting->seo_description }}">
+    <meta property="og:site_name" content="{{ $setting->seo_title }}">
+    <meta property="article:section" content="{{ $setting->seo_description }}">
+    <meta property="article:tag" content="{{ $setting->keywords }}">
 
 	<!-- Google Font -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
@@ -27,6 +37,7 @@
     <link rel="stylesheet" href="{{ asset('AdminLTE-3.1.0/plugins/jquery-ui/jquery-ui.min.css') }}">
 
 	<!-- Main Stylesheets -->
+    <link rel="stylesheet" href="{{ asset('AdminLTE-3.1.0/dist/flags/css/flag-icon.min.css') }}">
     <link rel="stylesheet" href="{{ asset('endgame/css/style.css') }}"/>
 	<!--[if lt IE 9]>
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
