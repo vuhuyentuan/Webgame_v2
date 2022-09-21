@@ -171,4 +171,16 @@ class ProductRepository
         }
         return asset($img_name);
     }
+
+    public function removeImage($request){
+        $url = $request->url;
+        $result = false;
+        if (isset($url)) {
+            if(File::exists(substr($url, strrpos($url, 'upload')))){
+                unlink(public_path(substr($url, strrpos($url, 'upload'))));
+                $result = true;
+            }
+        }
+        return $result;
+    }
 }
