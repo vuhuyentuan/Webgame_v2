@@ -157,16 +157,16 @@
                         <div class="trending-widget">
                         @foreach ($more_views as $view)
                         <div class="d-flex mt-4 ml-4 mr-4 mb-2">
-                            <a href="{{ route('game.detail', $view->id) }}">
-                                <div class="flex-shrink-0">
-                                    <div class="image">
+                            <div class="flex-shrink-0">
+                                <div class="image">
+                                    <a href="{{ route('game.detail', $view->id) }}">
                                         <img src="{{ asset($view->image) }}" style="width:80px; height:80px" alt="#">
-                                    </div>
+                                    </a>
                                 </div>
-                            </a>&nbsp;&nbsp;&nbsp;
+                            </div>&nbsp;&nbsp;&nbsp;
                             <div class="tw-text">
                                 <a href="{{ route('game.detail', $view->id) }}">
-                                    <h5>{{$view->name}}</h5>
+                                    <h6 style="color: #fff">{{$view->name.' - '.$view->os_supported}}</h6>
                                 </a>
                                 <div class="tw-meta"><i class="fa fa-eye" aria-hidden="true"></i> <a href="#">{{$view->views}}</a></div>
                             </div>
