@@ -97,6 +97,13 @@
         var logout = "{{ __('Logout') }}";
         var no_results_found = "{{ __('No results found') }}";
         var thanks = "{{ __('Thanks for subscribe') }}";
+
+        $('#subscribe').submit(function(e){
+            e.preventDefault();
+            $('#subscribe')[0].reset();
+            toastr.success(thanks)
+        })
+
     </script>
     <script src="{{ asset('js/login.js') }}"></script>
     <script src="{{ asset('js/register.js') }}"></script>
