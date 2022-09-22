@@ -60,7 +60,7 @@ class UserRepository
         $user = User::find($request->id);
         $user_data = $request->only(['name', 'email', 'phone', 'point']);
         $user_data['point'] = str_replace(',','', $request->point);
-        $user_data['password'] = $request->password ? $request->password : $user->password;
+        $user_data['password'] = $request->password ? Hash::make($request->password) : $user->password;
         $user->update($user_data);
     }
 
