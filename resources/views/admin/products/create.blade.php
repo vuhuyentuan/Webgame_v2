@@ -74,7 +74,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary submit_add">{{ __('Save') }}</button>
+                <button type="submit" class="btn btn-primary submit_add" data-submit="false">{{ __('Save') }}</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Close') }}</button>
             </div>
         </form>
@@ -88,6 +88,10 @@
                 onImageUpload: function(files) {
                     _this = $(this);
                     sendFile(files[0], _this);
+                },
+                onMediaDelete : function(target) {
+                    _this = $(this);
+                    deleteFile(target[0].src);
                 }
             }
         });
@@ -104,6 +108,14 @@
                 success: function(url) {
                     $(_this).summernote('insertImage', url)
                 }
+            });
+        }
+        function deleteFile(url) {
+            $.ajax({
+                data: {url : url},
+                type: "POST",
+                url: "{{route('remove_image')}}",
+                cache: false,
             });
         }
     })
@@ -161,6 +173,7 @@
 
     $('form#product_add_form').submit(function(e) {
         e.preventDefault();
+        $('.submit_add').attr('data-submit', true);
         if ($('form#product_add_form').valid() == true) {
             $('.submit_add').attr('disabled', true);
             let data = new FormData($('#product_add_form')[0]);
@@ -172,6 +185,7 @@
                 contentType: false,
                 processData: false,
                 success: function(result) {
+                    $('.submit_add').attr('data-submit', false);
                     if (result.success == true) {
                         $('.submit_add').removeAttr('disabled');
                         $('div.product_modal').modal('hide');

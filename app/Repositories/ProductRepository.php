@@ -122,14 +122,7 @@ class ProductRepository
     public function delete($request, $id)
     {
         $product = Product::find($id);
-        preg_match_all('#\bhttps?://[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))#', $product->description, $urls);
-        if(!empty($urls[0])){
-            foreach ($urls[0] as $url) {
-                if(File::exists(substr($url, strrpos($url, 'upload')))){
-                    unlink(public_path(substr($url, strrpos($url, 'upload'))));
-                }
-            }
-        }
+        $this->removeImages($product->description);
         $packages = Package::where('product_id', $product->id)->pluck('image');
 
         foreach($packages as $key => $vaue){
@@ -174,13 +167,23 @@ class ProductRepository
 
     public function removeImage($request){
         $url = $request->url;
-        $result = false;
         if (isset($url)) {
             if(File::exists(substr($url, strrpos($url, 'upload')))){
                 unlink(public_path(substr($url, strrpos($url, 'upload'))));
-                $result = true;
             }
         }
-        return $result;
+    }
+
+    public function removeImages($data){
+        if(!empty($data)){
+            preg_match_all('#\bhttps?://[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))#', $data, $urls);
+            if(!empty($urls[0])){
+                foreach ($urls[0] as $url) {
+                    if(File::exists(substr($url, strrpos($url, 'upload')))){
+                        unlink(public_path(substr($url, strrpos($url, 'upload'))));
+                    }
+                }
+            }
+        }
     }
 }

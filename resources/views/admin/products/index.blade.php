@@ -155,6 +155,17 @@
         });
     });
 
+    $("div#product_modal").on("hidden.bs.modal", function () {
+        if($('form#product_add_form').find('.submit_add').attr('data-submit') == 'false'){
+            $.ajax({
+                method: 'POST',
+                url: "{{route('remove_images')}}",
+                dataType: 'json',
+                data: {data: $('form#product_add_form').serializeArray()[5].value}
+            });
+        }
+    });
+
     $('.package_modal').on('shown.bs.modal', function (e) {
         function formatNumber(num) {
             var n = Number(num.replace(/,/g, ''));

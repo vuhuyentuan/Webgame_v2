@@ -49,6 +49,7 @@ Route::group(['middleware' => 'user'], function () {
     //products
     Route::post('upload-image', [ProductController::class,'uploadImage'])->name('upload_image');
     Route::post('remove-image', [ProductController::class,'removeImage'])->name('remove_image');
+    Route::post('remove-images', [ProductController::class,'removeImages'])->name('remove_images');
     Route::get('products/featured/{id}', [ProductController::class,'featured'])->name('products.featured');
     Route::get('products/show', [ProductController::class,'showPackage'])->name('products.showPackage');
     Route::resource('products', ProductController::class);

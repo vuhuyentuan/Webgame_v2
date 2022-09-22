@@ -177,14 +177,10 @@ class ProductController extends Controller
     }
 
     public function removeImage(Request $request){
-        try {
-            $result = $this->repository->removeImage($request);
-            return response()->json($result);
-        } catch (Exception $e) {
-            return response()->json([
-                'success' => false,
-                'msg' => __('Error! An error occurred!')
-            ]);
-        }
+        $this->repository->removeImage($request);
+    }
+
+    public function removeImages(Request $request){
+        $this->repository->removeImages($request->data);
     }
 }

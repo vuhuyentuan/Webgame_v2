@@ -42,7 +42,7 @@
                         <div class="top-meta"><a href="#">{{$product->type}}</a></div>
                         <h3>{{$product->name}}</h3>
                         <p>{{$product->short_des}}</p>
-                        <a href="{{ route('games', 'all') }}" class="read-more">{{__('Read More')}}  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
+                        <a href="{{ route('game.detail', $product->id) }}" class="read-more">{{__('Read More')}}  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
                     </div>
                 </div>
                 @empty
@@ -107,7 +107,7 @@
                         <div class="blog-text text-box text-white">
                             <h3>{{$product_new->name}}</h3>
                             <p>{{$product_new->short_des}}</p>
-                            <a href="{{ route('games', 'all') }}" class="read-more">{{__('Read More')}}  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
+                            <a href="{{ route('game.detail', $product_new->id) }}" class="read-more">{{__('Read More')}}  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
                         </div>
                     </div><br>
                     @empty
@@ -168,7 +168,7 @@
                                 <a href="{{ route('game.detail', $view->id) }}">
                                     <h6 style="color: #fff">{{$view->name.' - '.$view->os_supported}}</h6>
                                 </a>
-                                <div class="tw-meta"><i class="fa fa-eye" aria-hidden="true"></i> <a href="#">{{$view->views}}</a></div>
+                                <div class="tw-meta"><i class="fa fa-eye" aria-hidden="true"></i> <a href="javascript:0">{{$view->views}}</a></div>
                             </div>
                         </div>
                         @endforeach
