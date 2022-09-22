@@ -41,7 +41,7 @@
                     <div class="intro-text-box text-box text-white">
                         <div class="top-meta"><a href="#">{{$product->type}}</a></div>
                         <h3>{{$product->name}}</h3>
-                        <p>{{$product->short_des}}</p>
+                        <p class="show-less">{{$product->short_des}}</p>
                         <a href="{{ route('game.detail', $product->id) }}" class="read-more">{{__('Read More')}}  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
                     </div>
                 </div>
