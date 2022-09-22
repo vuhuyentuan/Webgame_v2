@@ -8,5 +8,5 @@
         <p>{{$product_new->short_des}}</p>
         <a href="{{ route('games', 'all') }}" class="read-more">{{__('Read More')}}  <img src="{{ asset('endgame/img/icons/double-arrow.png') }}" alt="#"/></a>
     </div>
-</div>
+</div><br>
 @endforeach

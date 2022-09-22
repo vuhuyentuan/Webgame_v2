@@ -98,7 +98,7 @@
                     <li><a class="support_system" data-system="Wallet" href="javascript:(0)">{{__('Wallet')}}</a></li>
                     <li><a class="support_system" data-system="Card" href="javascript:(0)">{{__('Card')}}</a></li>
                 </ul>
-                <div id="product_new_content">
+                <div id="product_new_content" style="margin-top: -7%;">
                     @forelse ($product_news as $product_new)
                     <div class="blog-item">
                         <div class="blog-thumb">
