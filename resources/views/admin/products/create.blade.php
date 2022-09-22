@@ -185,7 +185,6 @@
                 contentType: false,
                 processData: false,
                 success: function(result) {
-                    $('.submit_add').attr('data-submit', false);
                     if (result.success == true) {
                         $('.submit_add').removeAttr('disabled');
                         $('div.product_modal').modal('hide');
