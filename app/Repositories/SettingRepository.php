@@ -25,6 +25,7 @@ class SettingRepository
         $setting = Setting::find($id);
         $date = Carbon::now()->format('d-m-Y');
         $logo = $request->logo;
+        $favicon = $request->favicon;
         if (isset($logo)) {
             if (isset($setting->logo) && $setting->logo != 'AdminLTE-3.1.0/dist/img/AdminLTELogo.png') {
                 unlink(public_path($setting->logo));
@@ -34,6 +35,16 @@ class SettingRepository
             $logo->move($destinationPath, $logo_name);
 
             $setting->logo = $logo_name;
+        }
+        if (isset($favicon)) {
+            if (isset($setting->favicon) && $setting->favicon != 'AdminLTE-3.1.0/dist/img/AdminLTELogo.png') {
+                unlink(public_path($setting->favicon));
+            }
+            $favicon_name = 'upload/setting/img/' . $date . '/' . Str::random(10) . rand() . '.' . $favicon->getClientOriginalExtension();
+            $destinationPath = public_path('upload/setting/img/' . $date);
+            $favicon->move($destinationPath, $favicon_name);
+
+            $setting->favicon = $favicon_name;
         }
         $setting->logo_text = $request->logo_text;
         $setting->save();

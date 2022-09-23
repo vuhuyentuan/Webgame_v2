@@ -96,7 +96,7 @@
                                 <div class="form-group row">
                                     <label for="password" class="col-sm-2 col-form-label">{{ __('Favicon') }}</label>
                                     <div class="col-sm-10">
-                                        <input id="banner" type="file" name="banner" class="form-control" style="display: none" accept="image/gif, image/jpeg, image/png" onchange="changeBanner(this)">
+                                        <input id="banner" type="file" name="favicon" class="form-control" style="display: none" accept="image/gif, image/jpeg, image/png" onchange="changeBanner(this)">
                                         <img id="banner-img" class="banner" style="width: 100px; height: 100px;" src="{{ asset($setting->favicon) }}">
                                     </div>
                                 </div>
