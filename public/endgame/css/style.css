@@ -1647,6 +1647,19 @@ svg:not(:root) {
 		width: 100%;
 		margin-bottom: 30px;
 	}
+    .flex-shrink-0 {
+		float: none;
+		margin-right: 0;
+		width: 200px;
+		margin-bottom: 30px;
+	}
+    p {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
 	.featured-bg {
 		display: none;
 	}
@@ -1735,6 +1748,19 @@ svg:not(:root) {
 		width: 100%;
 		margin-bottom: 30px;
 	}
+    .flex-shrink-0 {
+		float: none;
+		margin-right: 0;
+		width: 200px;
+		margin-bottom: 30px;
+	}
+    p {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
 	.sidebar {
 		padding-top: 60px;
 	}
